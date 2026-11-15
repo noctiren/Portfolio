@@ -9,7 +9,7 @@
   --blue: #4c9bff;       /* 6.9:1 on --bg */
   --ice: #cfe4ff;        /* 15:1 on --bg */
   --ink: #020814;        /* text on blue/ice fills */
-  --warn: #ffd58a;       /* TODO / draft markers */
+  --warn: #ffd58a;       /* warm accent: the inbox path in the opcode diagram, "coming" labels */
   --line: rgba(151, 167, 190, 0.18);
   --line-strong: rgba(207, 228, 255, 0.28);
   --glow: rgba(76, 155, 255, 0.16);

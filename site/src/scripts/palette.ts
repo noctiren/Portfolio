@@ -56,7 +56,8 @@ function go(li: HTMLElement | undefined) {
   if (!href) return;
   opener = null;
   close();
-  if (href !== location.pathname) navigate(href);
+  if (/^https?:/.test(href)) location.href = href; // external link (GitHub)
+  else if (href !== location.pathname) navigate(href);
 }
 
 document.addEventListener('keydown', (e) => {

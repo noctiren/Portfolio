@@ -1,6 +1,5 @@
 // Content collections. Case studies live in src/content/work/*.md so Luke can edit them like docs.
-// Facts only from docs/content/cv.md (HR-FACTS). Missing detail goes in a "> **TODO(Luke):** ..." blockquote,
-// which the case-study page renders as a visible question callout.
+// Facts only from docs/content/cv.md and docs/content/answers.md (HR-FACTS).
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
@@ -17,6 +16,8 @@ const work = defineCollection({
     order: z.number(),
     summary: z.string(),
     tags: z.array(z.string()),
+    /** optional diagram shown at the top of the write-up */
+    diagram: z.enum(['opcode']).optional(),
   }),
 });
 

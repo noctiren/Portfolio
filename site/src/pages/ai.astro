@@ -1,84 +1,55 @@
 ---
-// Source: docs/content/ai.md, a DRAFT Luke hasn't confirmed (HR-FACTS). Keep the draft badge until he does.
-// Left out on purpose: face-swap tools and the personal model folders.
+// Facts from docs/content/answers.md Q11a, Q11b, Q12 (HR-FACTS). Kept on purpose: only ComfyUI from the old
+// draft list. AI/LLM infrastructure is a direction Luke is growing into, not something he runs at ixo yet.
 import Base from '../layouts/Base.astro';
 import PageTitle from '../components/PageTitle.astro';
 
-const stack = [
-  {
-    name: 'ComfyUI',
-    what: 'Node-based workflows for image and video generation.',
-    detail: ['Wan 2.2 image-to-video and text-to-video', 'GGUF-quantised models', '60fps frame interpolation (RIFE)', 'Upscaling', 'Sage attention / Triton speed-ups', 'LTX'],
-  },
-  {
-    name: 'Stable Diffusion WebUI / Forge',
-    what: 'Image generation through the WebUI, served on the LAN behind a Caddy reverse proxy.',
-    detail: ['Stable Diffusion', 'Forge', 'Caddy reverse proxy (LAN)'],
-  },
-  {
-    name: 'Fine-tuning',
-    what: 'LoRA training with kohya_ss on my own datasets, plus a small Python tool to fix safetensors model metadata.',
-    detail: ['LoRA', 'kohya_ss', 'Python', 'safetensors'],
-  },
-  {
-    name: 'Local LLMs',
-    what: 'text-generation-webui and SillyTavern, with a start-all script that launches the stack.',
-    detail: ['text-generation-webui', 'SillyTavern', 'Start-all script'],
-  },
-  {
-    name: 'Voice & more',
-    what: 'Text-to-speech with NeuTTS. Also tried avatar rigging and hosted model access.',
-    detail: ['NeuTTS', 'Live2D / Inochi2D', 'OpenRouter API'],
-  },
+const daily = [
+  { name: 'Coding agent', what: 'Claude Code is my coding agent every day, at work and on my own projects.' },
+  { name: 'Code reviews', what: 'AI-assisted code reviews and code analysis, alongside my own review.' },
+  { name: 'Security analysis', what: 'AI-assisted security analysis, as one more check before things ship.' },
 ];
 
 const opcode = [
-  { k: 'Managers & workers', v: 'Manager chats plan the work and start a worker chat per task.' },
-  { k: 'Cost limits', v: 'Model and effort are picked per task type, under budget caps.' },
-  { k: 'File locks', v: 'Agents claim files, so two of them never edit the same thing at once.' },
-  { k: 'Owner inbox', v: 'Decisions only the human should make go to an inbox instead of being guessed.' },
-  { k: 'Rule files', v: 'Rule files (MANAGER.md) say what agents may decide on their own.' },
-  { k: 'AFK mode', v: 'Work can keep going while the owner is away.' },
+  { k: 'Managers & workers', v: 'A manager chat plans the work and starts a worker per task.' },
+  { k: 'Caps & budgets', v: 'Model and effort caps per profile, budget stop lines, account switching.' },
+  { k: 'Locks & inbox', v: 'File locks between agents; owner-only decisions go to an inbox.' },
+  { k: 'Rules & trackers', v: 'Rule files, profiles, tracker files and an AFK mode.' },
 ];
+
+const comfy = ['Wan 2.2 image-to-video', 'Wan 2.2 text-to-video', '60fps frame interpolation', 'Upscaling', 'GGUF models'];
 ---
-<Base title="AI" description="Luke Petzer's AI work: self-hosted generative-AI stacks and tooling around AI coding agents.">
-  <PageTitle title="AI" outline="after dark" kicker="Open to roles that include AI">
-    <p class="intro">
-      <span class="draft">draft</span>
-      I run and tune generative-AI stacks locally, end to end, on an NVIDIA GPU. I also build tooling around AI coding agents.
-    </p>
+<Base title="AI" description="How Luke Petzer works with AI: Claude Code as a daily coding agent, AI-assisted reviews and security analysis, guardrails for AI agents, and ComfyUI workflows.">
+  <PageTitle title="AI" outline="in practice" kicker="Open to roles that include AI">
+    <p class="intro">I use AI to make my own work better, and I apply platform thinking to it: guardrails, cost limits and governance for AI agents.</p>
   </PageTitle>
 
-  <div class="wrap">
-    <aside class="ask rv" aria-label="Question for Luke">
-      <p><strong>TODO(Luke):</strong> This page is a draft from a look at your AI folder. Please confirm or trim the list, add the "few other things" you mentioned, and tell us if you use any AI at work (ixo: LLM tooling, AI infra, GPU workloads?).</p>
-    </aside>
-  </div>
-
-  <section aria-labelledby="local-h">
+  <section aria-labelledby="daily-h">
     <div class="wrap">
-      <div class="sh"><span class="idx" aria-hidden="true">01</span><h2 id="local-h" class="display wipe cast shadow-text">Local <span class="nw">gen-AI</span></h2></div>
-      <p class="lede rv">Self-hosted on an NVIDIA GPU, set up and tuned end to end.</p>
+      <div class="sh"><span class="idx" aria-hidden="true">01</span><h2 id="daily-h" class="display wipe cast shadow-text">Every day</h2></div>
+      <blockquote class="quote rv">
+        <p>“I use AI to enhance how I work, like Claude Code &amp; proper code reviews and analysis as well as security analysis.”</p>
+      </blockquote>
       <ul class="stack">
-        {stack.map((s, i) => (
+        {daily.map((s, i) => (
           <li class="item rv">
             <span class="n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <h3 class="display">{s.name}</h3>
             <p>{s.what}</p>
-            <ul class="tags" aria-label={`${s.name} details`}>{s.detail.map((d) => <li>{d}</li>)}</ul>
           </li>
         ))}
       </ul>
     </div>
   </section>
 
-  <section class="last" aria-labelledby="agents-h">
+  <section aria-labelledby="agents-h">
     <div class="wrap">
-      <div class="sh"><span class="idx" aria-hidden="true">02</span><h2 id="agents-h" class="display wipe cast shadow-text">Agent tooling</h2></div>
+      <div class="sh"><span class="idx" aria-hidden="true">02</span><h2 id="agents-h" class="display wipe cast shadow-text">AI agents</h2></div>
       <div class="op rv">
         <div>
-          <p class="label">opcode</p>
-          <p class="big">A multi-agent orchestration layer for Claude Code. Basically <strong>platform engineering applied to AI agents</strong>: guardrails, cost limits and governance.</p>
+          <p class="label">opcode · case study</p>
+          <p class="big">I rewrote large parts of <strong>opcode</strong>, an open-source desktop app for Claude Code, into a multi-agent setup with <strong>guardrails, cost limits and governance</strong>. Platform engineering, applied to AI agents.</p>
+          <p class="btns"><a class="btn primary mag" href="/work/opcode">Read the case study</a></p>
         </div>
         <dl class="feats">
           {opcode.map((o) => (
@@ -86,22 +57,41 @@ const opcode = [
           ))}
         </dl>
       </div>
-      <aside class="ask rv" aria-label="Question for Luke">
-        <p><strong>TODO(Luke):</strong> Is it OK to show opcode on the site, and how much of it? Is there a repo, screenshots or a demo to link? Did you build all of it yourself?</p>
-      </aside>
+    </div>
+  </section>
+
+  <section aria-labelledby="comfy-h">
+    <div class="wrap">
+      <div class="sh"><span class="idx" aria-hidden="true">03</span><h2 id="comfy-h" class="display wipe cast shadow-text">Image &amp; video</h2></div>
+      <div class="comfy rv">
+        <h3 class="display">ComfyUI</h3>
+        <p>Node-based workflows for image and video generation, which I build and tune myself.</p>
+        <ul class="tags" aria-label="ComfyUI workflows">{comfy.map((d) => <li>{d}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="last" aria-labelledby="next-h">
+    <div class="wrap">
+      <div class="sh"><span class="idx" aria-hidden="true">04</span><h2 id="next-h" class="display wipe cast shadow-text">Where I'm heading</h2></div>
+      <div class="next rv">
+        <p class="big">I'm growing into <strong>AI and LLM infrastructure</strong>: the platform side of running AI, which is where my DevOps work and my AI work meet.</p>
+        <p class="sub">I'm open to DevOps, platform or backend roles that include AI.</p>
+        <p class="btns"><a class="btn mag" href="/contact">Get in touch</a></p>
+      </div>
     </div>
   </section>
 </Base>
 
 <style>
   .intro { color: var(--muted); max-width: 38em; font-size: 19px; margin: 28px 0 0; }
-  .intro .draft { margin-right: 10px; }
-  .lede { color: var(--muted); max-width: 40em; margin: -16px 0 40px; }
-  .stack { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 0; border-top: 1px solid var(--line); }
-  .item { position: relative; padding: 32px 32px 32px 0; border-bottom: 1px solid var(--line); }
+  .quote { margin: -8px 0 40px; padding: 0 0 0 24px; border-left: 3px solid var(--blue); max-width: 40em; }
+  .quote p { margin: 0; font-size: clamp(20px, 2.2vw, 28px); line-height: 1.4; color: var(--text); }
+  .stack { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 32px; border-top: 1px solid var(--line); }
+  .item { position: relative; padding: 32px 0; border-bottom: 1px solid var(--line); }
   .item .n { font: 700 12px var(--font-mono); letter-spacing: 0.14em; color: var(--blue); }
   .item h3 { font-size: clamp(28px, 2.8vw, 38px); margin: 10px 0 12px; }
-  .item p { color: var(--muted); margin: 0 0 18px; max-width: 30em; }
+  .item p { color: var(--muted); margin: 0; max-width: 30em; }
 
   .op {
     display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; padding: 40px;
@@ -109,20 +99,25 @@ const opcode = [
     border: 1px solid var(--line-strong); box-shadow: 0 0 60px rgba(76, 155, 255, 0.08);
   }
   .op .label { margin: 0 0 16px; }
-  .big { font-size: clamp(20px, 2vw, 26px); line-height: 1.35; margin: 0; }
+  .btns { margin: 28px 0 0; }
+  .big { font-size: clamp(20px, 2vw, 26px); line-height: 1.35; margin: 0; max-width: 34em; }
   .big strong { color: var(--ice); font-weight: 650; }
-  .feats { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 28px; }
+  .feats { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 22px 28px; align-content: start; }
   dt { font: 700 12px var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ice); margin-bottom: 4px; }
   dd { margin: 0; color: var(--muted); font-size: var(--fs-small); }
+
+  .comfy { border-top: 1px solid var(--line); padding-top: 28px; max-width: 46em; }
+  .comfy h3 { font-size: clamp(28px, 2.8vw, 38px); margin: 0 0 12px; }
+  .comfy p { color: var(--muted); margin: 0 0 18px; }
+  .next .sub { color: var(--muted); margin: 18px 0 0; }
   .last { padding-bottom: var(--s-6); }
 
   @media (max-width: 900px) {
     .op { grid-template-columns: 1fr; padding: 28px 22px; gap: 32px; }
+    .stack { grid-template-columns: 1fr; }
     .intro { font-size: 17px; }
   }
   @media (max-width: 560px) {
-    .stack { grid-template-columns: 1fr; }
-    .item { padding-right: 0; }
     .feats { grid-template-columns: 1fr; }
   }
 </style>

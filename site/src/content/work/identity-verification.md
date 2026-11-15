@@ -11,25 +11,20 @@ tags: [Spring Batch, gRPC, Socure, Azure AKS, Service Bus, Key Vault, Azure Func
 ## Context
 
 BM Technologies (BMTX, formerly BankMobile) is based in Pennsylvania, US. I worked there remotely and
-full-time, overlapping my first year at ixo. The goal: productise KYC / identity verification (IDV) for the
-company's university partners.
-
-> **TODO(Luke):** Roughly how many university partners or students did the platform serve? And how big was the team around you?
+full-time, overlapping my first year at ixo. The goal: turn KYC / identity verification (IDV) into a product
+for the company's university partners.
 
 ## Approach
 
-- **Designed and built it from scratch** as a gRPC service pair: a **public gateway** for partners and a
-  **domain engine** behind it. I was the dominant contributor on both from day one.
-- **Bulk verification pipeline** with **Spring Batch**: processes PGP-encrypted student cohort files from
-  Azure Blob Storage, with per-school routing, result generation and failure quarantine.
-- **Decision layer over Socure:** reason-code retrieval and translation, and score-based filtering that
-  produces **accept / review / reject** outcomes.
-- **Azure end to end:** App Configuration, Key Vault, Service Bus, Functions and AKS.
+- **Two services, built from scratch:** a gRPC **public gateway** for partners and a **domain engine** behind
+  it. I was the dominant contributor on both from day one.
+- **Bulk verification:** a **Spring Batch** pipeline reads PGP-encrypted student cohort files from Azure Blob
+  Storage, routes each one per school, generates results and quarantines failures.
+- **Decisions over Socure:** reason codes are fetched and translated, and score-based filtering turns each
+  check into **accept, review or reject**.
 
 ## Result
 
+- Integrated end to end into Azure: App Configuration and Key Vault for config and secrets, Service Bus for
+  messaging, Functions and AKS for hosting.
 - Hardened for production with **Redis caching, rate limiting and health checks**.
-- Integrated end to end into Azure, from configuration and secrets (App Configuration, Key Vault) to messaging (Service Bus) and hosting (Functions, AKS).
-- Every cohort file is routed per school, with results generated and failures quarantined.
-
-> **TODO(Luke):** Any numbers to add? For example: cohort file sizes, verifications per run, or how long a bulk run takes.

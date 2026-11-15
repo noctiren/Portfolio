@@ -1,0 +1,37 @@
+Contrast audit (CHK-5), 2026-11-15 14:17, headless Edge, http://127.0.0.1:4321, reduced motion (all reveals shown)
+Method: tools/contrast.mjs. Every visible text element (plus input placeholders); background = ancestors composited
+over the page colour, every gradient stop tried, and text outside the header/dialogs also tried over the brightest
+spotlight glow. Worst case reported. AA: 4.5:1 normal text, 3:1 large text (>=24px, or >=18.66px bold).
+Not measured: hover/focus colour changes, text over the thin lit topology lines, text-shadow (only helps here).
+
+/                                      1280px    70 text elements  lowest 5.95:1  pass
+/                                       390px    60 text elements  lowest 5.95:1  pass
+/about                                 1280px    45 text elements  lowest 5.95:1  pass
+/about                                  390px    35 text elements  lowest 5.95:1  pass
+/ai                                    1280px    67 text elements  lowest 5.95:1  pass
+/ai                                     390px    57 text elements  lowest 5.95:1  pass
+/built                                 1280px    57 text elements  lowest 5.95:1  pass
+/built                                  390px    47 text elements  lowest 5.95:1  pass
+/contact                               1280px    34 text elements  lowest 5.95:1  pass
+/contact                                390px    24 text elements  lowest 5.95:1  pass
+/experience                            1280px   107 text elements  lowest 5.95:1  pass
+/experience                             390px    97 text elements  lowest 5.95:1  pass
+/work                                  1280px    86 text elements  lowest 5.95:1  pass
+/work                                   390px    76 text elements  lowest 5.95:1  pass
+/work/gitops-secrets                   1280px    74 text elements  lowest 5.95:1  pass
+/work/gitops-secrets                    390px    64 text elements  lowest 5.95:1  pass
+/work/identity-verification            1280px    61 text elements  lowest 5.95:1  pass
+/work/identity-verification             390px    51 text elements  lowest 5.95:1  pass
+/work/multi-cloud-terraform            1280px   105 text elements  lowest 5.95:1  pass
+/work/multi-cloud-terraform             390px    95 text elements  lowest 5.95:1  pass
+/work/opcode                           1280px    79 text elements  lowest 5.95:1  pass
+/work/opcode                            390px    69 text elements  lowest 5.95:1  pass
+/work/zero-downtime-migration          1280px    64 text elements  lowest 5.95:1  pass
+/work/zero-downtime-migration           390px    54 text elements  lowest 5.95:1  pass
+/404                                   1280px    30 text elements  lowest 5.95:1  pass
+/404                                    390px    20 text elements  lowest 5.95:1  pass
+/ [palette open]                       1280px    32 text elements  lowest 7.81:1  pass
+/ [menu open]                           390px     5 text elements  lowest 8.29:1  pass
+
+Total: 1665 text elements checked across 28 page states, 0 below AA.
+Lowest non-decorative: 5.95:1 (#4c9bff on #101e31, div > p.label.kicker "Cape Town, South Africa", / @1280px).

@@ -1,0 +1,36 @@
+320 /: overflow-x 0, title problems none, console clean
+320 /work: overflow-x 0, title problems none, console clean
+320 /work/multi-cloud-terraform: overflow-x 0, title problems none, console clean
+320 /work/gitops-secrets: overflow-x 0, title problems none, console clean
+320 /work/identity-verification: overflow-x 0, title problems none, console clean
+320 /work/zero-downtime-migration: overflow-x 0, title problems none, console clean
+320 /work/opcode: overflow-x 0, title problems none, console clean
+320 /ai: overflow-x 0, title problems SPLIT open-source, console clean
+320 /about: overflow-x 0, title problems none, console clean
+320 /contact: overflow-x 0, title problems none, console clean
+320 /built: overflow-x 0, title problems none, console clean
+390 /: overflow-x 0, title problems none, console clean
+390 /work: overflow-x 0, title problems none, console clean
+390 /work/multi-cloud-terraform: overflow-x 0, title problems none, console clean
+390 /work/gitops-secrets: overflow-x 0, title problems none, console clean
+390 /work/identity-verification: overflow-x 0, title problems none, console clean
+390 /work/zero-downtime-migration: overflow-x 0, title problems none, console clean
+390 /work/opcode: overflow-x 0, title problems none, console clean
+390 /ai: overflow-x 0, title problems none, console clean
+390 /about: overflow-x 0, title problems none, console clean
+390 /contact: overflow-x 0, title problems none, console clean
+390 /built: overflow-x 0, title problems none, console clean
+1280 /: overflow-x 0, title problems none, console clean
+1280 /work: overflow-x 0, title problems none, console clean
+1280 /work/multi-cloud-terraform: overflow-x 0, title problems none, console clean
+1280 /work/gitops-secrets: overflow-x 0, title problems none, console clean
+1280 /work/identity-verification: overflow-x 0, title problems none, console clean
+1280 /work/zero-downtime-migration: overflow-x 0, title problems none, console clean
+1280 /work/opcode: overflow-x 0, title problems none, console clean
+1280 /ai: overflow-x 0, title problems none, console clean
+1280 /about: overflow-x 0, title problems none, console clean
+1280 /contact: overflow-x 0, title problems none, console clean
+1280 /built: overflow-x 0, title problems none, console clean
+opcode diagram (motion): packets 5, svg shown block
+palette items: /, /work, /experience, /ai, /about, /contact, /built, https://github.com/LukePetzer-ixo, /work/multi-cloud-terraform, /work/gitops-secrets, /work/identity-verification, /work/zero-downtime-migration, /work/opcode
+links to CV pdf anywhere on page: 0

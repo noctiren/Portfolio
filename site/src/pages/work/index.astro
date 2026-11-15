@@ -4,9 +4,9 @@ import PageTitle from '../../components/PageTitle.astro';
 import { getWork } from '../../data/work';
 const work = await getWork();
 ---
-<Base title="Work" description="Case studies from Luke Petzer: multi-cloud Terraform, GitOps and secrets, an identity verification platform and a zero-downtime migration.">
+<Base title="Work" description="Case studies from Luke Petzer: multi-cloud Terraform, GitOps and secrets, an identity verification platform, a zero-downtime migration and guardrails for AI agents. Plus open source.">
   <PageTitle title="Work" outline="in the light" kicker="Selected case studies">
-    <p class="intro">Four pieces of work: two platform builds at ixo, and two backend systems built at BMTX and envel. Each one covers the context, the approach, the result and the stack.</p>
+    <p class="intro">Five pieces of work: two platform builds at ixo, two backend systems built at BMTX and envel, and guardrails for AI agents. Each one covers the context, the approach, the result and the stack.</p>
   </PageTitle>
 
   <div class="wrap">
@@ -26,11 +26,31 @@ const work = await getWork();
       ))}
     </ul>
   </div>
+
+  <section class="os" aria-labelledby="os-h">
+    <div class="wrap">
+      <div class="sh"><span class="idx" aria-hidden="true">01</span><h2 id="os-h" class="display wipe cast shadow-text">Open source</h2></div>
+      <ul class="repos">
+        <li class="repo rv">
+          <p class="label">ixofoundation · Apache-2.0</p>
+          <h3><a href="https://github.com/ixofoundation/ixo-terra-infra" rel="noopener">ixo-terra-infra</a></h3>
+          <p>The multi-cloud Terraform platform from the first case study: core services and monitoring on Kubernetes, with an environment per <code>.tfvars</code> file.</p>
+          <p class="links"><a href="/work/multi-cloud-terraform">Case study</a></p>
+        </li>
+        <li class="repo soon rv">
+          <p class="label">Coming</p>
+          <h3>My opcode rewrite</h3>
+          <p>Guardrails, cost limits and governance for AI agents, built on the open-source opcode app. Not public yet.</p>
+          <p class="links"><a href="/work/opcode">Case study</a></p>
+        </li>
+      </ul>
+    </div>
+  </section>
 </Base>
 
 <style>
   .intro { color: var(--muted); max-width: 38em; font-size: 19px; margin: 28px 0 0; }
-  .cards { list-style: none; margin: 0 0 var(--s-6); padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; perspective: 1200px; }
+  .cards { list-style: none; margin: 0 0 var(--s-5); padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; perspective: 1200px; }
   .card {
     --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 30%;
     position: relative; isolation: isolate;
@@ -69,10 +89,33 @@ const work = await getWork();
   /* the reveal sets its own transform; keep the tilt only after the card is in */
   :global(.motion) .card.rv.in { transform: rotateX(var(--rx)) rotateY(var(--ry)) translateZ(0); }
 
+  /* an odd card out spans the row */
+  .card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+  .os { padding-bottom: var(--s-6); }
+  .repos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .repo { border-top: 1px solid var(--line-strong); padding-top: 22px; }
+  .repo .label { margin: 0 0 10px; }
+  .repo h3 { font: 700 clamp(20px, 2vw, 26px) / 1.2 var(--font-mono); margin: 0 0 12px; }
+  .repo h3 a { color: var(--text); }
+  .repo h3 a:hover { color: var(--ice); }
+  .repo p { color: var(--muted); margin: 0 0 14px; max-width: 34em; }
+  .repo code { font: 0.92em var(--font-mono); color: var(--ice); }
+  .repo .links { font: 700 var(--fs-label) var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; }
+  .soon { border-top-style: dashed; }
+  .soon .label { color: var(--warn); }
+
   @media (max-width: 900px) {
+    .repos { grid-template-columns: 1fr; }
     .cards { grid-template-columns: 1fr; gap: 24px; }
     .num { font-size: 72px; }
     h2 { padding-right: 64px; }
+  }
+  @media (max-width: 400px) {
+    /* smallest phones: the number shrinks into the corner so long titles like "Zero-downtime" get the full width */
+    .num { font-size: 56px; top: 18px; right: 18px; }
+    .co { margin-bottom: 24px; padding-right: 60px; }
+    h2 { padding-right: 0; }
   }
   @media (max-width: 560px) {
     .inner { padding: 28px 22px 24px; }

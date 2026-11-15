@@ -7,9 +7,8 @@ export const person = {
   email: 'lukepetzerint2@gmail.com',
   linkedin: 'https://www.linkedin.com/in/lukepetzer-3a81a316b',
   linkedinLabel: 'in/lukepetzer-3a81a316b',
-  github: null as string | null, // TODO(Luke): GitHub username
-  // TODO(Luke): replace with phone-free CV before hosting (HR-PRIVACY)
-  cv: "/Luke_Petzer_CV.pdf",
+  github: 'https://github.com/LukePetzer-ixo',
+  githubLabel: 'LukePetzer-ixo',
   pitch:
     "Running Kubernetes clusters, wiring up Terraform, and keeping ArgoCD deployments and CI/CD pipelines honest. A backend engineer by background, so I still think like a developer when I'm building infrastructure.",
 };
@@ -34,6 +33,7 @@ export const palettePages: PaletteItem[] = [
   { href: '/', label: 'Home', hint: 'Page' },
   ...nav.map((n) => ({ href: n.href, label: n.label, hint: 'Page' })),
   { href: '/built', label: 'How this site is built', hint: 'Page' },
+  { href: 'https://github.com/LukePetzer-ixo', label: 'GitHub', hint: 'Link' },
 ];
 
 /** Case studies live in src/content/work (see src/data/work.ts). */

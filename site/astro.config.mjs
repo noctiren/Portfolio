@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// TODO(Luke): replace with the real domain at "ready to host" (used for canonical URLs, OG and the sitemap).
+// M5: replace with the <name>.pages.dev URL at "ready to host" (Q16) (used for canonical URLs, OG and the sitemap).
 export default defineConfig({
   site: 'https://lukepetzer.example',
   trailingSlash: 'ignore',

@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# TODO(Luke): real domain at "ready to host"
+# M5: the <name>.pages.dev URL at "ready to host" (Q16)
 Sitemap: https://lukepetzer.example/sitemap-index.xml

@@ -23,9 +23,6 @@ const ways = [
   <PageTitle title="About" outline="the engineer" kicker={person.location} />
 
   <div class="wrap top">
-    <div class="photo rv" role="img" aria-label="Photo placeholder">
-      <span class="todo">TODO(Luke): photo?</span>
-    </div>
     <div class="bio prose rv">
       <p class="lead">I'm a DevOps / platform engineer at <strong>ixo</strong>: running Kubernetes clusters, wiring up Terraform, and keeping ArgoCD deployments and CI/CD pipelines honest.</p>
       <p>I came to infrastructure from backend engineering. I started with a Spring learnership at Younglings, interned on an enterprise Java codebase at Absa, then spent over three years as a software engineer at envel, where I also taught myself Terraform as costs ramped up. After that I built an identity verification platform at BMTX, and I'm now ixo's platform engineer.</p>
@@ -61,14 +58,8 @@ const ways = [
 </Base>
 
 <style>
-  .top { display: grid; grid-template-columns: 320px 1fr; gap: 64px; align-items: start; padding-top: var(--s-3); }
-  .photo {
-    aspect-ratio: 4 / 5; display: grid; place-items: center;
-    border: 1px dashed var(--line-strong);
-    background:
-      radial-gradient(circle at 70% 25%, rgba(76, 155, 255, 0.18), transparent 60%),
-      linear-gradient(160deg, rgba(14, 28, 54, 0.9), rgba(4, 6, 10, 0.9));
-  }
+  .top { padding-top: var(--s-3); }
+  .bio { max-width: 46em; }
   .lead { font-size: clamp(20px, 2vw, 25px); line-height: 1.45; margin-top: 0; }
   .lead, .lead strong { color: var(--text); }
 
@@ -82,8 +73,6 @@ const ways = [
   .last { padding-bottom: var(--s-6); }
 
   @media (max-width: 900px) {
-    .top { grid-template-columns: 1fr; gap: 32px; }
-    .photo { max-width: 260px; }
     .ways { grid-template-columns: 1fr; gap: 32px; }
   }
 </style>
