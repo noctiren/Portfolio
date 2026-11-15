@@ -19,7 +19,7 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 ## Backlog
 - [M3] Case studies v2: fill in Luke's answers (Q-1..Q-10), add diagrams per case study | owner: frontend manager | links: - | note: after Luke answers
 - [M3b] GitHub repos section (chosen extra) | owner: frontend manager | links: DESIGN-BRIEF §6 | note: needs Q-14
-- [M4] Polish: dark/OG preview image, Lighthouse, a11y pass, real-device + cross-browser checks (CHK-1..5) | owner: frontend manager | links: - | note: -
+- [M4 → in progress, see docs/open-checks.md] Polish: dark/OG preview image, Lighthouse, a11y pass, real-device + cross-browser checks (CHK-1..5) | owner: frontend manager | links: - | note: -
 - [M5] Hosting: Cloudflare Pages via Terraform + GitHub Actions (D-003) | owner: Luke decides | links: docs/DECISIONS.md | note: only after "ready to host"; B-1 and B-2 first
 
 ## Done

@@ -4,7 +4,7 @@ Things not yet verified, plus work in progress. Synced by opcode. Line format:
 `- [ID] Title | owner: <who> | links: <...> | note: <...>`. Remove a line when it's closed and log it under Done in docs/BOARD.md.
 
 ## In progress
-- (none)
+- [M4] Polish + audits (OG image, favicon, contrast CHK-5, Firefox CHK-2, a11y pass, page weight) | owner: W-M4 polish + audits | links: docs/briefs/W-M4-polish.md | note: started 2026-11-15
 
 ## Open checks
 - [CHK-1] Real phone / touch device test (spotlight follows taps, menu, tilt off) | owner: frontend manager | links: - | note: only emulated so far
