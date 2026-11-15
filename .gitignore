@@ -9,3 +9,7 @@ dist/
 .private/
 docs/content/Luke_Petzer_CV.pdf
 *.pdf.bak
+docs/content/cv.md
+docs/content/answers.md
+docs/content/ai.md
+docs/QUESTIONS-FOR-LUKE.md

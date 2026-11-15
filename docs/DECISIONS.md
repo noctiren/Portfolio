@@ -44,3 +44,5 @@ Format: ID: decision. Why. Status (PROPOSED = waiting for Luke, DECIDED = settle
   `../Portfolio-backup-20261115-1712.git`. The settings are repo-local (the global git identity is unchanged): key
   `~/.ssh/id_ed25519_noctiren` (no passphrase, this PC only, Luke's choice), `gpg.format=ssh`, `commit.gpgsign=true`,
   `core.sshCommand` pinned to that key. Hosting (D-003) is still Luke's call. DECIDED (Luke).
+  Follow-up (Luke 2026-11-15, "keep workflow, hide personal"): cv.md, answers.md, ai.md and QUESTIONS-FOR-LUKE.md
+  are removed from all history and git-ignored (still local). Force-pushed once; backup `../Portfolio-backup-20261115-1720.git`.

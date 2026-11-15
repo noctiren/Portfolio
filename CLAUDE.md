@@ -22,6 +22,9 @@ stay readable, fast and good on phones. It must not look like a generic dev-port
   Exception (Luke, 2026-11-15): the code may be pushed to the public repo `git@github.com:noctiren/Portfolio.git`
   (SSH, signed commits). Deploying/hosting is still not allowed. Never commit `.private/` or the CV PDF; never write
   the gaming handle listed in `.private/forbidden-words.txt` anywhere tracked (the repo is public).
+  Local-only (git-ignored, never committed): `docs/content/cv.md`, `docs/content/answers.md`, `docs/content/ai.md`,
+  `docs/QUESTIONS-FOR-LUKE.md`. They are still the HR-FACTS sources; read them locally, but never copy raw personal
+  notes from them into tracked files.
 - HR-INSTALL: Installing npm packages that are listed in `docs/DECISIONS.md` (the approved stack) is allowed.
   Any new dependency, global tool or other download needs Luke's OK first.
 - HR-FACTS: No invented claims about Luke. Every job, number, skill or project on the site has to come from
