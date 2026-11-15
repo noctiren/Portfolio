@@ -12,7 +12,6 @@ Full question text: docs/QUESTIONS-FOR-LUKE.md (Q numbers match).
 
 ## Cards
 - [CARD] OK to install Lighthouse as a dev-only tool (CHK-4) | owner: Luke | links: inbox card c17947423323043d06173e | note: recommended
-- [CARD] Approve stopping W-M2's leftover preview server (PID 38836, :4322) | owner: Luke | links: inbox card c179474127822557f297ea | note: safe to approve
 
 ## Blockers (hosting)
 - [B-1] CV PDF contains the phone number (HR-PRIVACY) | owner: Luke | links: site/public/Luke_Petzer_CV.pdf, Q-15 | note: need a phone-free CV or explicit OK
