@@ -17,6 +17,7 @@ See `docs/open-checks.md`.
 See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 
 ## Backlog
+- [CHK-8] Re-run Lighthouse after M6 (new JS: status pill, light, decode) | owner: frontend manager | links: site/tools, docs/screens/m4/lighthouse | note: optional, before M5
 - [M5] Hosting: Cloudflare Pages via Terraform + GitHub Actions (D-003) | owner: Luke decides | links: docs/DECISIONS.md | note: only after "ready to host"; B-1 and B-2 first
 
 ## Done
@@ -38,4 +39,5 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 - [Q-18] Recruiter facts: roles (suggested list OK), prefers remote / no relocation, no availability shown | owner: Luke | links: docs/content/answers.md Q18 | note: 2026-11-15
 - [M3] Content v2: case studies from answers, /work/opcode (credits upstream winfunc/opcode, AGPL-3.0), /ai rewrite, GitHub + Open source block, CV download + photo removed | owner: W-M2 | links: e80b983, docs/screens/m3/ | note: manager-checked 2026-11-15; Luke approved the opcode wording as written (Q-19)
 - [Q-19] opcode write-up wording approved as written | owner: Luke | links: inbox card c1794752596009659a9057 | note: 2026-11-15
-- [M6] Alive touches + /recruiter: status pill (real build/M4 stats), clickable pipeline, light reacts, page-change beam, Cape Town tint + clock, numbers decode, build footer, Search label, /recruiter (prints 1 A4 page) | owner: W-M6 | links: f72427d, docs/screens/m6/ | note: manager-checked 2026-11-15; Luke test = T-2
+- [M6] Alive touches + /recruiter: status pill (real build/M4 stats), clickable pipeline, light reacts, page-change beam, Cape Town tint + clock, numbers decode, build footer, Search label, /recruiter (prints 1 A4 page) | owner: W-M6 | links: f72427d, docs/screens/m6/ | note: manager-checked + Luke tested OK 2026-11-15
+- [T-2] Luke tested M6 (alive touches + /recruiter): Tested OK; the worker's 6 choices are accepted as built | owner: Luke | links: inbox card c1794753758723014d8ff4 | note: 2026-11-15
