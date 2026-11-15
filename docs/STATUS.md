@@ -24,3 +24,10 @@
   phone-free version (or explicitly OK the phone in the downloadable CV) before anything is hosted.
 - M4 committed (e0add82), manager-checked: OG cards + favicon, contrast min 5.95:1 (CHK-5 closed), Firefox = Edge, a11y pass clean, home JS+CSS 53.7 KB. Lighthouse (CHK-4) blocked by a Claude Code permission; Luke card c17947440848111908f35d.
 - M4 CLOSED (468ed96). Lighthouse: perf 97-100, a11y 100, SEO 100, BP 81 (only from security software injecting http scripts on this PC). Next: M3 needs Luke's answers (WAITING.md); M5 hosting needs B-1/B-2 + "ready to host". Nothing running.
+
+## 2026-11-15 (later): M3 + M6 done
+- M3 content v2 accepted (e80b983). Luke approved the opcode wording (Q-19).
+- M6 alive touches + /recruiter accepted (f72427d); Q-18 facts are used. Luke's test card T-2 is open, and the dev server on :4321 was started by W-M6 and is left running for the test.
+- Next: Luke's T-2 result -> fixes via W-M6 if needed, then stop the :4321 server. Re-run Lighthouse after M6.
+- Waiting on Luke: T-2 test, CHK-1 phone, CHK-3 screen reader, optional Q-17, M5 "ready to host".
+- Note for M5: local git author name is [gaming handle: see .private/forbidden-words.txt]. Ask Luke before any public push (the handle must not appear).
