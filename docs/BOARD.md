@@ -26,4 +26,5 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 - [M0] Project docs, rules, decisions | owner: frontend manager | links: CLAUDE.md, MANAGER.md, docs/ | note: 2026-11-15
 - [M0b] Look picked: Shadow & Light (2 mockup rounds) | owner: Luke | links: D-004, mockups/round2/ | note: 2026-11-15
 - [M1] Astro scaffold, shell, sticky name, spotlight, home, palette, sitemap | owner: W-M1 | links: commit 65a2fa4, docs/screens/m1/ | note: reviewed
-- [M2] Content pages (work + 4 case studies, experience, AI, about, built, contact) | owner: W-M2 | links: commit 22fb6c2, docs/screens/m2/ | note: reviewed; fixes F-1..F-4 in progress
+- [M2] Content pages (work + 4 case studies, experience, AI, about, built, contact) | owner: W-M2 | links: commit 22fb6c2, docs/screens/m2/ | note: reviewed
+- [F-1..F-4] M2 review fixes: titles fit on phones, first-person voice, shorter experience, preview on :4321 | owner: W-M2 | links: commit 214cb0d, docs/screens/m2-fix/ | note: manager-checked 320/390 screenshots
