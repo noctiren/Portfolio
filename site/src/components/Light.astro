@@ -1,0 +1,29 @@
+---
+// The spotlight + faint infra grid. One fixed layer behind everything, kept across page changes
+// (transition:persist), moved by src/scripts/light.ts. Purely decorative.
+---
+<div id="light" class="light" aria-hidden="true" transition:persist="light">
+  <div class="topo base"></div>
+  <div class="topo lit"></div>
+  <div class="glow"></div>
+</div>
+
+<style>
+  .light { --lx: 70vw; --ly: 30vh; position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .topo, .glow { position: absolute; inset: 0; }
+  .topo { background-image: var(--topo); background-size: 160px 160px; }
+  .base { opacity: 0.05; }
+  .lit {
+    opacity: 0.45;
+    -webkit-mask-image: radial-gradient(circle 340px at var(--lx) var(--ly), #000 0%, rgba(0, 0, 0, 0.4) 45%, transparent 75%);
+    mask-image: radial-gradient(circle 340px at var(--lx) var(--ly), #000 0%, rgba(0, 0, 0, 0.4) 45%, transparent 75%);
+  }
+  .glow { background: radial-gradient(circle 520px at var(--lx) var(--ly), var(--glow), rgba(76, 155, 255, 0.05) 40%, transparent 70%); }
+  @media (max-width: 560px) {
+    .lit {
+      -webkit-mask-image: radial-gradient(circle 220px at var(--lx) var(--ly), #000 0%, rgba(0, 0, 0, 0.4) 45%, transparent 75%);
+      mask-image: radial-gradient(circle 220px at var(--lx) var(--ly), #000 0%, rgba(0, 0, 0, 0.4) 45%, transparent 75%);
+    }
+    .glow { background: radial-gradient(circle 340px at var(--lx) var(--ly), var(--glow), rgba(76, 155, 255, 0.05) 40%, transparent 70%); }
+  }
+</style>

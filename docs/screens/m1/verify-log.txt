@@ -1,0 +1,35 @@
+1280 home overflow-x px: 0
+1280 home wordmark state at top: in-view
+1280 home wordmark state after scroll: out / opacity 1
+1280 progress transform: scaleX(0.3663)
+after click Work: path: /work
+header persisted: true
+light persisted: true
+aria-current: ["Work"]
+wordmark visible on /work: 1
+back home: aria-current: 0
+back home: header still persisted: true
+palette open after Ctrl+K: true
+palette focus: palette-input
+palette filtered: ["Identity verification platformCase study"]
+palette Enter ->: /work/identity-verification
+aria-current on case study: ["Work"]
+palette closed after Esc: true
+tab order (about): ["skip | Skip to content | outline=solid","mark display | Luke Petzer | outline=solid","A | Work | outline=solid","A | Experience | outline=solid"]
+404 title: Lost in the dark · Luke Petzer
+?reduced=1 classes: js rm
+?reduced=1 packets paused: [true,true]
+reduced kept after nav: js rm
+?reduced=0 classes: js motion
+390 home overflow-x px: 0
+390 visible pipeline: ["flow-h:none","flow-v:block"]
+390 menu expanded: true
+390 menu after Esc: false focus=true
+390 /work/multi-cloud-terraform overflow-x px: 0
+390 /experience overflow-x px: 0
+390 /contact overflow-x px: 0
+390 /built overflow-x px: 0
+390 /ai overflow-x px: 0
+390 /about overflow-x px: 0
+390 /work overflow-x px: 0
+console errors/warnings: ["{\"entry\":{\"source\":\"network\",\"level\":\"error\",\"text\":\"Failed to load resource: the server responded with a status of 404 (Not Found)\",\"timestamp\":1794740187948.506,\"url\":\"http://127.0.0.1:4321/nope?reduced=1\",\"networkRequestId\":\"60D31F2635BA9FE3F448B5EA28F2A327\"}}"]

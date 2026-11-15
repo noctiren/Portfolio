@@ -1,0 +1,99 @@
+---
+// The deploy-flow diagram: git → CI → ArgoCD → three clouds, with light packets running along the edges.
+// Two drawings of the same flow: left-to-right on wide screens, top-to-bottom on phones (only one is ever
+// displayed, so screen readers get one description). Packets are SMIL; shell.ts freezes them under reduced motion.
+interface Node { x: number; y: number; w: number; t: string; s: string; cloud?: boolean }
+interface Edge { id: string; d: string; begin: string; share: number }
+interface Drawing { key: string; viewBox: string; nodes: Node[]; edges: Edge[] }
+
+const H = 56;
+const pipes = { first: 0.22, cloud: 0.32 };
+const drawings: Drawing[] = [
+  {
+    key: 'h',
+    viewBox: '0 0 640 300',
+    nodes: [
+      { x: 10, y: 122, w: 100, t: 'Git repo', s: 'push' },
+      { x: 170, y: 122, w: 100, t: 'CI', s: 'build · test' },
+      { x: 330, y: 122, w: 100, t: 'ArgoCD', s: 'GitOps sync' },
+      { x: 520, y: 22, w: 110, t: 'AWS', s: 'EKS', cloud: true },
+      { x: 520, y: 122, w: 110, t: 'GCP', s: 'GKE', cloud: true },
+      { x: 520, y: 222, w: 110, t: 'Vultr', s: 'VKE', cloud: true },
+    ],
+    edges: [
+      { id: 'a', d: 'M110 150 H170', begin: '0s', share: pipes.first },
+      { id: 'b', d: 'M270 150 H330', begin: '.5s', share: pipes.first },
+      { id: 'c1', d: 'M430 150 C475 150 475 50 520 50', begin: '1s', share: pipes.cloud },
+      { id: 'c2', d: 'M430 150 H520', begin: '1s', share: pipes.cloud },
+      { id: 'c3', d: 'M430 150 C475 150 475 250 520 250', begin: '1s', share: pipes.cloud },
+    ],
+  },
+  {
+    key: 'v',
+    viewBox: '0 0 320 400',
+    nodes: [
+      { x: 100, y: 4, w: 120, t: 'Git repo', s: 'push' },
+      { x: 100, y: 110, w: 120, t: 'CI', s: 'build · test' },
+      { x: 100, y: 216, w: 120, t: 'ArgoCD', s: 'GitOps sync' },
+      { x: 4, y: 336, w: 96, t: 'AWS', s: 'EKS', cloud: true },
+      { x: 112, y: 336, w: 96, t: 'GCP', s: 'GKE', cloud: true },
+      { x: 220, y: 336, w: 96, t: 'Vultr', s: 'VKE', cloud: true },
+    ],
+    edges: [
+      { id: 'a', d: 'M160 60 V110', begin: '0s', share: pipes.first },
+      { id: 'b', d: 'M160 166 V216', begin: '.5s', share: pipes.first },
+      { id: 'c1', d: 'M160 272 C160 304 52 304 52 336', begin: '1s', share: pipes.cloud },
+      { id: 'c2', d: 'M160 272 V336', begin: '1s', share: pipes.cloud },
+      { id: 'c3', d: 'M160 272 C160 304 268 304 268 336', begin: '1s', share: pipes.cloud },
+    ],
+  },
+];
+const label =
+  'Deploy flow: a push to the git repo runs CI, then ArgoCD syncs the result to Kubernetes clusters on AWS (EKS), GCP (GKE) and Vultr (VKE).';
+---
+<div class="pipeline">
+  {drawings.map((g) => (
+    <svg class={`flow flow-${g.key}`} viewBox={g.viewBox} role="img" aria-label={label}>
+      <defs>
+        <filter id={`bloom-${g.key}`} x="-200%" y="-200%" width="500%" height="500%">
+          <feGaussianBlur stdDeviation="2.5" result="b" />
+          <feMerge><feMergeNode in="b" /><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+      </defs>
+      {g.edges.map((e) => <path id={`p-${g.key}-${e.id}`} class="edge" d={e.d} />)}
+      {g.nodes.map((n) => (
+        <g class:list={['node', { cloud: n.cloud }]}>
+          <rect x={n.x} y={n.y} width={n.w} height={H} />
+          <text class="t" x={n.x + n.w / 2} y={n.y + 27}>{n.t}</text>
+          <text class="s" x={n.x + n.w / 2} y={n.y + 45}>{n.s}</text>
+        </g>
+      ))}
+      <g aria-hidden="true">
+        {g.edges.map((e) => (
+          <circle class="pkt" opacity="0" r="4" filter={`url(#bloom-${g.key})`}>
+            <animateMotion dur="2.4s" begin={e.begin} repeatCount="indefinite" keyPoints="0;1;1" keyTimes={`0;${e.share};1`} calcMode="linear">
+              <mpath href={`#p-${g.key}-${e.id}`} />
+            </animateMotion>
+            <animate attributeName="opacity" dur="2.4s" begin={e.begin} repeatCount="indefinite" values="1;1;0;0" keyTimes={`0;${e.share};${e.share + 0.01};1`} />
+          </circle>
+        ))}
+      </g>
+    </svg>
+  ))}
+</div>
+
+<style>
+  .pipeline :global(svg.flow) { width: 100%; height: auto; display: block; overflow: visible; }
+  .flow-v { display: none !important; max-width: 340px; margin: 0 auto; }
+  @media (max-width: 640px) {
+    .flow-h { display: none !important; }
+    .flow-v { display: block !important; }
+  }
+  .edge { fill: none; stroke: rgba(76, 155, 255, 0.45); stroke-width: 1.5; }
+  .node rect { fill: var(--bg-raise); stroke: rgba(207, 228, 255, 0.55); stroke-width: 1.2; }
+  .node.cloud rect { stroke: var(--blue); fill: var(--bg-panel); }
+  .t { font-family: var(--font-display); font-stretch: var(--stretch-display); font-size: 20px; font-weight: 800; letter-spacing: 0.04em; fill: var(--text); text-anchor: middle; text-transform: uppercase; }
+  .s { font-family: var(--font-mono); font-size: 12.5px; fill: var(--muted); text-anchor: middle; }
+  .pkt { fill: var(--ice); }
+  :global(.rm) .pkt { display: none; }
+</style>

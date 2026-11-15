@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import PageTitle from '../components/PageTitle.astro';
+import Stub from '../components/Stub.astro';
+---
+<Base title="About" description="About Luke Petzer: a DevOps / Platform Engineer in Cape Town who still thinks like a backend developer.">
+  <PageTitle title="About" kicker="Cape Town, South Africa" />
+  <Stub note="The full bio arrives in M2. Photo: TODO(Luke).">
+    <p class="quote">“I'd rather fix the root cause than duct-tape it.”</p>
+  </Stub>
+</Base>
+<style>
+  .quote { font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; color: var(--text); }
+</style>

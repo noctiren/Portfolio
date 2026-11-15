@@ -1,0 +1,105 @@
+---
+// Sticky header, kept across page changes (transition:persist). The active link is updated by
+// src/scripts/shell.ts after each navigation, because a persisted element is not re-rendered.
+import { nav, person } from '../data/site';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => path === href || path.startsWith(href + '/');
+---
+<header class="site-header" transition:persist="header" data-header>
+  <div class="wrap bar">
+    <a class="mark display" href="/" aria-label={`${person.name}, home`}>
+      <span class="b">Luke</span> <span>Petzer</span>
+    </a>
+    <nav aria-label="Main" class="nav" id="site-nav" data-nav>
+      <ul>
+        {nav.map((n) => (
+          <li>
+            <a href={n.href} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="tools">
+      <button type="button" class="kbd" data-palette-open aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">
+        <span class="visually-hidden">Open quick navigation</span><span aria-hidden="true" data-kbd-label>Ctrl K</span>
+      </button>
+      <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" data-menu-btn>
+        <span class="visually-hidden">Menu</span>
+        <span class="bars" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"><i data-progress></i></div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: linear-gradient(180deg, rgba(4, 6, 10, 0.92), rgba(4, 6, 10, 0.72));
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; gap: 28px; height: var(--header-h); }
+
+  .mark {
+    font-size: 28px; line-height: 1; letter-spacing: 0.02em; color: var(--text); text-decoration: none; white-space: nowrap;
+    transition: opacity 0.4s var(--ease-out), transform 0.5s var(--ease-out), letter-spacing 0.5s var(--ease-out);
+  }
+  .mark .b { color: var(--blue); }
+  .mark:hover { color: var(--ice); }
+  /* on the home page the big hero name stands in for the wordmark until it scrolls away */
+  :global(html[data-hero-name='in-view']) .mark { opacity: 0; transform: translateY(10px); letter-spacing: 0.2em; visibility: hidden; }
+  :global(html[data-hero-name='in-view']) .mark { transition: opacity 0.3s, transform 0.3s, letter-spacing 0.3s, visibility 0s 0.3s; }
+
+  .nav { margin-left: auto; }
+  .nav ul { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; }
+  .nav a {
+    position: relative; display: inline-block; padding: 6px 0;
+    font: var(--fs-label) / 1.2 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+  }
+  .nav a:hover { color: var(--ice); }
+  .nav a[aria-current='page'] { color: var(--text); }
+  .nav a::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px;
+    background: var(--blue); box-shadow: 0 0 10px var(--blue); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.35s var(--ease-out);
+  }
+  .nav a[aria-current='page']::after { transform: scaleX(1); }
+
+  .tools { display: flex; align-items: center; gap: 10px; }
+  .kbd, .menu-btn {
+    font: 12px/1 var(--font-mono); letter-spacing: 0.08em; color: var(--muted);
+    background: rgba(8, 16, 29, 0.8); border: 1px solid var(--line-strong); padding: 8px 10px; cursor: pointer;
+  }
+  .kbd:hover, .menu-btn:hover { color: var(--ice); border-color: var(--ice); }
+  .menu-btn { display: none; width: 44px; height: 44px; padding: 0; }
+  .bars { display: grid; gap: 6px; justify-items: center; }
+  .bars i { display: block; width: 20px; height: 2px; background: currentColor; transition: transform 0.3s var(--ease-out); }
+  .menu-btn[aria-expanded='true'] .bars i:first-child { transform: translateY(4px) rotate(45deg); }
+  .menu-btn[aria-expanded='true'] .bars i:last-child { transform: translateY(-4px) rotate(-45deg); }
+
+  .progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; overflow: hidden; }
+  .progress i {
+    display: block; height: 100%; background: linear-gradient(90deg, var(--blue), var(--ice));
+    box-shadow: 0 0 12px var(--blue); transform: scaleX(0); transform-origin: left;
+  }
+
+  @media (max-width: 860px) {
+    .mark { font-size: 24px; }
+    .menu-btn { display: inline-grid; place-items: center; }
+    .kbd { height: 44px; }
+    .nav {
+      position: absolute; top: 100%; left: 0; right: 0; margin: 0;
+      background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: 0 24px 40px rgba(0, 0, 0, 0.6);
+      display: none;
+    }
+    .nav[data-open] { display: block; }
+    .nav ul { flex-direction: column; gap: 0; padding: 8px var(--gutter) 20px; }
+    .nav a { display: block; padding: 14px 0; font-size: 15px; border-bottom: 1px solid var(--line); }
+    .nav a::after { bottom: 10px; right: auto; width: 32px; }
+    .bar { gap: 12px; }
+    .tools { margin-left: auto; }
+  }
+  @media (max-width: 380px) { .kbd { display: none; } }
+</style>

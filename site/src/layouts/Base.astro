@@ -1,0 +1,83 @@
+---
+// Base layout: <head> meta, the persistent shell (light layer + header), footer and palette.
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import Light from '../components/Light.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Palette from '../components/Palette.astro';
+import { person } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** home page only: hides the header wordmark until the hero name scrolls away */
+  heroName?: boolean;
+  noindex?: boolean;
+}
+const { title, description, heroName = false, noindex = false } = Astro.props;
+const fullTitle = Astro.url.pathname === '/' ? `${person.name} · ${person.role}` : `${title} · ${person.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en" data-hero-name={heroName ? 'in-view' : undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#04060a" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={person.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <!-- TODO(M4): generated Open Graph image card -->
+    <script is:inline>
+      // Motion switch: .motion normally, .rm under prefers-reduced-motion or ?reduced=1 (kept for the tab
+      // via sessionStorage; ?reduced=0 clears it). Runs before first paint and before every page swap.
+      (() => {
+        const K = 'lp-reduced';
+        const read = (url) => {
+          const q = new URL(url).searchParams.get('reduced');
+          if (q === '1') sessionStorage.setItem(K, '1');
+          if (q === '0') sessionStorage.removeItem(K);
+          return sessionStorage.getItem(K) === '1' || matchMedia('(prefers-reduced-motion: reduce)').matches;
+        };
+        const apply = (doc, rm) => {
+          const c = doc.documentElement.classList;
+          c.add('js');
+          c.toggle('rm', rm);
+          c.toggle('motion', !rm);
+        };
+        apply(document, read(location.href));
+        if (!window.__lpMotion) {
+          window.__lpMotion = true;
+          document.addEventListener('astro:before-swap', (e) => apply(e.newDocument, read(e.to.href)));
+        }
+      })();
+    </script>
+    <ClientRouter />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Light />
+    <Header />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <Palette />
+    <script>
+      import '../scripts/light';
+      import '../scripts/shell';
+      import '../scripts/palette';
+    </script>
+  </body>
+</html>

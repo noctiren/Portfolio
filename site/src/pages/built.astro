@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import PageTitle from '../components/PageTitle.astro';
+import Stub from '../components/Stub.astro';
+---
+<Base title="How this site is built" description="How Luke Petzer's portfolio is built: Astro, plain CSS design tokens and TypeScript, with hosting planned on Cloudflare Pages via Terraform.">
+  <PageTitle title="Built" outline="in the open" kicker="How this site is built" />
+  <Stub note="The full write-up and pipeline diagram arrive later (hosting is not set up yet).">
+    <p>A static site built with Astro, plain CSS design tokens and TypeScript. Fonts are self-hosted. View Transitions keep the light and the header in place between pages.</p>
+  </Stub>
+</Base>

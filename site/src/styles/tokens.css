@@ -1,0 +1,62 @@
+/* Design tokens: the single place for colours, type, spacing, shadows and motion. */
+:root {
+  /* colour (all text colours pass WCAG AA on --bg) */
+  --bg: #04060a;
+  --bg-raise: #08101d;
+  --bg-panel: #0a1730;
+  --text: #e7eef8;       /* 17:1 on --bg */
+  --muted: #97a7be;      /* 8:1 on --bg */
+  --blue: #4c9bff;       /* 6.9:1 on --bg */
+  --ice: #cfe4ff;        /* 15:1 on --bg */
+  --ink: #020814;        /* text on blue/ice fills */
+  --warn: #ffd58a;       /* TODO / draft markers */
+  --line: rgba(151, 167, 190, 0.18);
+  --line-strong: rgba(207, 228, 255, 0.28);
+  --glow: rgba(76, 155, 255, 0.16);
+
+  /* type */
+  --font-display: 'Archivo Variable', 'Arial Narrow', 'Roboto Condensed', Arial, sans-serif;
+  --font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'Cascadia Mono', Consolas, Menlo, monospace;
+  --stretch-display: 68%;
+  --fs-body: 17px;
+  --fs-small: 15px;
+  --fs-label: 13px;
+  --fs-mega: clamp(84px, 19vw, 280px);
+  --fs-title: clamp(72px, 16vw, 220px);
+  --fs-h2: clamp(52px, 8vw, 112px);
+  --fs-h3: clamp(30px, 3.6vw, 46px);
+  --track-label: 0.2em;
+
+  /* space & layout */
+  --wrap: 1240px;
+  --gutter: 40px;
+  --header-h: 72px;
+  --s-1: 8px;
+  --s-2: 16px;
+  --s-3: 24px;
+  --s-4: 40px;
+  --s-5: 64px;
+  --s-6: 120px;
+
+  /* shadows (direction set per element by the light script via --dx/--dy) */
+  --shadow-box: calc(var(--dx, 0.6) * 34px) calc(var(--dy, 0.5) * 34px) 60px rgba(0, 0, 0, 0.75);
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--ice), 0 0 18px 4px rgba(76, 155, 255, 0.55);
+
+  /* motion */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 0.2s;
+  --dur: 0.5s;
+  --dur-slow: 1.1s;
+
+  /* faint infra topology tile */
+  --topo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='none' stroke='%234C9BFF' stroke-width='1'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160' stroke-opacity='.35'/%3E%3Cpath d='M40 40L120 120M120 40L160 0M40 120L0 160' stroke-opacity='.6'/%3E%3C/g%3E%3Cg fill='%23CFE4FF'%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3Ccircle cx='120' cy='120' r='3'/%3E%3Ccircle cx='120' cy='40' r='2'/%3E%3Ccircle cx='40' cy='120' r='2'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+@media (max-width: 900px) {
+  :root {
+    --gutter: 24px;
+    --header-h: 64px;
+    --s-6: 88px;
+  }
+}

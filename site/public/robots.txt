@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO(Luke): real domain at "ready to host"
+Sitemap: https://lukepetzer.example/sitemap-index.xml

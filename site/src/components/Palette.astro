@@ -1,0 +1,47 @@
+---
+// Ctrl/Cmd+K command palette (D-007 #4). Hand-written: a native <dialog> (focus stays inside, Esc closes)
+// with an ARIA combobox + listbox. Behaviour lives in src/scripts/palette.ts.
+import { paletteItems } from '../data/site';
+---
+<dialog class="palette" aria-label="Quick navigation" data-palette>
+  <div class="box">
+    <label class="visually-hidden" for="palette-input">Go to page</label>
+    <input
+      id="palette-input" type="text" autocomplete="off" spellcheck="false" placeholder="Jump to…"
+      role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" data-palette-input
+    />
+    <ul id="palette-list" role="listbox" aria-label="Pages" data-palette-list>
+      {paletteItems.map((item, i) => (
+        <li id={`pal-${i}`} role="option" aria-selected="false" data-href={item.href} data-label={item.label.toLowerCase()}>
+          <span class="l">{item.label}</span><span class="h">{item.hint}</span>
+        </li>
+      ))}
+    </ul>
+    <p class="empty" hidden data-palette-empty>Nothing here. Only darkness.</p>
+    <p class="help" aria-hidden="true"><kbd>↑</kbd><kbd>↓</kbd> move · <kbd>Enter</kbd> go · <kbd>Esc</kbd> close</p>
+  </div>
+</dialog>
+
+<style>
+  .palette {
+    width: min(560px, calc(100vw - 32px)); margin: 14vh auto auto; padding: 0;
+    color: var(--text); background: rgba(8, 16, 29, 0.97); border: 1px solid var(--line-strong);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(76, 155, 255, 0.15);
+  }
+  .palette::backdrop { background: rgba(2, 4, 8, 0.72); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+  input {
+    width: 100%; padding: 18px 20px; border: 0; border-bottom: 1px solid var(--line);
+    background: transparent; color: var(--text); font: 18px var(--font-body);
+  }
+  input::placeholder { color: var(--muted); }
+  input:focus-visible { box-shadow: inset 0 -2px 0 var(--blue); outline: none; border-radius: 0; }
+  ul { list-style: none; margin: 0; padding: 8px; max-height: 50vh; overflow: auto; }
+  li { display: flex; justify-content: space-between; gap: 16px; padding: 11px 12px; cursor: pointer; color: var(--muted); }
+  li .h { font: 12px var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  li:hover { color: var(--text); }
+  li[aria-selected='true'] { background: rgba(76, 155, 255, 0.16); color: var(--text); box-shadow: inset 2px 0 0 var(--blue); }
+  li[aria-selected='true'] .h { color: var(--ice); }
+  .empty { margin: 0; padding: 16px 20px; color: var(--muted); }
+  .help { margin: 0; padding: 10px 20px; border-top: 1px solid var(--line); font: 12px var(--font-mono); color: var(--muted); }
+  kbd { font: 11px var(--font-mono); border: 1px solid var(--line-strong); padding: 1px 5px; margin-right: 3px; color: var(--ice); }
+</style>

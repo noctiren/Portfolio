@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import PageTitle from '../components/PageTitle.astro';
+---
+<Base title="Lost in the dark" description="This page doesn't exist." noindex>
+  <PageTitle title="Lost in" outline="the dark" kicker="404 · Page not found">
+    <p class="msg">Nothing lives at this address. Follow the light back, or press <kbd>Ctrl</kbd>/<kbd>⌘</kbd> <kbd>K</kbd> to jump anywhere.</p>
+    <div class="btns">
+      <a class="btn primary mag" href="/">Back home</a>
+      <button type="button" class="btn" data-palette-open>Jump to a page</button>
+    </div>
+  </PageTitle>
+</Base>
+<style>
+  .msg { color: var(--muted); max-width: 36em; margin: 32px 0 28px; font-size: 19px; }
+  kbd { font: 13px var(--font-mono); border: 1px solid var(--line-strong); padding: 1px 6px; color: var(--ice); }
+  button.btn { cursor: pointer; }
+</style>

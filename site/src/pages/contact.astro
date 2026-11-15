@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import PageTitle from '../components/PageTitle.astro';
+import Stub from '../components/Stub.astro';
+import { person } from '../data/site';
+---
+<Base title="Contact" description="Contact Luke Petzer by email or LinkedIn.">
+  <PageTitle title="Get in" outline="touch" kicker="Contact" />
+  <Stub note="The final contact layout arrives in M2.">
+    <ul class="links">
+      <li><span class="k">Email</span><a href={`mailto:${person.email}`}>{person.email}</a></li>
+      <li><span class="k">LinkedIn</span><a href={person.linkedin} rel="noopener">{person.linkedinLabel}</a></li>
+      <li><span class="k">GitHub</span><span class="todo">TODO(Luke): username</span></li>
+    </ul>
+  </Stub>
+</Base>
+<style>
+  .links { list-style: none; padding: 0; display: grid; gap: 20px; }
+  .links a { font-size: 20px; word-break: break-word; }
+  .k { display: block; font: 12px var(--font-mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted); }
+</style>

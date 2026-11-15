@@ -1,0 +1,29 @@
+---
+import { person } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <ul class="links">
+      <li><span class="k">Email</span><a href={`mailto:${person.email}`}>{person.email}</a></li>
+      <li><span class="k">LinkedIn</span><a href={person.linkedin} rel="me noopener">{person.linkedinLabel}</a></li>
+      <li><span class="k">GitHub</span>{person.github ? <a href={person.github} rel="me noopener">GitHub</a> : <span class="todo">TODO(Luke): username</span>}</li>
+      <li><span class="k">CV</span><a href={person.cv} download>Download PDF</a></li>
+    </ul>
+    <div class="base">
+      <p>© {year} {person.name} · {person.location}</p>
+      <p><a href="/built">How this site is built</a><span class="hint"> · Press <kbd>Ctrl</kbd>/<kbd>⌘</kbd> <kbd>K</kbd> to jump anywhere</span></p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--line); padding: var(--s-5) 0 var(--s-4); background: linear-gradient(180deg, rgba(8, 16, 29, 0.5), rgba(4, 6, 10, 0)); }
+  .links { list-style: none; margin: 0 0 var(--s-4); padding: 0; display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 20px 56px; }
+  .k { display: block; font: 12px var(--font-mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; color: var(--muted); font-size: var(--fs-small); }
+  .base p { margin: 0; }
+  kbd { font: 12px var(--font-mono); border: 1px solid var(--line-strong); padding: 1px 5px; color: var(--ice); }
+  @media (max-width: 900px) { .links { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .links { grid-template-columns: 1fr; } .links a { word-break: break-word; } .hint { display: none; } }
+</style>

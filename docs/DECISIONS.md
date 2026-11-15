@@ -8,6 +8,10 @@ Format: ID: decision. Why. Status (PROPOSED = waiting for Luke, DECIDED = settle
   dev to read. No Tailwind: it would mean one more thing to learn. DECIDED (frontend manager, AA-DECIDE, 2026-11-15).
   Approved packages: `astro`, `@astrojs/check`, `typescript`, `@astrojs/sitemap`, `@fontsource-variable/*`
   for the chosen fonts (self-hosted, so no Google Fonts request).
+  **Fonts chosen (W-M1, 2026-11-15):** display = **Archivo** (variable width axis, used condensed at 68%
+  width / weight 800, replacing the mockup's Windows-only Bahnschrift); body = **Inter**; mono = **JetBrains Mono**.
+  Installed: astro 7.4, @astrojs/sitemap, @astrojs/check, typescript, @fontsource-variable/{archivo,inter,jetbrains-mono}.
+  Luke can veto the display font. Alternative: Oswald (narrower, more poster-like).
 - D-002: **No backend for now.** Why: a portfolio is static content. The contact section uses
   `mailto:` + LinkedIn. If a contact form is wanted later, a hosted form endpoint or a small serverless
   function is cheaper than running a backend. DECIDED (frontend manager, 2026-11-15). Reopen if Luke wants a

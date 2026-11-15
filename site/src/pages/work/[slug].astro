@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageTitle from '../../components/PageTitle.astro';
+import Stub from '../../components/Stub.astro';
+import { caseStudies, type CaseStudy } from '../../data/site';
+
+export function getStaticPaths() {
+  return caseStudies.map((c) => ({ params: { slug: c.slug }, props: { study: c } }));
+}
+interface Props { study: CaseStudy }
+const { study } = Astro.props;
+---
+<Base title={study.title} description={study.summary}>
+  <PageTitle title={study.title} kicker={study.company} long />
+  <Stub note="Problem, approach, result and stack arrive in M3.">
+    <p class="sum">{study.summary}</p>
+    <ul class="tags">{study.tags.map((t) => <li>{t}</li>)}</ul>
+    <p><a href="/work">← All work</a></p>
+  </Stub>
+</Base>
+<style>
+  .sum { color: var(--text); font-size: 19px; }
+</style>
