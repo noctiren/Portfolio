@@ -128,6 +128,14 @@ section { padding: var(--s-6) 0 var(--s-4); }
 .motion .wipe.in { opacity: 1; transform: none; }
 @keyframes rise { from { opacity: 0; transform: translateY(60px); letter-spacing: 0.08em; } to { opacity: 1; transform: none; } }
 
+/* light-sweep beam on page changes (animated by shell.ts, never under reduced motion) */
+.beam {
+  position: fixed; top: 0; bottom: 0; left: 0; width: 180px; z-index: 45; pointer-events: none; opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(76, 155, 255, 0.1) 35%, rgba(207, 228, 255, 0.5) 50%, rgba(76, 155, 255, 0.1) 65%, transparent);
+  mix-blend-mode: screen;
+}
+.rm .beam { display: none; }
+
 /* in-page links (e.g. #headings) glide; scroll-padding-top on html keeps targets clear of the sticky header */
 html.motion { scroll-behavior: smooth; }
 
@@ -153,7 +161,7 @@ html.motion { scroll-behavior: smooth; }
   body * { color: #111 !important; background: transparent !important; text-shadow: none !important; box-shadow: none !important;
     -webkit-text-stroke: 0 !important; animation: none !important; transition: none !important; }
   .rv, .wipe { opacity: 1 !important; transform: none !important; }
-  .light, .site-header, .skip, [data-palette], .btns, .hint, .dot, .go, .idx, .pn { display: none !important; }
+  .light, .beam, .site-header, .skip, [data-palette], .btns, .hint, .dot, .go, .idx, .pn { display: none !important; }
   .wrap { max-width: none !important; padding: 0 !important; }
   section, .page-title { padding: 0 0 10pt !important; }
   h1, .fit { font-size: 30pt !important; line-height: 1 !important; }

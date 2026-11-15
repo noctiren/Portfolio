@@ -50,6 +50,8 @@ function audit(width) {
   document.querySelectorAll('svg').forEach((s) => {
     if (s.getAttribute('aria-hidden') === 'true' || s.closest('[aria-hidden="true"]')) return;
     if (s.getAttribute('role') === 'img' && (s.getAttribute('aria-label') || s.querySelector('title'))) return;
+    // an interactive diagram (M6 pipeline): a labelled group whose links carry their own names
+    if (s.getAttribute('role') === 'group' && s.getAttribute('aria-label') && [...s.querySelectorAll('a')].every((a) => a.getAttribute('aria-label'))) return;
     fail(`svg neither hidden nor labelled: ${desc(s)}`);
   });
   document.querySelectorAll('a[href], button, input, [role=option], [tabindex]:not([tabindex="-1"])').forEach((el) => {

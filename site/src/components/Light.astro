@@ -6,24 +6,29 @@
   <div class="topo base"></div>
   <div class="topo lit"></div>
   <div class="glow"></div>
+  <div class="hot"></div>
 </div>
 
 <style>
   .light { --lx: 70vw; --ly: 30vh; position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-  .topo, .glow { position: absolute; inset: 0; }
+  .topo, .glow, .hot { position: absolute; inset: 0; }
   .topo { background-image: var(--topo); background-size: 160px 160px; }
   .base { opacity: 0.05; }
   .lit {
-    opacity: 0.45;
+    opacity: var(--lit-o, 0.45);
     -webkit-mask-image: radial-gradient(circle 340px at var(--lx) var(--ly), #000 0%, rgba(0, 0, 0, 0.4) 45%, transparent 75%);
     mask-image: radial-gradient(circle 340px at var(--lx) var(--ly), #000 0%, rgba(0, 0, 0, 0.4) 45%, transparent 75%);
   }
-  .glow { background: radial-gradient(circle 520px at var(--lx) var(--ly), var(--glow), rgba(76, 155, 255, 0.05) 40%, transparent 70%); }
+  /* --glow-c: the Cape Town time-of-day tint set by light.ts (never brighter than the --glow token) */
+  .glow { background: radial-gradient(circle 520px at var(--lx) var(--ly), var(--glow-c, var(--glow)), rgba(76, 155, 255, 0.05) 40%, transparent 70%); }
+  /* a tighter hot spot that brightens over a hovered or focused button/card (pointer devices) */
+  .hot { opacity: var(--hot, 0); background: radial-gradient(circle 200px at var(--lx) var(--ly), rgba(120, 180, 255, 0.1), transparent 70%); }
+  :global(.motion) .hot { transition: opacity 0.35s var(--ease-out); }
   @media (max-width: 560px) {
     .lit {
       -webkit-mask-image: radial-gradient(circle 220px at var(--lx) var(--ly), #000 0%, rgba(0, 0, 0, 0.4) 45%, transparent 75%);
       mask-image: radial-gradient(circle 220px at var(--lx) var(--ly), #000 0%, rgba(0, 0, 0, 0.4) 45%, transparent 75%);
     }
-    .glow { background: radial-gradient(circle 340px at var(--lx) var(--ly), var(--glow), rgba(76, 155, 255, 0.05) 40%, transparent 70%); }
+    .glow { background: radial-gradient(circle 340px at var(--lx) var(--ly), var(--glow-c, var(--glow)), rgba(76, 155, 255, 0.05) 40%, transparent 70%); }
   }
 </style>

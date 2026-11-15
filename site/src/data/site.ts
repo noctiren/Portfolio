@@ -9,6 +9,14 @@ export const person = {
   linkedinLabel: 'in/lukepetzer-3a81a316b',
   github: 'https://github.com/LukePetzer-ixo',
   githubLabel: 'LukePetzer-ixo',
+  /** Q-18 (docs/content/answers.md): roles Luke is open to, and his work setup. No availability on the site. */
+  openTo: [
+    'DevOps / Platform Engineer',
+    'Cloud / Infrastructure Engineer',
+    'Backend (Java/Kotlin) with a platform focus',
+    'Roles that involve AI',
+  ],
+  workSetup: 'Remote, based in Cape Town. Not open to relocating.',
   pitch:
     "Running Kubernetes clusters, wiring up Terraform, and keeping ArgoCD deployments and CI/CD pipelines honest. A backend engineer by background, so I still think like a developer when I'm building infrastructure.",
 };
@@ -32,6 +40,7 @@ export interface PaletteItem { href: string; label: string; hint: string }
 export const palettePages: PaletteItem[] = [
   { href: '/', label: 'Home', hint: 'Page' },
   ...nav.map((n) => ({ href: n.href, label: n.label, hint: 'Page' })),
+  { href: '/recruiter', label: 'For recruiters', hint: 'Page' },
   { href: '/built', label: 'How this site is built', hint: 'Page' },
   { href: 'https://github.com/LukePetzer-ixo', label: 'GitHub', hint: 'Link' },
 ];

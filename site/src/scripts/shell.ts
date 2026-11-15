@@ -37,6 +37,28 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && q('[data-nav][data-open]')) setMenu(false, true);
 });
 
+/* ---- live status pill: a disclosure panel (Esc or a click outside closes it, focus goes back to the pill) ---- */
+function setStatus(open: boolean, focusButton = false) {
+  const btn = q<HTMLButtonElement>('[data-status-btn]');
+  const panel = q('[data-status-panel]');
+  if (!btn || !panel) return;
+  btn.setAttribute('aria-expanded', String(open));
+  panel.hidden = !open;
+  if (focusButton) btn.focus();
+}
+document.addEventListener('click', (e) => {
+  const t = e.target as Element;
+  if (t.closest('[data-status-btn]')) setStatus(q('[data-status-btn]')?.getAttribute('aria-expanded') !== 'true');
+  else if (!t.closest('[data-status-panel]')) setStatus(false);
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && q('[data-status-panel]:not([hidden])')) setStatus(false, true);
+});
+document.addEventListener('focusin', (e) => {
+  // Tabbing out of the panel closes it.
+  if (!(e.target as Element).closest?.('[data-status]')) setStatus(false);
+});
+
 /* ---- scroll-progress line ---- */
 let progPending = false;
 function progress() {
@@ -147,6 +169,100 @@ function svgMotion() {
   });
 }
 
+/* ---- pipeline: hover or focus a node to light its path (git push -> that node) ---- */
+function lightPath(node: Element | null) {
+  document.querySelectorAll('[data-flow]').forEach((svg) => {
+    svg.classList.toggle('lighting', !!node && svg.contains(node));
+    svg.querySelectorAll('.lit').forEach((el) => el.classList.remove('lit'));
+  });
+  if (!node) return;
+  const svg = node.closest('[data-flow]')!;
+  const n = node as HTMLElement;
+  (n.dataset.pathEdges ?? '').split(' ').filter(Boolean).forEach((id) => svg.querySelector(`[data-edge="${id}"]`)?.classList.add('lit'));
+  (n.dataset.pathNodes ?? '').split(' ').filter(Boolean).forEach((id) => svg.querySelector(`[data-node="${id}"]`)?.classList.add('lit'));
+}
+document.addEventListener('pointerover', (e) => {
+  const node = (e.target as Element).closest?.('[data-flow] [data-node]');
+  if (node || (e.target as Element).closest?.('[data-flow]')) lightPath(node ?? null);
+});
+document.addEventListener('pointerout', (e) => {
+  const to = e.relatedTarget as Element | null;
+  if ((e.target as Element).closest?.('[data-flow]') && !to?.closest?.('[data-flow] [data-node]')) {
+    lightPath(document.activeElement?.closest('[data-flow] [data-node]') ?? null);
+  }
+});
+document.addEventListener('focusin', (e) => {
+  lightPath((e.target as Element).closest?.('[data-flow] [data-node]') ?? null);
+});
+
+/* ---- impact numbers decode in: the visible copy scrambles (aria-hidden), screen readers get the final text ---- */
+let decodeIO: IntersectionObserver | undefined;
+const GLYPHS_D = '0123456789';
+const GLYPHS_A = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+function scramble(el: HTMLElement) {
+  const final = el.dataset.decode ?? el.textContent ?? '';
+  const t0 = performance.now();
+  const dur = 900;
+  const step = (t: number) => {
+    const p = Math.min(1, (t - t0) / dur);
+    const locked = Math.floor(p * final.length);
+    el.textContent = [...final]
+      .map((ch, i) => {
+        if (i < locked) return ch;
+        if (/\d/.test(ch)) return GLYPHS_D[(Math.random() * 10) | 0];
+        if (/[A-Za-z]/.test(ch)) {
+          const g = GLYPHS_A[(Math.random() * GLYPHS_A.length) | 0];
+          return ch === ch.toLowerCase() ? g.toLowerCase() : g;
+        }
+        return ch;
+      })
+      .join('');
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = final;
+  };
+  requestAnimationFrame(step);
+}
+function decoders() {
+  decodeIO?.disconnect();
+  const els = document.querySelectorAll<HTMLElement>('[data-decode]');
+  els.forEach((el) => (el.textContent = el.dataset.decode ?? el.textContent));
+  if (reduced()) return;
+  decodeIO = new IntersectionObserver(
+    (es) =>
+      es.forEach((e) => {
+        if (e.isIntersecting) {
+          scramble(e.target as HTMLElement);
+          decodeIO?.unobserve(e.target);
+        }
+      }),
+    { threshold: 0.6 },
+  );
+  els.forEach((el) => decodeIO!.observe(el));
+}
+
+/* ---- light-sweep beam across the screen on page changes (not on the first load) ---- */
+document.addEventListener('astro:after-swap', () => {
+  const beam = q('[data-beam]');
+  if (!beam || reduced() || !beam.animate) return;
+  beam.animate(
+    [
+      { transform: 'translateX(-30vw) skewX(-14deg)', opacity: 0 },
+      { opacity: 1, offset: 0.25 },
+      { opacity: 1, offset: 0.7 },
+      { transform: 'translateX(115vw) skewX(-14deg)', opacity: 0 },
+    ],
+    { duration: 950, easing: 'cubic-bezier(0.45, 0, 0.25, 1)' },
+  );
+});
+
+/* ---- footer clock: Cape Town time, updated every 30 s (text only, no motion) ---- */
+const ctFmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Johannesburg', hour: '2-digit', minute: '2-digit', hour12: false });
+function clock() {
+  const el = q('[data-ct-clock]');
+  if (el) el.textContent = ctFmt.format(new Date());
+}
+setInterval(clock, 30_000);
+
 /* ---- print: show everything (closed "Full details" would otherwise be left out), then restore ---- */
 let printOpened: HTMLDetailsElement[] = [];
 addEventListener('beforeprint', () => {
@@ -161,10 +277,14 @@ addEventListener('afterprint', () => {
 document.addEventListener('astro:page-load', () => {
   markActive();
   setMenu(false);
+  setStatus(false);
   progress();
   watchHeroName();
   reveals();
   magnets();
   tilt();
   svgMotion();
+  lightPath(null);
+  decoders();
+  clock();
 });

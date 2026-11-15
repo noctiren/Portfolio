@@ -2,6 +2,8 @@
 // and the shadow casters (.cast) are re-collected after every navigation.
 // Mouse: the light follows the cursor (eased). Touch: it drifts, jumps to taps and rides along with scrolling.
 // Reduced motion: the light stays still; shadows are still computed (static, no animation).
+// M6: on fine pointers the light is pulled toward (and brightens over) the hovered or focused button/card, and
+// its tint follows the time of day in Cape Town (a static colour, so it also applies with motion off).
 import { reduced } from './motion';
 
 const touch = matchMedia('(hover: none)').matches;
@@ -15,6 +17,37 @@ let manualAt = 0;
 let dirty = true;
 let running = false;
 let lastScroll = scrollY;
+const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+const PULL = '.btn, .tile, .card, .row, [data-flow] [data-node], .pill, .kbd, .nav .rec';
+let pulled: Element | null = null;
+
+/* ---- Cape Town ambience: deep, dim blue at night, the normal --glow at mid-afternoon ---- */
+const ctHour = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Johannesburg', hour: 'numeric', minute: 'numeric', hour12: false });
+function ambience() {
+  const layer = document.getElementById('light');
+  if (!layer) return;
+  const [h, m] = ctHour.format(new Date()).split(':').map(Number);
+  const hour = (h % 24) + m / 60;
+  const day = (1 - Math.cos((2 * Math.PI * (hour - 2)) / 24)) / 2; // 0 at 02:00, 1 at 14:00
+  const c = (night: number, noon: number) => (night + (noon - night) * day).toFixed(3);
+  layer.style.setProperty('--glow-c', `rgba(${c(40, 76)}, ${c(92, 155)}, ${c(220, 255)}, ${c(0.1, 0.16)})`);
+  layer.style.setProperty('--lit-o', c(0.32, 0.45));
+}
+ambience();
+setInterval(ambience, 5 * 60_000);
+
+/** Pull the light toward an element's centre (60/40 with the pointer) and switch on the hot spot. */
+function pullTo(el: Element | null, px?: number, py?: number) {
+  pulled = el;
+  document.getElementById('light')?.style.setProperty('--hot', el ? '1' : '0');
+  if (!el) return;
+  const r = el.getBoundingClientRect();
+  const cx = r.left + r.width / 2;
+  const cy = r.top + r.height / 2;
+  manual = true;
+  tx = px === undefined ? cx : cx * 0.6 + px * 0.4;
+  ty = py === undefined ? cy : cy * 0.6 + py * 0.4;
+}
 
 function shade() {
   const layer = document.getElementById('light');
@@ -68,8 +101,13 @@ addEventListener(
   (e) => {
     if (e.pointerType !== 'mouse') return;
     manual = true;
-    tx = e.clientX;
-    ty = e.clientY;
+    const target = fine && !reduced() ? (e.target as Element).closest?.(PULL) : null;
+    if (target) pullTo(target, e.clientX, e.clientY);
+    else {
+      if (pulled) pullTo(null);
+      tx = e.clientX;
+      ty = e.clientY;
+    }
   },
   { passive: true },
 );
@@ -107,6 +145,14 @@ addEventListener(
   { passive: true },
 );
 
+// Keyboard focus pulls the light too (pointer devices only: on touch the light follows taps instead).
+document.addEventListener('focusin', (e) => {
+  if (!fine || reduced()) return;
+  const t = (e.target as Element).closest?.(PULL);
+  if (t && (e.target as Element).matches(':focus-visible')) pullTo(t);
+  else if (pulled) pullTo(null);
+});
+
 addEventListener('resize', () => {
   dirty = true;
   if (reduced()) shade();
@@ -114,6 +160,8 @@ addEventListener('resize', () => {
 
 document.addEventListener('astro:page-load', () => {
   casters = [...document.querySelectorAll<HTMLElement>('.cast')];
+  pullTo(null);
+  ambience();
   lastScroll = scrollY;
   if (reduced()) {
     lx = innerWidth * 0.72;

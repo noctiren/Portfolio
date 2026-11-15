@@ -1,5 +1,8 @@
 ---
 import { person } from '../data/site';
+import { build } from '../data/build';
+// Server-rendered fallback for the clock (build time); shell.ts keeps it current in the browser.
+const ctNow = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Johannesburg', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date());
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
@@ -11,6 +14,10 @@ const year = new Date().getFullYear();
     </ul>
     <div class="base">
       <p>© {year} {person.name} · {person.location}</p>
+      <p class="meta">
+        <span class="ct">Cape Town <span class="clock" data-ct-clock>{ctNow}</span></span>
+        {build.hash && <span class="bi">build <code>{build.hash}</code>{build.commitDate && <> · {build.commitDate}</>}</span>}
+      </p>
       <p><a href="/built">How this site is built</a><span class="hint"> · Press <kbd>Ctrl</kbd>/<kbd>⌘</kbd> <kbd>K</kbd> to jump anywhere</span></p>
     </div>
   </div>
@@ -22,6 +29,9 @@ const year = new Date().getFullYear();
   .k { display: block; font: 12px var(--font-mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
   .base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; color: var(--muted); font-size: var(--fs-small); }
   .base p { margin: 0; }
+  .meta { display: flex; flex-wrap: wrap; gap: 4px 18px; font: 13px/1.6 var(--font-mono); letter-spacing: 0.04em; }
+  .clock { color: var(--ice); font-variant-numeric: tabular-nums; }
+  .bi code { font: inherit; color: var(--ice); }
   kbd { font: 12px var(--font-mono); border: 1px solid var(--line-strong); padding: 1px 5px; color: var(--ice); }
   @media (max-width: 900px) { .links { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .links { grid-template-columns: 1fr; } .links a { word-break: break-word; } .hint { display: none; } }

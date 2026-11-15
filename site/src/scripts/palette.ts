@@ -112,8 +112,3 @@ document.addEventListener(
   },
   true,
 );
-
-document.addEventListener('astro:page-load', () => {
-  const label = document.querySelector('[data-kbd-label]');
-  if (label && /Mac|iPhone|iPad/.test(navigator.platform)) label.textContent = '⌘ K';
-});

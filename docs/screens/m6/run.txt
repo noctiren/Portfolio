@@ -1,0 +1,76 @@
+M6 verification run, 2026-11-15T14:38:26.546Z, http://127.0.0.1:4321, headless Edge (tools/m6-shots.mjs)
+
+== width 1280 ==
+  wrote home-1280.png
+  console (home 1280): clean
+  wrote status-panel-1280.png
+  status panel: open=true text="ALL SYSTEMS OPERATIONAL BUILT 2026-11-15 16:29 Cape Town COMMIT 0e9a28f · 2026-11-15 HOME PAGE 22.5 KB code (gzipped) + 174.6 KB fonts LIGHTHOUSE mobile 97 · 100 · 100 desktop 100 · 100 · 100 performance · accessibility · SEO Measured 2026-11-15 on the built home page. How this site is built"
+  after Esc: panel hidden=true, focus on pill=true
+  wrote pipeline-hover-1280.png
+  pipeline lit: ,a,b,c1,git,ci,argo,aws
+  pipeline links: git->/work/gitops-secrets ci->/work/gitops-secrets argo->/work/gitops-secrets aws->/work/multi-cloud-terraform gcp->/work/multi-cloud-terraform vultr->/work/multi-cloud-terraform
+  impact numbers (sr text): 60–80% | 28–36% | 3 | Zero
+  wrote footer-1280.png
+  footer meta: Cape Town 16:37 build 0e9a28f · 2026-11-15
+  Tab to status pill: true -> button.pill "Site status: all systems operational" focus-visible=true ring=true
+  wrote focus-status-1280.png
+  Enter opens panel: true
+  Tab to Search: true -> button.kbd "Search: open quick navigationSearch" focus-visible=true ring=true
+  Tab to pipeline node: true -> a "Git repo: every change starts with a pus" focus-visible=true ring=true
+  wrote focus-pipeline-1280.png
+  Tab to For recruiters pill: true -> a.rec "For recruiters" focus-visible=true ring=true
+  wrote focus-recruiter-pill-1280.png
+  Ctrl+K: palette open=true, has /recruiter=true, search label="Search"
+  wrote recruiter-1280.png
+  console (/recruiter 1280): clean
+
+== width 390 ==
+  wrote home-390.png
+  console (home 390): clean
+  wrote status-panel-390.png
+  status panel: open=true text="ALL SYSTEMS OPERATIONAL BUILT 2026-11-15 16:29 Cape Town COMMIT 0e9a28f · 2026-11-15 HOME PAGE 22.5 KB code (gzipped) + 174.6 KB fonts LIGHTHOUSE mobile 97 · 100 · 100 desktop 100 · 100 · 100 performance · accessibility · SEO Measured 2026-11-15 on the built home page. How this site is built"
+  after Esc: panel hidden=true, focus on pill=true
+  wrote pipeline-hover-390.png
+  pipeline lit: ,c1,git,ci,argo,aws
+  pipeline links: git->/work/gitops-secrets ci->/work/gitops-secrets argo->/work/gitops-secrets aws->/work/multi-cloud-terraform gcp->/work/multi-cloud-terraform vultr->/work/multi-cloud-terraform
+  impact numbers (sr text): 60–80% | 28–36% | 3 | Zero
+  wrote footer-390.png
+  footer meta: Cape Town 16:38 build 0e9a28f · 2026-11-15
+  Tab to status pill: true -> button.pill "Site status: all systems operational" focus-visible=true ring=true
+  wrote focus-status-390.png
+  Enter opens panel: true
+  Tab to Search: true -> button.kbd "Search: open quick navigationSearch" focus-visible=true ring=true
+  Tab to pipeline node: true -> a "Git repo: every change starts with a pus" focus-visible=true ring=true
+  wrote focus-pipeline-390.png
+  Ctrl+K: palette open=true, has /recruiter=true, search label="Search"
+  wrote menu-open-390.png
+  mobile menu has For recruiters: true
+  wrote recruiter-390.png
+  console (/recruiter 390): clean
+
+== header fit ==
+  1100: page overflow=false, bar overflow=false, overlap=false
+  960: page overflow=false, bar overflow=false, overlap=false
+  wrote header-960.png
+  880: page overflow=false, bar overflow=false, overlap=false
+  860: page overflow=false, bar overflow=false, overlap=false
+  700: page overflow=false, bar overflow=false, overlap=false
+
+== beam (1280) ==
+  wrote beam-1280.png
+  beam animations running: 1
+  console (nav to /work): clean
+
+== /recruiter print ==
+  wrote print-recruiter.pdf: 1 page(s) (A4)
+  wrote print-recruiter-preview.png
+  print-media page height at 794px (A4 = 1123px incl. margins): 1123
+
+== ?reduced=1 ==
+  1280: rm=true dot animation=none beam display=none numbers final=true packets paused=true hot=0
+  wrote home-reduced-1280.png
+  console (reduced home 1280): clean
+  390: rm=true dot animation=none beam display=none numbers final=true packets paused=true hot=0
+  wrote home-reduced-390.png
+  console (reduced home 390): clean
+  reduced nav: beam animations = 0
