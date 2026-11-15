@@ -2,7 +2,7 @@
 //   node tools/m6-shots.mjs [out-dir]     (default ../docs/screens/m6)
 // Saves PNGs at 1280 and 390, a /recruiter print PDF + print-media PNG, and run.txt with console problems,
 // focus checks and the ?reduced=1 checks.
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readFileSync, existsSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { launch, BASE } from './cdp.mjs';
 
@@ -26,8 +26,11 @@ async function shot(name, full = false) {
   writeFileSync(join(out, name), Buffer.from(r.data, 'base64'));
   note(`  wrote ${name}`);
 }
+// Add-on hosts injected on the dev PC: git-ignored .private/addon-hosts.txt (one per line).
+const addonHostsFile = new URL('../../.private/addon-hosts.txt', import.meta.url);
+const addonHosts = existsSync(addonHostsFile) ? readFileSync(addonHostsFile, 'utf8').split(/\r?\n/).map((x) => x.trim()).filter(Boolean) : [];
 const problems = (label) => {
-  const p = b.problems.filter((x) => !/addon-1.local|addon-2.local|permissions-policy|vite/i.test(x));
+  const p = b.problems.filter((x) => !addonHosts.some((h) => x.includes(h)) && !/permissions-policy|vite/i.test(x));
   note(`  console (${label}): ${p.length ? p.join(' | ') : 'clean'}`);
 };
 async function mouse(x, y) {
