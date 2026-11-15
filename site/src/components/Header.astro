@@ -44,6 +44,7 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
 
   .mark {
     font-size: 28px; line-height: 1; letter-spacing: 0.02em; color: var(--text); text-decoration: none; white-space: nowrap;
+    padding: 10px 0; /* 44px touch target */
     transition: opacity 0.4s var(--ease-out), transform 0.5s var(--ease-out), letter-spacing 0.5s var(--ease-out);
   }
   .mark .b { color: var(--blue); }

@@ -1,0 +1,17 @@
+edge     /                      1280x900  page 1280x3357  console: clean
+edge     /                      390x844  page 390x4038  console: clean
+edge     /work                  1280x900  page 1280x1942  console: clean
+edge     /work                  390x844  page 390x3036  console: clean
+edge     /work/gitops-secrets   1280x900  page 1280x2145  console: clean
+edge     /work/gitops-secrets   390x844  page 390x3512  console: clean
+edge     /experience            1280x900  page 1280x3621  console: clean
+edge     /experience            390x844  page 390x5767  console: clean
+firefox  /                      1280x900  page 1280x3357  console: clean
+firefox  /                      390x844  page 390x4038  console: clean
+firefox  /work                  1280x900  page 1280x1943  console: clean
+firefox  /work                  390x844  page 390x3036  console: clean
+firefox  /work/gitops-secrets   1280x900  page 1280x2145  console: clean
+firefox  /work/gitops-secrets   390x844  page 390x3512  console: clean
+firefox  /experience            1280x900  page 1280x3621  console: clean
+firefox  /experience            390x844  page 390x5769  console: clean
+firefox remote: Session already started

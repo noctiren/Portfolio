@@ -1,0 +1,20 @@
+Page weight, 2026-11-15 11:57, headless Edge at 1280px, http://127.0.0.1:4321, after scrolling to the bottom (tools/weight.mjs)
+Sizes in KB. "raw" = file size in dist/; "gz" = gzip -9 of that file (what a host sends compressed). Fonts are already compressed (woff2).
+HTML includes the inline <style> blocks Astro writes into each page.
+
+page                              HTML raw/gz      CSS raw/gz       JS raw/gz    fonts(woff2)   requests
+/                                  25.4/   4.9    30.9/   9.3    22.8/   8.3   174.6        10 (+5 injected by local local browser add-ons, not counted)
+/about                             15.6/   4.3    24.7/   7.7    22.8/   8.3   174.6        8 (+5 injected by local local browser add-ons, not counted)
+/ai                                19.0/   5.0    24.7/   7.7    22.8/   8.3   174.6        8 (+5 injected by local local browser add-ons, not counted)
+/built                             17.4/   4.6    24.7/   7.7    22.8/   8.3   174.6        8 (+5 injected by local local browser add-ons, not counted)
+/contact                           14.1/   3.7    24.7/   7.7    22.8/   8.3   174.6        8 (+5 injected by local local browser add-ons, not counted)
+/experience                        21.3/   5.5    29.6/   9.0    22.8/   8.3   174.6        9 (+5 injected by local local browser add-ons, not counted)
+/work                              18.5/   4.7    24.7/   7.7    22.8/   8.3   174.6        8 (+5 injected by local local browser add-ons, not counted)
+/work/gitops-secrets               17.1/   4.7    24.7/   7.7    22.8/   8.3   174.6        8 (+5 injected by local local browser add-ons, not counted)
+/work/identity-verification        17.0/   4.8    24.7/   7.7    22.8/   8.3   174.6        8 (+5 injected by local local browser add-ons, not counted)
+/work/multi-cloud-terraform        16.7/   4.6    24.7/   7.7    22.8/   8.3   174.6        8 (+5 injected by local local browser add-ons, not counted)
+/work/zero-downtime-migration      16.8/   4.6    24.7/   7.7    22.8/   8.3   174.6        8 (+5 injected by local local browser add-ons, not counted)
+/404                               11.7/   3.2    24.7/   7.7    22.8/   8.3   174.6        8 (+5 injected by local local browser add-ons, not counted)
+
+Home page JS+CSS (excluding fonts): 53.7 KB raw, 17.6 KB gzipped (target < 150 KB).
+Font files actually downloaded across all pages: archivo-latin-wdth-normal.DY7AcnAa.woff2, inter-latin-wght-normal.Dx4kXJAl.woff2, jetbrains-mono-latin-wght-normal.B9CIFXIH.woff2

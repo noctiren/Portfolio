@@ -105,9 +105,9 @@ import { jobs, skills, education, certification } from '../data/cv';
   .pts li { position: relative; padding-left: 24px; margin: 10px 0; color: var(--muted); }
   .pts li::before { content: ''; position: absolute; left: 0; top: 0.8em; width: 12px; height: 2px; background: var(--blue); }
 
-  .more { margin-top: 14px; max-width: 46em; }
+  .more { margin-top: 6px; max-width: 46em; }
   .more summary {
-    display: inline-flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; padding: 6px 0;
+    display: inline-flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; min-height: 44px; /* touch target */
     font: 700 var(--fs-label) var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ice);
   }
   .more summary::-webkit-details-marker { display: none; }

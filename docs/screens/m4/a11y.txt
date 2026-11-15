@@ -1,0 +1,48 @@
+Accessibility DOM checks, 2026-11-15 11:56, headless Edge, http://127.0.0.1:4321 (tools/a11y.mjs)
+
+/                                1280px  pass
+/                                 390px  pass
+/about                           1280px  pass
+/about                            390px  pass
+/ai                              1280px  pass
+/ai                               390px  pass
+/built                           1280px  pass
+/built                            390px  pass
+/contact                         1280px  pass
+/contact                          390px  pass
+/experience                      1280px  pass
+/experience                       390px  pass
+/work                            1280px  pass
+/work                             390px  pass
+/work/gitops-secrets             1280px  pass
+/work/gitops-secrets              390px  pass
+/work/identity-verification      1280px  pass
+/work/identity-verification       390px  pass
+/work/multi-cloud-terraform      1280px  pass
+/work/multi-cloud-terraform       390px  pass
+/work/zero-downtime-migration    1280px  pass
+/work/zero-downtime-migration     390px  pass
+/404                             1280px  pass
+/404                              390px  pass
+
+Keyboard: Tab through each page at 1280px (every stop must match :focus-visible, show an outline/box-shadow and be on screen)
+/                                 19 tab stops, first: Skip to content  pass
+/about                            14 tab stops, first: Skip to content  pass
+/ai                               12 tab stops, first: Skip to content  pass
+/built                            12 tab stops, first: Skip to content  pass
+/contact                          15 tab stops, first: Skip to content  pass
+/experience                       15 tab stops, first: Skip to content  pass
+/work                             16 tab stops, first: Skip to content  pass
+/work/gitops-secrets              15 tab stops, first: Skip to content  pass
+/work/identity-verification       15 tab stops, first: Skip to content  pass
+/work/multi-cloud-terraform       15 tab stops, first: Skip to content  pass
+/work/zero-downtime-migration     15 tab stops, first: Skip to content  pass
+/404                              14 tab stops, first: Skip to content  pass
+
+Palette (Ctrl+K)
+  pass: opens as dialog (native) "Quick navigation", modal=true, focus in palette-input (aria-activedescendant=pal-0), Tab stays inside=true, Esc closes=true, focus back on "Luke Petzer" (opener "Luke Petzer")
+
+Mobile menu (390px)
+  pass: aria-expanded false -> true (nav shown=true), focus moves to "Work", Tab -> "Experience", Esc -> false (hidden=true, focus back on button=true)
+
+Total failures: 0

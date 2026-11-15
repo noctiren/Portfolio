@@ -1,0 +1,8 @@
+home         1280  edge 3357px tall, firefox 3357px tall, 0.83% of pixels differ by >40/255
+home          390  edge 4038px tall, firefox 4038px tall, 1.59% of pixels differ by >40/255
+work         1280  edge 1942px tall, firefox 1943px tall, 1.29% of pixels differ by >40/255
+work          390  edge 3036px tall, firefox 3036px tall, 2.13% of pixels differ by >40/255
+case         1280  edge 2145px tall, firefox 2145px tall, 1.62% of pixels differ by >40/255
+case          390  edge 3512px tall, firefox 3512px tall, 2.93% of pixels differ by >40/255
+experience   1280  edge 3621px tall, firefox 3621px tall, 1.32% of pixels differ by >40/255
+experience    390  edge 5767px tall, firefox 5769px tall, 5.82% of pixels differ by >40/255

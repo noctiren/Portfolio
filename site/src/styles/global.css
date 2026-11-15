@@ -31,7 +31,7 @@ a:hover { color: #fff; }
 }
 .skip {
   position: fixed; left: 12px; top: -80px; z-index: 100;
-  background: var(--blue); color: var(--ink); padding: 10px 16px;
+  background: var(--blue); color: var(--ink); padding: 0 16px; min-height: 44px; display: inline-flex; align-items: center;
   font: 700 var(--fs-label) / 1 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
 }
 .skip:focus-visible { top: 12px; color: var(--ink); }
@@ -140,6 +140,9 @@ section { padding: var(--s-6) 0 var(--s-4); }
 .motion .wipe.in { opacity: 1; transform: none; }
 @keyframes rise { from { opacity: 0; transform: translateY(60px); letter-spacing: 0.08em; } to { opacity: 1; transform: none; } }
 
+/* in-page links (e.g. #headings) glide; scroll-padding-top on html keeps targets clear of the sticky header */
+html.motion { scroll-behavior: smooth; }
+
 /* the page fade used by View Transitions; switched off entirely under reduced motion */
 .rm ::view-transition-group(*),
 .rm ::view-transition-old(*),
@@ -151,4 +154,36 @@ section { padding: var(--s-6) 0 var(--s-4); }
 
 @media (max-width: 560px) {
   .btn { padding: 13px 18px; }
+}
+
+/* ---- print: a plain, ink-friendly copy (built for /experience as a CV-like printout; works on every page).
+   Component styles are scoped (higher specificity), hence the !important. shell.ts opens <details> for printing. ---- */
+@media print {
+  @page { margin: 16mm 14mm; }
+  :root { color-scheme: light !important; }
+  html, body { background: #fff !important; font-size: 10.5pt; line-height: 1.45; }
+  body * { color: #111 !important; background: transparent !important; text-shadow: none !important; box-shadow: none !important;
+    -webkit-text-stroke: 0 !important; animation: none !important; transition: none !important; }
+  .rv, .wipe { opacity: 1 !important; transform: none !important; }
+  .light, .site-header, .skip, [data-palette], .btns, .hint, .dot, .go, .idx, .ask, .pn { display: none !important; }
+  .wrap { max-width: none !important; padding: 0 !important; }
+  section, .page-title { padding: 0 0 10pt !important; }
+  h1, .fit { font-size: 30pt !important; line-height: 1 !important; }
+  h1 span { display: inline !important; }
+  h1 .outline::before { content: ' '; }
+  .sh { margin: 6pt 0 8pt !important; }
+  .sh h2 { font-size: 18pt !important; }
+  h2, h3, .sh { break-after: avoid; }
+  li, .job, .grp, .ed, .stat, .card, .tile, section.last { break-inside: avoid; }
+  a { text-decoration: underline; }
+  a[href^="http"]::after, a[href^="mailto:"]::after { content: ' (' attr(href) ')' !important; position: static !important; font-size: 8.5pt; }
+  .tags li { border: 1px solid #888 !important; }
+  /* experience timeline */
+  .job { grid-template-columns: 34mm 1fr !important; gap: 5mm !important; padding: 0 0 10pt !important; }
+  .job::before { display: none !important; }
+  .org { font-size: 15pt !important; }
+  .more summary { min-height: 0 !important; }
+  .more summary::before, .more summary .cnt { display: none !important; }
+  .site-footer { border-top: 1px solid #888 !important; padding: 8pt 0 0 !important; }
+  .site-footer .base p:last-child { display: none !important; }
 }

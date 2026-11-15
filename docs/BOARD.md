@@ -29,3 +29,7 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 - [M2] Content pages (work + 4 case studies, experience, AI, about, built, contact) | owner: W-M2 | links: commit 22fb6c2, docs/screens/m2/ | note: reviewed
 - [F-1..F-4] M2 review fixes: titles fit on phones, first-person voice, shorter experience, preview on :4321 | owner: W-M2 | links: commit 214cb0d, docs/screens/m2-fix/ | note: manager-checked 320/390 screenshots
 - [T-1] Luke tested M1 + M2 in his browser: Tested OK (also closes CHK-6, live mouse effects) | owner: Luke | links: inbox card c17947417330389427c82b | note: 2026-11-15
+- [CHK-5] Contrast measured: 1499 text elements, 26 page states, 0 below AA, lowest 5.95:1 | owner: W-M4 | links: docs/screens/m4/contrast.txt, site/tools/contrast.mjs | note: 2026-11-15
+- [CHK-7] Permissions-Policy warnings come from add-on on this PC, not the site | owner: W-M4 | links: docs/screens/m4/NOTES.md | note: 2026-11-15
+- [CHK-2a] Firefox matches Edge (heights within 2px, console clean); Safari still open as CHK-2 | owner: W-M4 | links: docs/screens/m4/xbrowser/ | note: 2026-11-15
+- [M4] Polish + audits: OG cards, favicon, a11y/contrast/weight/print/Firefox, CHK-4 Lighthouse still blocked | owner: W-M4 | links: docs/screens/m4/NOTES.md | note: 2026-11-15

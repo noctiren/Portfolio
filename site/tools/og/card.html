@@ -1,0 +1,84 @@
+<!doctype html>
+<!-- Link-preview (Open Graph) card + icon template. Not part of the site: tools/og/make-og.mjs opens it in
+     headless Edge with query params and screenshots it into public/og/ and public/.
+     ?mode=card  &k=<kicker>&t=<title line>&o=<outline line>&home=1   (1200x630)
+     ?mode=icon  (square "LP" monogram, any size) -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face { font-family: 'Archivo'; src: url('../../node_modules/@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2') format('woff2'); font-weight: 100 900; font-stretch: 62% 125%; }
+  @font-face { font-family: 'JBM'; src: url('../../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2') format('woff2'); font-weight: 100 800; }
+  :root { --bg: #04060a; --text: #e7eef8; --muted: #97a7be; --blue: #4c9bff; --ice: #cfe4ff; }
+  html, body { margin: 0; background: var(--bg); overflow: hidden; }
+  .display { font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 68%; font-weight: 800; text-transform: uppercase; line-height: 0.85; letter-spacing: -0.01em; }
+  .label { font: 700 22px/1 'JBM', monospace; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); }
+  .outline { color: transparent; -webkit-text-stroke: 3px var(--ice); }
+  .shadow { text-shadow: 4px 3px 0 rgba(17,45,96,.9), 9px 8px 0 rgba(13,36,80,.7), 15px 13px 0 rgba(10,28,64,.5), 23px 20px 2px rgba(8,20,48,.35), 35px 30px 8px rgba(4,10,24,.3); }
+  .topo, .glow { position: absolute; inset: 0; }
+  .topo { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='none' stroke='%234C9BFF' stroke-width='1'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160' stroke-opacity='.35'/%3E%3Cpath d='M40 40L120 120M120 40L160 0M40 120L0 160' stroke-opacity='.6'/%3E%3C/g%3E%3Cg fill='%23CFE4FF'%3E%3Ccircle cx='40' cy='40' r='3'/%3E%3Ccircle cx='120' cy='120' r='3'/%3E%3Ccircle cx='120' cy='40' r='2'/%3E%3Ccircle cx='40' cy='120' r='2'/%3E%3C/g%3E%3C/svg%3E"); background-size: 160px 160px; }
+
+  /* card */
+  .card { position: relative; width: 1200px; height: 630px; overflow: hidden; }
+  .card .topo.base { opacity: 0.06; }
+  .card .topo.lit { opacity: 0.5; -webkit-mask-image: radial-gradient(circle 420px at 930px 150px, #000 0%, rgba(0,0,0,.4) 45%, transparent 75%); }
+  .card .glow { background: radial-gradient(circle 620px at 930px 150px, rgba(76,155,255,.22), rgba(76,155,255,.06) 40%, transparent 70%); }
+  .inner { position: relative; height: 100%; box-sizing: border-box; padding: 64px 72px 56px; display: flex; flex-direction: column; }
+  .kicker { margin: 0 0 22px; }
+  .kicker, .title, .foot { flex-shrink: 0; }
+  .title { margin: 0; color: var(--text); overflow-wrap: normal; word-break: keep-all; hyphens: none; }
+  .title span { display: block; }
+  .foot { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; border-top: 2px solid rgba(151,167,190,.18); padding-top: 26px; }
+  .who { font-size: 46px; color: var(--text); }
+  .who b { color: var(--blue); font-weight: inherit; }
+  .role { font: 700 22px/1 'JBM', monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ice); }
+  .home .role { font-size: 26px; }
+  .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: linear-gradient(90deg, var(--blue), var(--ice)); box-shadow: 0 0 24px var(--blue); }
+
+  /* icon */
+  .icon { position: relative; width: 100vw; height: 100vh; overflow: hidden; display: grid; place-items: center; background: var(--bg); }
+  .icon .glow { background: radial-gradient(circle at 72% 22%, rgba(76,155,255,.55), rgba(76,155,255,.12) 45%, transparent 72%); }
+  .icon .lp { position: relative; font-size: 64vh; line-height: 1; letter-spacing: 0; color: var(--text); margin-top: 6vh; text-shadow: 2.5vh 2vh 0 rgba(17,45,96,.95), 4.5vh 3.6vh 1vh rgba(4,10,24,.5); }
+  .icon .lp b { color: var(--blue); font-weight: inherit; text-shadow: 0 0 6vh rgba(76,155,255,.7), 2.5vh 2vh 0 rgba(17,45,96,.95); }
+</style>
+</head>
+<body>
+<script>
+  const p = new URLSearchParams(location.search);
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  if (p.get('mode') === 'icon') {
+    document.body.innerHTML = '<div class="icon"><div class="glow"></div><div class="lp display"><b>L</b>P</div></div>';
+  } else {
+    const home = p.get('home') === '1';
+    document.body.innerHTML = `
+      <div class="card${home ? ' home' : ''}">
+        <div class="topo base"></div><div class="topo lit"></div><div class="glow"></div>
+        <div class="inner">
+          ${p.get('k') ? `<p class="label kicker">${esc(p.get('k'))}</p>` : ''}
+          <h1 class="title display shadow" id="t"><span>${esc(p.get('t'))}</span>${p.get('o') ? `<span class="outline">${esc(p.get('o'))}</span>` : ''}</h1>
+          <div class="foot">
+            ${home ? '' : '<div class="who display"><b>Luke</b> Petzer</div>'}
+            <div class="role">DevOps / Platform Engineer</div>
+          </div>
+        </div>
+        <div class="bar"></div>
+      </div>`;
+    // Size the title to the space left: as big as possible, never wider than the card.
+    Promise.all([document.fonts.load('800 100px Archivo'), document.fonts.load('700 22px JBM')]).then(() => {
+      const t = document.getElementById('t');
+      const inner = t.parentElement;
+      const maxW = 1200 - 144;
+      let size = home ? 260 : 220;
+      t.style.fontSize = size + 'px';
+      const foot = inner.querySelector(".foot");
+      const tooTall = () => foot.getBoundingClientRect().bottom > 630 - 40;
+      while (size > 40 && (t.scrollWidth > maxW || tooTall())) {
+        size -= 4;
+        t.style.fontSize = size + 'px';
+      }
+      document.body.dataset.ready = '1';
+    });
+  }
+</script>
+</body>
+</html>

@@ -22,6 +22,8 @@ function setMenu(open: boolean, focusButton = false) {
   btn.setAttribute('aria-expanded', String(open));
   nav.toggleAttribute('data-open', open);
   if (focusButton) btn.focus();
+  // The links come before the button in the page, so Tab would skip them: move focus into the open menu.
+  if (open) nav.querySelector<HTMLAnchorElement>('a')?.focus();
 }
 document.addEventListener('click', (e) => {
   const t = e.target as Element;
@@ -144,6 +146,17 @@ function svgMotion() {
     } else s.unpauseAnimations();
   });
 }
+
+/* ---- print: show everything (closed "Full details" would otherwise be left out), then restore ---- */
+let printOpened: HTMLDetailsElement[] = [];
+addEventListener('beforeprint', () => {
+  printOpened = [...document.querySelectorAll<HTMLDetailsElement>('details:not([open])')];
+  printOpened.forEach((d) => (d.open = true));
+});
+addEventListener('afterprint', () => {
+  printOpened.forEach((d) => (d.open = false));
+  printOpened = [];
+});
 
 document.addEventListener('astro:page-load', () => {
   markActive();
