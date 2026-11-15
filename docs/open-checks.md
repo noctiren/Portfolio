@@ -4,6 +4,7 @@ Things not yet verified, plus work in progress. Synced by opcode. Line format:
 `- [ID] Title | owner: <who> | links: <...> | note: <...>`. Remove a line when it's closed and log it under Done in docs/BOARD.md.
 
 ## In progress
+- [F-5] Link personal GitHub noctiren as main + keep LukePetzer-ixo as work account | owner: W-M6 | links: answers.md Q20 | note: started 2026-11-15
 
 ## Open checks
 - [CHK-1] Real phone / touch device test (spotlight follows taps, menu, tilt off) | owner: Luke | links: - | note: only emulated so far

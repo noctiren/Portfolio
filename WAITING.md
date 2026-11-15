@@ -5,7 +5,6 @@ All of Q-1 to Q-16 were answered 2026-11-15 (docs/content/answers.md).
 
 ## Questions
 - [Q-17] Where is your local opcode repo (folder path)? Optional: lets us diff your rewrite vs upstream for the write-up and take clean screenshots | owner: Luke | links: docs/content/answers.md Q12 | note: write-up goes ahead without it
-- [Q-20] Link personal GitHub noctiren on the site? (add next to LukePetzer-ixo / replace it / leave off) | owner: Luke | links: docs/content/answers.md Q20 | note: asked in chat
 
 ## Cards
 - (none)
