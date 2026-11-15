@@ -11,8 +11,12 @@
   Worker W-style mockups (session 0342fc7d) is idle; its Python server on :8765 runs up to 2h, then stops.
   To view mockups after that: `cd mockups && python -m http.server 8765 --bind 127.0.0.1`.
 - DONE: Luke picked Shadow & Light (D-004); other mockups scrapped (git e73b9b5 has them). Multi-page + sticky name + manager improvements decided (D-005 to D-007).
-- HELD: worker W-M1 (brief in `docs/briefs/W-M1-astro-scaffold.md`) can't start: a worker account was unavailable (opcode 'Log in again' card). Start it once the login works.
+- RUNNING: worker W-M1 Astro scaffold (session 02a3c5fb), brief in `docs/briefs/W-M1-astro-scaffold.md`. Mockup server on :8765 being shut down (look chosen).
 - Next (frontend manager): once the style is picked, record the pick in DESIGN-BRIEF + DECISIONS D-004, then start worker 1 "Scaffold Astro site + design tokens + base
   layout" in `site/` (port the chosen mockup's tokens/effects; self-hosted condensed font to replace Bahnschrift). Then the hero and sections, then case-study pages, then a polish/a11y/Lighthouse pass.
 - Milestones: M1 scaffold + tokens · M2 single page with all sections · M3 case-study pages · M4 polish
   (dark mode, motion, SEO, a11y) · M5 hosting (only after Luke says "ready to host").
+
+## Blockers before hosting (M5)
+- HR-PRIVACY: `site/public/Luke_Petzer_CV.pdf` is Luke's full CV and includes his phone number. Luke must supply a
+  phone-free version (or explicitly OK the phone in the downloadable CV) before anything is hosted.
