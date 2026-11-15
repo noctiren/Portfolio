@@ -45,7 +45,7 @@ export const palettePages: PaletteItem[] = [
   ...nav.map((n) => ({ href: n.href, label: n.label, hint: 'Page' })),
   { href: '/recruiter', label: 'For recruiters', hint: 'Page' },
   { href: '/built', label: 'How this site is built', hint: 'Page' },
-  { href: 'https://github.com/noctiren', label: 'GitHub', hint: 'Link' },
+  { href: person.github, label: 'GitHub', hint: 'Link' },
 ];
 
 /** Case studies live in src/content/work (see src/data/work.ts). */

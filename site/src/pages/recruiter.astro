@@ -3,7 +3,7 @@
 // Minimal motion: no reveals, no long shadows, no title rise. Facts: docs/content/cv.md + answers.md Q-18.
 import Base from '../layouts/Base.astro';
 import { person } from '../data/site';
-import { jobs, skills, education, certification } from '../data/cv';
+import { jobs, skills, education, certification, impact } from '../data/cv';
 import { getWork } from '../data/work';
 
 const work = await getWork();
@@ -11,12 +11,7 @@ const work = await getWork();
 const highlightIds = ['multi-cloud-terraform', 'identity-verification', 'opcode'];
 const highlights = highlightIds.map((id) => work.find((w) => w.id === id)).filter((w) => w !== undefined);
 
-const numbers = [
-  { n: '60–80%', p: 'backup storage cost cut (GCS lifecycle policies)' },
-  { n: '28–36%', p: 'savings shown for multi-cloud vs. AWS-only' },
-  { n: '3', p: 'clouds on one Terraform platform' },
-  { n: 'Zero', p: "downtime migrating every live user's envelope data" },
-];
+const numbers = impact.map((x) => ({ n: x.n, p: x.short }));
 
 const topSkills = skills.filter((g) => g.group !== 'Web3');
 ---

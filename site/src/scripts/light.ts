@@ -56,16 +56,18 @@ function shade() {
     layer.style.setProperty('--ly', `${ly.toFixed(1)}px`);
   }
   // Each caster's shadow points away from the light and shortens as the light gets close.
-  for (const el of casters) {
-    const r = el.getBoundingClientRect();
-    if (r.bottom < -200 || r.top > innerHeight + 200) continue;
+  // All rects are read first, then all styles written, so the loop never forces a style recalc per element.
+  const rects = casters.map((el) => el.getBoundingClientRect());
+  casters.forEach((el, i) => {
+    const r = rects[i];
+    if (r.bottom < -200 || r.top > innerHeight + 200) return;
     const dx = r.left + r.width / 2 - lx;
     const dy = r.top + r.height / 2 - ly;
     const d = Math.hypot(dx, dy) || 1;
     const k = Math.min(1, d / 700);
     el.style.setProperty('--dx', ((dx / d) * k).toFixed(3));
     el.style.setProperty('--dy', ((dy / d) * k).toFixed(3));
-  }
+  });
 }
 
 function tick(t: number) {
@@ -132,12 +134,11 @@ addEventListener(
     lastScroll = scrollY;
     if (touch && !reduced()) {
       // Ride along with the page so the light feels pinned to what was tapped; drift resumes off-screen.
+      // (While drifting, tick() sets the target every frame, so scrolling has nothing to adjust.)
       if (manual) {
         ty -= d;
         manualAt = performance.now();
         if (ty < -100 || ty > innerHeight + 100) manual = false;
-      } else {
-        ty = Math.min(innerHeight * 0.9, Math.max(innerHeight * 0.1, ty - d * 0.5));
       }
     }
     if (reduced()) shade();

@@ -54,10 +54,12 @@ function close() {
 function go(li: HTMLElement | undefined) {
   const href = li?.dataset.href;
   if (!href) return;
-  opener = null;
+  const here = location.pathname.replace(/\/$/, '') || '/';
+  const leaving = /^https?:/.test(href) || href !== here;
+  if (leaving) opener = null; // staying on this page: the close handler returns focus to the opener
   close();
   if (/^https?:/.test(href)) location.href = href; // external link (GitHub)
-  else if (href !== location.pathname) navigate(href);
+  else if (leaving) navigate(href);
 }
 
 document.addEventListener('keydown', (e) => {

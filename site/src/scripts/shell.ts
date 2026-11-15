@@ -36,6 +36,11 @@ document.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && q('[data-nav][data-open]')) setMenu(false, true);
 });
+document.addEventListener('focusin', (e) => {
+  // Tabbing out of the open menu closes it, so it doesn't stay over the page.
+  const t = e.target as Element;
+  if (q('[data-nav][data-open]') && !t.closest?.('[data-nav], [data-menu-btn]')) setMenu(false);
+});
 
 /* ---- live status pill: a disclosure panel (Esc or a click outside closes it, focus goes back to the pill) ---- */
 function setStatus(open: boolean, focusButton = false) {
@@ -261,7 +266,11 @@ function clock() {
   const el = q('[data-ct-clock]');
   if (el) el.textContent = ctFmt.format(new Date());
 }
-setInterval(clock, 30_000);
+// tick just after each minute boundary, so the clock is never a minute behind
+setTimeout(() => {
+  clock();
+  setInterval(clock, 60_000);
+}, 60_000 - (Date.now() % 60_000) + 50);
 
 /* ---- print: show everything (closed "Full details" would otherwise be left out), then restore ---- */
 let printOpened: HTMLDetailsElement[] = [];

@@ -1,0 +1,11 @@
+home@1280: console log.warning: Error with Permissions-Policy header: Unrecognized feature: 'join-ad-interest-group'. | log.warning: Error with Permissions-Policy header: Unrecognized feature: 'run-ad-auction'.
+  home impact wording present: true
+recruiter@1280: console log.warning: Error with Permissions-Policy header: Unrecognized feature: 'join-ad-interest-group'. | log.warning: Error with Permissions-Policy header: Unrecognized feature: 'run-ad-auction'.
+  recruiter numbers wording present: true
+home@390: console log.warning: Error with Permissions-Policy header: Unrecognized feature: 'join-ad-interest-group'. | log.warning: Error with Permissions-Policy header: Unrecognized feature: 'run-ad-auction'.
+  home impact wording present: true
+recruiter@390: console log.warning: Error with Permissions-Policy header: Unrecognized feature: 'join-ad-interest-group'. | log.warning: Error with Permissions-Policy header: Unrecognized feature: 'run-ad-auction'.
+  recruiter numbers wording present: true
+mobile menu: opened=true, closes when focus leaves=true
+palette same page: path=/work/ focusBackOnOpener=true
+no-JS header shot saved (home-nojs-header-1280.png)

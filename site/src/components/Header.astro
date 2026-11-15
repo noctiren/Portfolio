@@ -76,8 +76,8 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
   .mark .b { color: var(--blue); }
   .mark:hover { color: var(--ice); }
   /* on the home page the big hero name stands in for the wordmark until it scrolls away */
-  :global(html[data-hero-name='in-view']) .mark { opacity: 0; transform: translateY(10px); letter-spacing: 0.2em; visibility: hidden; }
-  :global(html[data-hero-name='in-view']) .mark { transition: opacity 0.3s, transform 0.3s, letter-spacing 0.3s, visibility 0s 0.3s; }
+  :global(html.js[data-hero-name='in-view']) .mark { opacity: 0; transform: translateY(10px); letter-spacing: 0.2em; visibility: hidden; }
+  :global(html.js[data-hero-name='in-view']) .mark { transition: opacity 0.3s, transform 0.3s, letter-spacing 0.3s, visibility 0s 0.3s; }
 
   .nav { margin-left: auto; }
   .nav ul { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; }

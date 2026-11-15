@@ -7,12 +7,7 @@ const caseStudies = await getWork();
 import { fitEm } from '../utils/fit';
 const nameFit = fitEm('Luke', 'Petzer').toFixed(2);
 
-const stats = [
-  { n: '60–80%', p: 'Backup storage cost cut with GCS lifecycle policies.' },
-  { n: '28–36%', p: 'Savings shown for multi-cloud vs. AWS-only.' },
-  { n: '3', p: 'Clouds on one Terraform platform: AWS, GCP, Vultr.' },
-  { n: 'Zero', p: "Downtime migrating every live user's envelope data." },
-];
+import { impact as stats } from '../data/cv';
 
 const tiles = [
   {
