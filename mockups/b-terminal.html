@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luke Petzer · DevOps / Platform Engineer (mockup B: Terminal)</title>
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root {
+    --bg: #0B0F0E; --panel: #111816; --text: #D7E0DC; --muted: #8FA39B; --green: #4ADE80; --cyan: #67E8F9;
+    --line: #1F2B27; --amber: #FBBF24;
+    --mono: ui-monospace, "Cascadia Code", "Cascadia Mono", Consolas, "SF Mono", Menlo, "DejaVu Sans Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15.5px/1.7 var(--mono); }
+  body::before { /* faint grid */
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px; opacity: .35;
+  }
+  a { color: var(--cyan); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  h1, h2, h3 { font-weight: 700; line-height: 1.2; margin: 0; }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--green); color: #000; padding: 8px 12px; }
+  .skip:focus { left: 8px; }
+  .g { color: var(--green); } .c { color: var(--cyan); } .m { color: var(--muted); }
+
+  header.top { border-bottom: 1px solid var(--line); background: rgba(11, 15, 14, .9); position: sticky; top: 0; z-index: 5; }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  .mark { color: var(--text); text-decoration: none; font-weight: 700; }
+  nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
+  nav a::before { content: "./"; color: var(--line); transition: color .2s; }
+  nav a:hover { color: var(--green); }
+  nav a:hover::before { color: var(--green); }
+
+  .hero { padding: 64px 0 48px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 40px; align-items: center; }
+  .prompt { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+  .hero h1 { font-size: clamp(36px, 5.4vw, 58px); letter-spacing: -0.02em; color: #F1F5F3; }
+  .role { color: var(--green); font-size: 19px; margin: 8px 0 20px; }
+  .cursor { display: inline-block; width: .6em; height: 1.05em; background: var(--green); vertical-align: -0.15em; margin-left: 4px; }
+  @media (prefers-reduced-motion: no-preference) { .cursor { animation: blink 1.1s steps(1) infinite; } }
+  @keyframes blink { 50% { opacity: 0; } }
+  .pitch { color: var(--muted); max-width: 36em; margin: 0 0 28px; }
+  .pitch b { color: var(--text); font-weight: 400; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-block; padding: 10px 18px; border: 1px solid var(--green); color: var(--green); text-decoration: none; font-size: 14px; font-weight: 700; transition: background .15s, color .15s; }
+  .btn.primary { background: var(--green); color: #04130A; }
+  .btn:hover { background: var(--green); color: #04130A; }
+  .btn.primary:hover { background: #86EFAC; }
+  .todo { color: var(--amber); font-size: 12px; }
+
+  .term { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin: 0; }
+  .term .bar { display: flex; align-items: center; gap: 7px; padding: 9px 12px; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+  .term .bar i { width: 10px; height: 10px; border-radius: 50%; background: #2A3833; display: inline-block; }
+  .term .bar span { margin-left: 8px; }
+  .term .body { padding: 16px; }
+  svg.flow { width: 100%; height: auto; display: block; }
+  .flow .edge { fill: none; stroke: #2E5A4A; stroke-width: 1.5; stroke-dasharray: 4 4; }
+  .flow .node rect { fill: #0B0F0E; stroke: #2E5A4A; stroke-width: 1.2; }
+  .flow .node.cloud rect { stroke: var(--cyan); }
+  .flow .t { font-family: var(--mono); font-size: 15px; font-weight: 700; fill: var(--green); text-anchor: middle; }
+  .flow .cloud .t { fill: var(--cyan); }
+  .flow .s { font-family: var(--mono); font-size: 12.5px; fill: var(--muted); text-anchor: middle; }
+  .flow .pkt { fill: var(--green); filter: drop-shadow(0 0 4px var(--green)); }
+  .flow.still .pkt { display: none; }
+  .log { font-size: 12.5px; color: var(--muted); padding: 10px 16px 14px; border-top: 1px dashed var(--line); margin: 0; }
+
+  section { padding: 52px 0; }
+  .sec-head { font-size: 15px; color: var(--muted); margin-bottom: 22px; }
+  .sec-head h2 { display: inline; font-size: 15px; color: var(--text); }
+  .sec-head::after { content: ""; display: block; height: 1px; background: var(--line); margin-top: 12px; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .stat { border: 1px solid var(--line); background: var(--panel); padding: 18px; border-radius: 6px; }
+  .stat .k { font-size: 12px; color: var(--muted); }
+  .stat .n { font-size: 34px; font-weight: 700; color: var(--green); line-height: 1.2; margin: 4px 0; }
+  .stat p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.5; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; transition: border-color .2s, box-shadow .2s; }
+  .card:hover { border-color: var(--green); box-shadow: 0 0 0 1px var(--green), 0 0 24px rgba(74, 222, 128, .12); }
+  .card .co { font-size: 12px; color: var(--cyan); }
+  .card h3 { font-size: 20px; margin: 6px 0 10px; color: #F1F5F3; }
+  .card p { color: var(--muted); margin: 0 0 16px; font-size: 14.5px; }
+  .card .more { margin-top: auto; color: var(--green); text-decoration: none; font-weight: 700; font-size: 14px; }
+  .card .more:hover { text-decoration: underline; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0 0 16px; }
+  .tags li { font-size: 12.5px; color: var(--cyan); border: 1px solid #1E3F44; background: rgba(103, 232, 249, .06); padding: 2px 8px; border-radius: 3px; }
+
+  .log-list { list-style: none; margin: 0; padding: 0; }
+  .log-list li { display: grid; grid-template-columns: 220px 1fr; gap: 20px; padding: 16px 0; border-bottom: 1px dashed var(--line); }
+  .log-list .when { color: var(--muted); font-size: 13.5px; }
+  .log-list .when::before { content: "● "; color: var(--muted); }
+  .log-list li:first-child .when::before { color: var(--green); }
+  .log-list h3 { font-size: 17px; color: #F1F5F3; }
+  .log-list h3 span { color: var(--cyan); font-weight: 400; }
+  .log-list p { margin: 4px 0 0; color: var(--muted); font-size: 14.5px; }
+
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px 36px; }
+  .skills h3 { font-size: 13px; color: var(--green); font-weight: 700; margin: 0 0 10px; }
+  .skills h3::before { content: "# "; color: var(--muted); }
+  .skills .tags { margin: 0; }
+
+  footer { border-top: 1px solid var(--line); padding: 52px 0 72px; }
+  footer h2 { font-size: 28px; color: #F1F5F3; margin: 0 0 8px; }
+  footer p { color: var(--muted); margin: 0 0 22px; }
+  .contact { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; font-size: 14.5px; }
+  .contact .k { display: inline-block; width: 100px; color: var(--muted); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal { opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease; }
+    .js .reveal.in { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .btn, .card, nav a::before { transition: none; } }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-top: 40px; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .log-list li { grid-template-columns: 1fr; gap: 2px; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 14.5px; }
+    .wrap { padding: 0 18px; }
+    nav li:nth-child(n+3) { display: none; }
+    .stat .n { font-size: 26px; }
+    .stat { padding: 14px; }
+    .skills { grid-template-columns: 1fr; }
+    .contact .k { width: 80px; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#"><span class="g">luke</span>@<span class="c">petzer</span>:~$</a>
+    <nav aria-label="Main">
+      <ul><li><a href="#work">work</a></li><li><a href="#experience">experience</a></li><li><a href="#skills">skills</a></li><li><a href="#contact">contact</a></li></ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <div class="hero">
+    <div class="reveal">
+      <p class="prompt"><span class="g">$</span> whoami <span class="m">→ Cape Town, South Africa</span></p>
+      <h1>Luke Petzer</h1>
+      <p class="role">DevOps / Platform Engineer<span class="cursor" aria-hidden="true"></span></p>
+      <p class="pitch"><b>Running Kubernetes clusters, wiring up Terraform, and keeping ArgoCD deployments and CI/CD pipelines honest.</b> A backend engineer by background, so I still think like a developer when I'm building infrastructure.</p>
+      <div class="btns">
+        <a class="btn primary" href="#work">View work</a>
+        <a class="btn" href="#" title="TODO(Luke): link the CV PDF">Download CV</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
+    </div>
+    <figure class="term reveal">
+      <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>deploy-flow</span></div>
+      <div class="body">
+        <svg class="flow" viewBox="0 0 640 300" role="img" aria-label="Deploy flow: a push to the git repo runs CI, ArgoCD syncs the result to Kubernetes clusters on AWS, GCP and Vultr.">
+          <path id="pa" class="edge" d="M110 150 H170"/>
+          <path id="pb" class="edge" d="M270 150 H330"/>
+          <path id="pc1" class="edge" d="M430 150 C475 150 475 50 520 50"/>
+          <path id="pc2" class="edge" d="M430 150 H520"/>
+          <path id="pc3" class="edge" d="M430 150 C475 150 475 250 520 250"/>
+          <g class="node"><rect x="10" y="122" width="100" height="56" rx="3"/><text class="t" x="60" y="148">git</text><text class="s" x="60" y="166">push main</text></g>
+          <g class="node"><rect x="170" y="122" width="100" height="56" rx="3"/><text class="t" x="220" y="148">ci</text><text class="s" x="220" y="166">build · test</text></g>
+          <g class="node"><rect x="330" y="122" width="100" height="56" rx="3"/><text class="t" x="380" y="148">argocd</text><text class="s" x="380" y="166">sync</text></g>
+          <g class="node cloud"><rect x="520" y="22" width="110" height="56" rx="3"/><text class="t" x="575" y="48">aws</text><text class="s" x="575" y="66">eks</text></g>
+          <g class="node cloud"><rect x="520" y="122" width="110" height="56" rx="3"/><text class="t" x="575" y="148">gcp</text><text class="s" x="575" y="166">gke</text></g>
+          <g class="node cloud"><rect x="520" y="222" width="110" height="56" rx="3"/><text class="t" x="575" y="248">vultr</text><text class="s" x="575" y="266">vke</text></g>
+          <g aria-hidden="true">
+            <rect class="pkt" opacity="0" x="-4" y="-4" width="8" height="8"><animateMotion dur="3s" begin="0s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.2;1" calcMode="linear"><mpath href="#pa"/></animateMotion><animate attributeName="opacity" dur="3s" begin="0s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.2;.21;1"/></rect>
+            <rect class="pkt" opacity="0" x="-4" y="-4" width="8" height="8"><animateMotion dur="3s" begin=".6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.2;1" calcMode="linear"><mpath href="#pb"/></animateMotion><animate attributeName="opacity" dur="3s" begin=".6s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.2;.21;1"/></rect>
+            <rect class="pkt" opacity="0" x="-4" y="-4" width="8" height="8"><animateMotion dur="3s" begin="1.2s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.3;1" calcMode="linear"><mpath href="#pc1"/></animateMotion><animate attributeName="opacity" dur="3s" begin="1.2s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.3;.31;1"/></rect>
+            <rect class="pkt" opacity="0" x="-4" y="-4" width="8" height="8"><animateMotion dur="3s" begin="1.2s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.3;1" calcMode="linear"><mpath href="#pc2"/></animateMotion><animate attributeName="opacity" dur="3s" begin="1.2s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.3;.31;1"/></rect>
+            <rect class="pkt" opacity="0" x="-4" y="-4" width="8" height="8"><animateMotion dur="3s" begin="1.2s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.3;1" calcMode="linear"><mpath href="#pc3"/></animateMotion><animate attributeName="opacity" dur="3s" begin="1.2s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.3;.31;1"/></rect>
+          </g>
+        </svg>
+      </div>
+      <p class="log" aria-hidden="true"><span class="g">✓</span> synced to 3 clusters · aws · gcp · vultr</p>
+    </figure>
+  </div>
+
+  <section aria-labelledby="impact-h">
+    <div class="sec-head reveal"><span class="g">$</span> cat <h2 id="impact-h">impact.txt</h2></div>
+    <div class="stats reveal">
+      <div class="stat"><div class="k">backup_cost</div><div class="n">60–80%</div><p>storage cost cut with GCS lifecycle policies</p></div>
+      <div class="stat"><div class="k">multi_cloud</div><div class="n">28–36%</div><p>savings shown vs. AWS-only</p></div>
+      <div class="stat"><div class="k">clouds</div><div class="n">3</div><p>AWS, GCP and Vultr on one Terraform platform</p></div>
+      <div class="stat"><div class="k">downtime</div><div class="n">0</div><p>migrating every live user's envelope data</p></div>
+    </div>
+  </section>
+
+  <section id="work" aria-labelledby="work-h">
+    <div class="sec-head reveal"><span class="g">$</span> ls <h2 id="work-h">./work</h2></div>
+    <div class="cards">
+      <article class="card reveal">
+        <span class="co">ixo / platform</span>
+        <h3>Multi-cloud Terraform platform</h3>
+        <p>A config-driven Terraform platform across Vultr, AWS and GCP that any team can plug their own environments into, with onboarding docs to match. Cost comparisons showed 28–36% savings vs. AWS-only.</p>
+        <ul class="tags"><li>terraform</li><li>kubernetes</li><li>eks/gke/vke</li><li>argocd</li></ul>
+        <a class="more" href="#">cat case-study.md →</a>
+      </article>
+      <article class="card reveal">
+        <span class="co">bmtx / backend</span>
+        <h3>Identity verification platform</h3>
+        <p>A partner-facing KYC/IDV platform built from scratch: a gRPC public gateway plus domain engine, a Spring Batch pipeline for PGP-encrypted cohort files, and a decision layer over Socure.</p>
+        <ul class="tags"><li>grpc</li><li>spring-batch</li><li>azure-aks</li><li>service-bus</li><li>redis</li></ul>
+        <a class="more" href="#">cat case-study.md →</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="exp-h">
+    <div class="sec-head reveal"><span class="g">$</span> git log <h2 id="exp-h">--career</h2></div>
+    <ol class="log-list">
+      <li class="reveal"><span class="when">Feb 2024 – Present</span><div><h3>DevOps Engineer <span>@ ixo</span></h3><p>Multi-cloud Terraform platform, GitOps with ArgoCD, secrets on External Secrets Operator + Vault, Cloudflare tunnels, and ownership of uptime and incident response.</p></div></li>
+      <li class="reveal"><span class="when">Jun 2023 – Mar 2025</span><div><h3>Software Engineer <span>@ BM Technologies (BMTX)</span></h3><p>Designed and built a partner-facing identity verification platform on gRPC, Spring Batch and Azure.</p></div></li>
+      <li class="reveal"><span class="when">Feb 2020 – Jun 2023</span><div><h3>Software Engineer <span>@ envel</span></h3><p>Primary engineer on the Kotlin/Spring core banking API; taught myself Terraform and built the company's cloud infrastructure.</p></div></li>
+    </ol>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <div class="sec-head reveal"><span class="g">$</span> cat <h2 id="skills-h">skills.yaml</h2></div>
+    <div class="skills reveal">
+      <div><h3>infra_and_cloud</h3><ul class="tags"><li>Terraform</li><li>Kubernetes (EKS/GKE/VKE)</li><li>AWS</li><li>GCP</li><li>Vultr</li><li>ArgoCD / GitOps</li></ul></div>
+      <div><h3>platform_and_security</h3><ul class="tags"><li>External Secrets Operator</li><li>HashiCorp Vault</li><li>Dex / OIDC</li><li>Cloudflare Tunnels</li></ul></div>
+      <div><h3>reliability</h3><ul class="tags"><li>Grafana</li><li>Uptime Kuma</li><li>Incident response</li><li>CI/CD</li></ul></div>
+      <div><h3>backend</h3><ul class="tags"><li>Java</li><li>Kotlin</li><li>Spring Framework</li><li>PostgreSQL</li><li>MongoDB</li><li>gRPC / REST</li><li>RabbitMQ</li><li>.NET Core (familiar)</li></ul></div>
+      <div><h3>web3</h3><ul class="tags"><li>Hyperlane validator nodes</li><li>RPC / IPFS infra</li></ul></div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap reveal">
+    <h2><span class="g">$</span> ./contact.sh</h2>
+    <p>Email is the quickest way to reach me.</p>
+    <ul class="contact">
+      <li><span class="k">email</span><a href="mailto:lukepetzerint2@gmail.com">lukepetzerint2@gmail.com</a></li>
+      <li><span class="k">linkedin</span><a href="https://www.linkedin.com/in/lukepetzer-3a81a316b">in/lukepetzer-3a81a316b</a></li>
+      <li><span class="k">github</span><span class="todo">TODO(Luke): username</span></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  const mq = matchMedia('(prefers-reduced-motion: reduce)');
+  const applyMotion = () => document.querySelectorAll('svg.flow').forEach(s => {
+    if (mq.matches) { s.pauseAnimations(); s.setCurrentTime(0); s.classList.add('still'); }
+    else { s.unpauseAnimations(); s.classList.remove('still'); }
+  });
+  applyMotion(); mq.addEventListener('change', applyMotion);
+</script>
+</body>
+</html>

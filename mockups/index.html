@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio mockups: pick a look</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #F4F4F2; color: #1C1C1C; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 48px 24px 64px; }
+  h1 { font-size: 30px; margin: 0 0 6px; }
+  .lead { color: #555; margin: 0 0 32px; }
+  :focus-visible { outline: 3px solid #2B59FF; outline-offset: 3px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  a.pick { display: block; text-decoration: none; color: inherit; background: #fff; border: 1px solid #DDD; border-radius: 10px; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
+  a.pick:hover { border-color: #1C1C1C; box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+  .swatch { height: 120px; display: flex; align-items: flex-end; padding: 14px 16px; font-size: 26px; font-weight: 700; }
+  .a .swatch { background: #F9F8F4; color: #2F5D4E; font-family: "Iowan Old Style", Palatino, Georgia, serif; border-bottom: 1px solid #E4E1D8; }
+  .b .swatch { background: #0B0F0E; color: #4ADE80; font-family: ui-monospace, Consolas, monospace; }
+  .c .swatch { background: #fff; color: #0A0A0A; letter-spacing: -0.04em; border-bottom: 3px solid #2B59FF; font-family: "Helvetica Neue", Arial, sans-serif; }
+  .info { padding: 14px 16px 18px; }
+  .info h2 { font-size: 17px; margin: 0 0 4px; }
+  .info p { margin: 0; color: #555; font-size: 14.5px; }
+  .rec { display: inline-block; font-size: 12px; font-weight: 600; background: #E3EEE8; color: #234A3D; padding: 1px 8px; border-radius: 99px; margin-left: 6px; vertical-align: 2px; }
+  .phone-link { margin-top: 28px; }
+  .phones { display: none; margin-top: 32px; gap: 24px; overflow-x: auto; padding-bottom: 12px; }
+  .phones.on { display: flex; }
+  .phones figure { margin: 0; flex: 0 0 auto; }
+  .phones figcaption { font-weight: 600; margin-bottom: 6px; }
+  .phones.single iframe { height: 4600px; }
+  .phones iframe { width: 390px; height: 780px; border: 1px solid #CCC; border-radius: 18px; background: #fff; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { a.pick { transition: none; } }
+  h2.round { font-size: 15px; text-transform: uppercase; letter-spacing: .08em; color: #555; margin: 36px 0 12px; }
+  .r2a .swatch { background: radial-gradient(circle at 75% 30%, rgba(76,155,255,.35), #04060A 60%); color: #E7EEF8; font-family: Bahnschrift, "Arial Narrow", sans-serif; font-stretch: 75%; letter-spacing: .02em; }
+  .r2b .swatch { background: linear-gradient(160deg, #1B3A7A, #0A1330 55%, #04060D); color: #DCE8FF; font-weight: 300; letter-spacing: .04em; }
+  .r2c .swatch { background: #03060E; color: #3DA9FF; font-family: ui-monospace, Consolas, monospace; letter-spacing: .1em; border-bottom: 1px solid #3DA9FF; }
+  .phones { flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>Pick a look</h1>
+  <p class="lead">Throwaway mockups of the same homepage and the same content. Only the visual style and motion differ.</p>
+
+  <h2 class="round">Round 2: bolder, darker, more motion</h2>
+  <div class="grid">
+    <a class="pick r2a" href="round2/r2-a-shadowlight.html"><div class="swatch">SHADOW &amp; LIGHT</div><div class="info"><h2>A. Shadow &amp; Light</h2><p>Near-black page; your cursor is a blue spotlight that reveals a hidden infra grid and makes huge condensed type cast long shadows.</p></div></a>
+    <a class="pick r2b" href="round2/r2-b-bluehour.html"><div class="swatch">Blue Hour</div><div class="info"><h2>B. Blue Hour</h2><p>Cinematic: drifting aurora light, parallax depth, the name revealed by a light sweep, case studies pulled into focus as you scroll.</p></div></a>
+    <a class="pick r2c" href="round2/r2-c-signal.html"><div class="swatch">[ SIGNAL ]</div><div class="info"><h2>C. Signal</h2><p>Refined electric-blue HUD: headings decode in, a live system map with glowing packets, telemetry-style numbers.</p></div></a>
+  </div>
+  <p class="phone-link"><a href="?view=phone&amp;round=2">Round 2 side by side at phone width (390px)</a> · <a href="?view=phone&amp;round=2&amp;reduced=1">same, with motion turned off</a></p>
+
+  <h2 class="round">Round 1 (rejected: too generic)</h2>
+  <div class="grid">
+    <a class="pick a" href="a-editorial.html"><div class="swatch">Editorial</div><div class="info"><h2>A. Editorial engineer</h2><p>Matches your CV: warm paper, deep green, serif headings. Calm and senior.</p></div></a>
+    <a class="pick b" href="b-terminal.html"><div class="swatch">$ terminal_</div><div class="info"><h2>B. Dark terminal</h2><p>Near-black infra console, monospace, green and cyan. Very on-theme for DevOps.</p></div></a>
+    <a class="pick c" href="c-swiss.html"><div class="swatch">Swiss.</div><div class="info"><h2>C. Minimal Swiss</h2><p>White and black, huge bold type, one electric-blue accent. Clean and confident.</p></div></a>
+  </div>
+  <p class="phone-link"><a href="?view=phone&amp;round=1">Round 1 side by side at phone width (390px)</a></p>
+  <div class="phones" id="phones" aria-label="Phone-width previews"></div>
+</main>
+<script>
+  // Preview helpers.
+  //   ?view=phone&round=2            all three of a round in 390px frames
+  //   ?view=phone&f=<path>           one page in a tall 390px frame
+  //   ?view=desktop&f=<path>         one page at a real 1280px width, scaled to fit this window
+  //   add &reduced=1 to pass the "motion off" flag through to the pages
+  const p = new URLSearchParams(location.search);
+  const pages = [
+    ['R2 A. Shadow & Light', 'round2/r2-a-shadowlight.html', '2'], ['R2 B. Blue Hour', 'round2/r2-b-bluehour.html', '2'], ['R2 C. Signal', 'round2/r2-c-signal.html', '2'],
+    ['A. Editorial', 'a-editorial.html', '1'], ['B. Terminal', 'b-terminal.html', '1'], ['C. Swiss', 'c-swiss.html', '1']];
+  const known = pages.map(x => x[1]);
+  const suffix = p.get('reduced') === '1' ? '?reduced=1' : '';
+  if (p.get('view') === 'phone') {
+    const box = document.getElementById('phones'), f = p.get('f'), round = p.get('round') || '2';
+    pages.filter(([, src, r]) => f ? src === f : r === round).forEach(([name, src]) => {
+      const fig = document.createElement('figure'), cap = document.createElement('figcaption'), fr = document.createElement('iframe');
+      cap.textContent = name; fr.src = src + suffix; fr.title = name + ' at 390px wide';
+      fig.append(cap, fr); box.append(fig);
+    });
+    box.classList.add('on');
+    if (f) box.classList.add('single');
+    box.scrollIntoView();
+  }
+  if (p.get('view') === 'desktop' && known.includes(p.get('f'))) {
+    document.body.innerHTML = '';
+    document.body.style.cssText = 'margin:0;overflow:hidden;background:#888';
+    const H = +p.get("h") || 0, s = Math.min(1, innerWidth / 1280), fr = document.createElement('iframe');
+    fr.src = p.get('f') + suffix; fr.title = 'Desktop preview';
+    fr.style.cssText = `width:1280px;height:${H || Math.ceil(innerHeight / s)}px;border:0;transform:scale(${s});transform-origin:0 0;background:#fff`;
+    document.body.appendChild(fr);
+    if (p.get("y")) fr.onload = () => setTimeout(() => fr.contentWindow.scrollTo(0, +p.get("y")), 300);
+  }
+</script>
+</body>
+</html>

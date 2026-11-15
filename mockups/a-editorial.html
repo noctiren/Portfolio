@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luke Petzer · DevOps / Platform Engineer (mockup A: Editorial)</title>
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root {
+    --bg: #F9F8F4; --text: #1F2A2E; --muted: #5B6670; --accent: #2F5D4E; --line: #E4E1D8; --card: #FFFFFF;
+    --tint: #EEF3EF;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 var(--sans); }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; }
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--accent); color: #fff; padding: 8px 12px; }
+  .skip:focus { left: 8px; }
+
+  /* nav */
+  header.top { border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+  .mark { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--text); text-decoration: none; }
+  nav ul { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0; }
+  nav a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  nav a:hover { color: var(--accent); }
+
+  /* hero */
+  .hero { padding: 72px 0 56px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+  .eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+  .hero h1 { font-size: clamp(40px, 6vw, 64px); margin: 0 0 8px; }
+  .role { font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--accent); margin: 0 0 20px; }
+  .pitch { color: var(--muted); font-size: 18px; max-width: 34em; margin: 0 0 28px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-block; padding: 11px 20px; border-radius: 6px; border: 1.5px solid var(--accent); font-weight: 600; font-size: 15px; text-decoration: none; transition: background .2s, color .2s, transform .2s; }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.ghost { color: var(--accent); background: transparent; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.ghost:hover { background: var(--tint); }
+  .todo { font-family: var(--mono); font-size: 11px; color: #8A4B00; background: #FFF3DC; padding: 1px 5px; border-radius: 3px; }
+
+  /* diagram */
+  .diagram { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  .diagram figcaption { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 8px; text-align: center; }
+  svg.flow { width: 100%; height: auto; display: block; }
+  .flow .edge { fill: none; stroke: #9FB5AB; stroke-width: 1.5; }
+  .flow .node rect { fill: var(--bg); stroke: var(--accent); stroke-width: 1.5; }
+  .flow .node.cloud rect { fill: var(--tint); }
+  .flow .t { font-family: var(--serif); font-size: 17px; font-weight: 600; fill: var(--text); text-anchor: middle; }
+  .flow .s { font-family: var(--mono); font-size: 12.5px; fill: var(--muted); text-anchor: middle; }
+  .flow .pkt { fill: var(--accent); }
+  .flow.still .pkt { display: none; }
+
+  /* sections */
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px; }
+  .sec-head .num { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+  .sec-head h2 { font-size: 32px; margin: 0; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .stat { padding: 8px 24px; border-left: 1px solid var(--line); }
+  .stat:first-child { border-left: 0; padding-left: 0; }
+  .stat .n { font-family: var(--serif); font-size: 44px; font-weight: 600; color: var(--accent); line-height: 1.1; }
+  .stat p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 28px; display: flex; flex-direction: column; transition: border-color .2s, box-shadow .2s, transform .2s; }
+  .card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(31, 42, 46, .07); transform: translateY(-2px); }
+  .card .co { font-family: var(--mono); font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; }
+  .card h3 { font-size: 24px; margin: 8px 0 12px; }
+  .card p { color: var(--muted); margin: 0 0 16px; }
+  .card .more { margin-top: auto; font-weight: 600; text-decoration: none; }
+  .card .more:hover { text-decoration: underline; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0 0 18px; }
+  .tags li { font-family: var(--mono); font-size: 12.5px; color: var(--accent); background: var(--tint); border-radius: 4px; padding: 3px 9px; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+  .timeline li { position: relative; padding: 0 0 32px 40px; }
+  .timeline li::before { content: ""; position: absolute; left: 0; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+  .timeline li:first-child::before { background: var(--accent); }
+  .timeline .when { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .timeline h3 { font-size: 21px; margin: 2px 0 6px; }
+  .timeline h3 span { font-family: var(--sans); font-weight: 400; color: var(--muted); font-size: 17px; }
+  .timeline p { margin: 0; color: var(--muted); max-width: 46em; }
+
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px 40px; }
+  .skills h3 { font-family: var(--sans); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 10px; }
+  .skills .tags { margin: 0; }
+
+  footer { border-top: 1px solid var(--line); padding: 56px 0 72px; }
+  footer h2 { font-size: 36px; margin: 0 0 8px; }
+  footer p { color: var(--muted); margin: 0 0 24px; }
+  .contact { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 12px 32px; }
+  .contact span { display: block; font-family: var(--mono); font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+  /* motion: only when allowed */
+  @media (prefers-reduced-motion: no-preference) {
+    .js .reveal { opacity: 0; transform: translateY(8px); transition: opacity .6s ease, transform .6s ease; }
+    .js .reveal.in { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn, .card { transition: none; }
+    .btn:hover, .card:hover { transform: none; }
+  }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-top: 48px; }
+    .stats { grid-template-columns: 1fr 1fr; gap: 24px 0; }
+    .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+    .cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 20px; }
+    nav ul { gap: 14px; }
+    nav li:nth-child(n+3) { display: none; }
+    .stat .n { font-size: 34px; }
+    .stat { padding: 4px 14px; }
+    .card { padding: 22px; }
+    .skills { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#">Luke Petzer</a>
+    <nav aria-label="Main">
+      <ul><li><a href="#work">Work</a></li><li><a href="#experience">Experience</a></li><li><a href="#skills">Skills</a></li><li><a href="#contact">Contact</a></li></ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <div class="hero">
+    <div class="reveal">
+      <p class="eyebrow">Cape Town, South Africa</p>
+      <h1>Luke Petzer</h1>
+      <p class="role">DevOps / Platform Engineer</p>
+      <p class="pitch">Running Kubernetes clusters, wiring up Terraform, and keeping ArgoCD deployments and CI/CD pipelines honest. A backend engineer by background, so I still think like a developer when I'm building infrastructure.</p>
+      <div class="btns">
+        <a class="btn primary" href="#work">View work</a>
+        <a class="btn ghost" href="#" title="TODO(Luke): link the CV PDF">Download CV</a>
+        <a class="btn ghost" href="#contact">Contact</a>
+      </div>
+    </div>
+    <figure class="diagram reveal" style="margin:0">
+      <svg class="flow" viewBox="0 0 640 300" role="img" aria-label="Deploy flow: a push to the git repo runs CI, ArgoCD syncs the result to Kubernetes clusters on AWS, GCP and Vultr.">
+        <path id="pa" class="edge" d="M110 150 H170"/>
+        <path id="pb" class="edge" d="M270 150 H330"/>
+        <path id="pc1" class="edge" d="M430 150 C475 150 475 50 520 50"/>
+        <path id="pc2" class="edge" d="M430 150 H520"/>
+        <path id="pc3" class="edge" d="M430 150 C475 150 475 250 520 250"/>
+        <g class="node"><rect x="10" y="122" width="100" height="56" rx="8"/><text class="t" x="60" y="148">git repo</text><text class="s" x="60" y="166">push</text></g>
+        <g class="node"><rect x="170" y="122" width="100" height="56" rx="8"/><text class="t" x="220" y="148">CI</text><text class="s" x="220" y="166">build · test</text></g>
+        <g class="node"><rect x="330" y="122" width="100" height="56" rx="8"/><text class="t" x="380" y="148">ArgoCD</text><text class="s" x="380" y="166">GitOps sync</text></g>
+        <g class="node cloud"><rect x="520" y="22" width="110" height="56" rx="8"/><text class="t" x="575" y="48">AWS</text><text class="s" x="575" y="66">EKS</text></g>
+        <g class="node cloud"><rect x="520" y="122" width="110" height="56" rx="8"/><text class="t" x="575" y="148">GCP</text><text class="s" x="575" y="166">GKE</text></g>
+        <g class="node cloud"><rect x="520" y="222" width="110" height="56" rx="8"/><text class="t" x="575" y="248">Vultr</text><text class="s" x="575" y="266">VKE</text></g>
+        <g aria-hidden="true">
+          <circle class="pkt" opacity="0" r="4.5"><animateMotion dur="3s" begin="0s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.2;1" calcMode="linear"><mpath href="#pa"/></animateMotion><animate attributeName="opacity" dur="3s" begin="0s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.2;.21;1"/></circle>
+          <circle class="pkt" opacity="0" r="4.5"><animateMotion dur="3s" begin=".6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.2;1" calcMode="linear"><mpath href="#pb"/></animateMotion><animate attributeName="opacity" dur="3s" begin=".6s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.2;.21;1"/></circle>
+          <circle class="pkt" opacity="0" r="4.5"><animateMotion dur="3s" begin="1.2s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.3;1" calcMode="linear"><mpath href="#pc1"/></animateMotion><animate attributeName="opacity" dur="3s" begin="1.2s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.3;.31;1"/></circle>
+          <circle class="pkt" opacity="0" r="4.5"><animateMotion dur="3s" begin="1.2s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.3;1" calcMode="linear"><mpath href="#pc2"/></animateMotion><animate attributeName="opacity" dur="3s" begin="1.2s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.3;.31;1"/></circle>
+          <circle class="pkt" opacity="0" r="4.5"><animateMotion dur="3s" begin="1.2s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.3;1" calcMode="linear"><mpath href="#pc3"/></animateMotion><animate attributeName="opacity" dur="3s" begin="1.2s" repeatCount="indefinite" values="1;1;0;0" keyTimes="0;.3;.31;1"/></circle>
+        </g>
+      </svg>
+      <figcaption>push → build → sync → three clouds</figcaption>
+    </figure>
+  </div>
+
+  <section aria-labelledby="impact-h">
+    <div class="sec-head reveal"><span class="num">01</span><h2 id="impact-h">Impact</h2></div>
+    <div class="stats reveal">
+      <div class="stat"><div class="n">60–80%</div><p>backup storage cost cut with GCS lifecycle policies</p></div>
+      <div class="stat"><div class="n">28–36%</div><p>savings shown for multi-cloud vs. AWS-only</p></div>
+      <div class="stat"><div class="n">3</div><p>clouds on one Terraform platform: AWS, GCP, Vultr</p></div>
+      <div class="stat"><div class="n">Zero</div><p>downtime migrating every live user's envelope data</p></div>
+    </div>
+  </section>
+
+  <section id="work" aria-labelledby="work-h">
+    <div class="sec-head reveal"><span class="num">02</span><h2 id="work-h">Selected work</h2></div>
+    <div class="cards">
+      <article class="card reveal">
+        <span class="co">ixo · Platform</span>
+        <h3>Multi-cloud Terraform platform</h3>
+        <p>A config-driven Terraform platform across Vultr, AWS and GCP that any team can plug their own environments into, with onboarding docs to match. Cost comparisons showed 28–36% savings vs. AWS-only.</p>
+        <ul class="tags"><li>Terraform</li><li>Kubernetes</li><li>EKS / GKE / VKE</li><li>ArgoCD</li></ul>
+        <a class="more" href="#">Read the case study →</a>
+      </article>
+      <article class="card reveal">
+        <span class="co">BMTX · Backend</span>
+        <h3>Identity verification platform</h3>
+        <p>A partner-facing KYC/IDV platform built from scratch: a gRPC public gateway plus domain engine, a Spring Batch pipeline for PGP-encrypted cohort files, and a decision layer over Socure.</p>
+        <ul class="tags"><li>gRPC</li><li>Spring Batch</li><li>Azure AKS</li><li>Service Bus</li><li>Redis</li></ul>
+        <a class="more" href="#">Read the case study →</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="exp-h">
+    <div class="sec-head reveal"><span class="num">03</span><h2 id="exp-h">Experience</h2></div>
+    <ol class="timeline">
+      <li class="reveal"><span class="when">Feb 2024 – Present</span><h3>DevOps Engineer <span>· ixo</span></h3><p>Multi-cloud Terraform platform, GitOps with ArgoCD, secrets on External Secrets Operator + Vault, Cloudflare tunnels, and ownership of uptime and incident response.</p></li>
+      <li class="reveal"><span class="when">Jun 2023 – Mar 2025</span><h3>Software Engineer <span>· BM Technologies (BMTX)</span></h3><p>Designed and built a partner-facing identity verification platform on gRPC, Spring Batch and Azure.</p></li>
+      <li class="reveal"><span class="when">Feb 2020 – Jun 2023</span><h3>Software Engineer <span>· envel</span></h3><p>Primary engineer on the Kotlin/Spring core banking API; taught myself Terraform and built the company's cloud infrastructure.</p></li>
+    </ol>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <div class="sec-head reveal"><span class="num">04</span><h2 id="skills-h">Skills</h2></div>
+    <div class="skills reveal">
+      <div><h3>Infra &amp; cloud</h3><ul class="tags"><li>Terraform</li><li>Kubernetes (EKS/GKE/VKE)</li><li>AWS</li><li>GCP</li><li>Vultr</li><li>ArgoCD / GitOps</li></ul></div>
+      <div><h3>Platform &amp; security</h3><ul class="tags"><li>External Secrets Operator</li><li>HashiCorp Vault</li><li>Dex / OIDC</li><li>Cloudflare Tunnels</li></ul></div>
+      <div><h3>Reliability</h3><ul class="tags"><li>Grafana</li><li>Uptime Kuma</li><li>Incident response</li><li>CI/CD</li></ul></div>
+      <div><h3>Backend</h3><ul class="tags"><li>Java</li><li>Kotlin</li><li>Spring Framework</li><li>PostgreSQL</li><li>MongoDB</li><li>gRPC / REST</li><li>RabbitMQ</li><li>.NET Core (familiar)</li></ul></div>
+      <div><h3>Web3</h3><ul class="tags"><li>Hyperlane validator nodes</li><li>RPC / IPFS infra</li></ul></div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap reveal">
+    <h2>Let's talk</h2>
+    <p>Email is the quickest way to reach me.</p>
+    <ul class="contact">
+      <li><span>Email</span><a href="mailto:lukepetzerint2@gmail.com">lukepetzerint2@gmail.com</a></li>
+      <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/lukepetzer-3a81a316b">in/lukepetzer-3a81a316b</a></li>
+      <li><span>GitHub</span><span class="todo">TODO(Luke): username</span></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll (CSS only hides elements when motion is allowed).
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Pause the SVG packets when the user prefers reduced motion.
+  const mq = matchMedia('(prefers-reduced-motion: reduce)');
+  const applyMotion = () => document.querySelectorAll('svg.flow').forEach(s => {
+    if (mq.matches) { s.pauseAnimations(); s.setCurrentTime(0); s.classList.add('still'); }
+    else { s.unpauseAnimations(); s.classList.remove('still'); }
+  });
+  applyMotion(); mq.addEventListener('change', applyMotion);
+</script>
+</body>
+</html>

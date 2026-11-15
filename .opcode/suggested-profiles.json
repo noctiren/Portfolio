@@ -1,0 +1,38 @@
+{
+  "profiles": [
+    {
+      "id": "general",
+      "name": "General",
+      "maxModel": "opus",
+      "maxEffort": "medium",
+      "ultracode": false,
+      "goAheadGrant": false,
+      "rules": "Area: whole folder C:/Users/lukep/Documents/Portfolio/** (INFERRED: folder was empty on 2026-11-15). Start docs: MANAGER.md; read CLAUDE.md / README* first if they now exist.",
+      "shareGroup": "",
+      "tiers": {
+        "mechanical": "haiku/medium",
+        "routine": "opus/medium",
+        "build": "opus/high",
+        "design": "opus/high",
+        "audit": "opus/xhigh"
+      },
+      "stop5hPct": null,
+      "stopWeekPct": null,
+      "maxWorkers": null
+    }
+  ],
+  "folder": {
+    "auditCommand": "",
+    "buildLockFile": "",
+    "gameLaunchPatterns": [],
+    "sharedDocs": [],
+    "sharedDocsManagerOnly": false,
+    "denyEdit": [],
+    "denyRead": []
+  },
+  "notes": [
+    "The Portfolio folder was empty on 2026-11-15, so no rules came from project files.",
+    "The single 'general' profile, its opus/medium cap and its tiers are template defaults (INFERRED). Adjust them to suit.",
+    "Re-run opcode's setup prompt after adding CLAUDE.md / README so real areas and rules can be extracted."
+  ]
+}
