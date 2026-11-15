@@ -11,7 +11,8 @@
   Worker W-style mockups (session 0342fc7d) is idle; its Python server on :8765 runs up to 2h, then stops.
   To view mockups after that: `cd mockups && python -m http.server 8765 --bind 127.0.0.1`.
 - DONE: Luke picked Shadow & Light (D-004); other mockups scrapped (git e73b9b5 has them). Multi-page + sticky name + manager improvements decided (D-005 to D-007).
-- RUNNING: worker W-M1 Astro scaffold (session 02a3c5fb), brief in `docs/briefs/W-M1-astro-scaffold.md`. Mockup server on :8765 being shut down (look chosen).
+- DONE: M1 (commit 65a2fa4), reviewed by the manager (screenshots in docs/screens/m1). M1 dev server stopped (Luke approved).
+- M2 committed (22fb6c2), manager review found: /experience title breaks mid-word on phones, mixed voice, long experience page. Fixes sent to W-M2 (screens -> docs/screens/m2-fix). Open questions collected in docs/QUESTIONS-FOR-LUKE.md.
 - Next (frontend manager): once the style is picked, record the pick in DESIGN-BRIEF + DECISIONS D-004, then start worker 1 "Scaffold Astro site + design tokens + base
   layout" in `site/` (port the chosen mockup's tokens/effects; self-hosted condensed font to replace Bahnschrift). Then the hero and sections, then case-study pages, then a polish/a11y/Lighthouse pass.
 - Milestones: M1 scaffold + tokens · M2 single page with all sections · M3 case-study pages · M4 polish
