@@ -33,4 +33,4 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 - [CHK-7] Permissions-Policy warnings come from add-on on this PC, not the site | owner: W-M4 | links: docs/screens/m4/NOTES.md | note: 2026-11-15
 - [CHK-2a] Firefox matches Edge (heights within 2px, console clean); Safari still open as CHK-2 | owner: W-M4 | links: docs/screens/m4/xbrowser/ | note: 2026-11-15
 - [M4] Polish + audits: OG cards, favicon, a11y/contrast/weight/print/Firefox, CHK-4 Lighthouse still blocked | owner: W-M4 | links: docs/screens/m4/NOTES.md | note: 2026-11-15
-- [CHK-4] Lighthouse: mobile perf 97-99, desktop 100, a11y 100, SEO 100, best practices 81 (only local browser add-ons http requests); no code change kept | owner: W-M4 | links: docs/screens/m4/lighthouse/README.md | note: 2026-11-15
+- [CHK-4] Lighthouse: mobile perf 97-99, desktop 100, a11y 100, SEO 100, best practices 81 (only is-on-https: the 3 flagged URLs are local browser add-ons http injections, not 127.0.0.1; passes on HTTPS hosting); no code change kept | owner: W-M4 | links: docs/screens/m4/lighthouse/README.md | note: 2026-11-15

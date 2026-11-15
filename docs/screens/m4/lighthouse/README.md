@@ -16,9 +16,10 @@ Run: `node tools/serve.mjs 4322` then `BASE=http://127.0.0.1:4322 node tools/lh.
 Mobile: FCP 1.5 s, LCP 2.0 to 2.6 s, TBT 0 ms, CLS 0, Speed Index 1.5 s.
 
 ## What the remaining flags are
-- **Best practices 81:** the only failing audit is `is-on-https`. It is caused by the 3 http:// requests that add-on and
-  add-on inject on this PC (blocked, but still counted). The site itself makes none. On a real https host
-  this should be 100.
+- **Best practices 81:** the only failing audit is `is-on-https`. In every `site-*` report it lists the same 3 URLs:
+  `addon-2.local` and `addon-1.local` (x2), the http:// requests local browser add-ons inject
+  on this PC (blocked, but still counted). None of the site's own requests are listed: Lighthouse treats
+  127.0.0.1 as secure. On HTTPS hosting (Cloudflare Pages) without those injections this audit passes.
 - **Mobile LCP 2.6 s on home and /experience** (just over the 2.5 s "good" line). This is Lighthouse's simulated slow
   4G (the measured LCP in the same run was 1.4 s on this PC). The wait is the 90 KB Archivo font plus the fade-in. The real fix
   is a smaller Archivo file (only the one width and weight used, about 25 KB), which needs `fonttools`: Luke's call.
