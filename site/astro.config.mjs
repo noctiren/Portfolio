@@ -6,6 +6,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://lukepetzer.pages.dev',
   trailingSlash: 'ignore',
+  // Pages serves built.html at /built with no redirect; folder output (built/index.html) cost every click a 308 to /built/.
+  build: { format: 'file' },
   devToolbar: { enabled: false },
   integrations: [sitemap({ filter: (page) => !page.includes('/404') })],
 });

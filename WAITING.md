@@ -9,5 +9,3 @@ All of Q-1 to Q-16 were answered 2026-11-15 (docs/content/answers.md).
 ## Cards
 - (none)
 
-## Hosting (M5)
-- [M5-SETUP] Create the Cloudflare API token, HCP Terraform org + workspace "portfolio" (Local execution) + token, and add the GitHub secrets/variable, then re-run the workflow | owner: Luke | links: README.md "Hosting", D-003 | note: Luke said "ready to host" 2026-11-15

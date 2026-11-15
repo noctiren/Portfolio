@@ -17,7 +17,6 @@ See `docs/open-checks.md`.
 See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 
 ## Backlog
-- [CHK-8] Re-run Lighthouse after M6, against the live HTTPS site | owner: frontend manager | links: site/tools/lh.mjs, docs/screens/m4/lighthouse | note: after the first green deploy
 
 ## Done
 - [M0] Project docs, rules, decisions | owner: frontend manager | links: CLAUDE.md, MANAGER.md, docs/ | note: 2026-11-15
@@ -46,3 +45,5 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 - [GH-2] Personal docs (cv/answers/ai/questions) made local-only and removed from history; force-pushed once, 40 signed commits | owner: frontend manager | links: D-010 follow-up | note: 2026-11-15
 - [Q-21] Half-time line (ixo while at BMTX) stays on the site | owner: Luke | links: site/src/data/cv.ts | note: 2026-11-15
 - [CR-1] Code review: 8 of 9 findings fixed (light.ts batching, palette same-page focus, no-JS wordmark, menu closes on focus-out, shared impact numbers, clock on the minute, GitHub link from data); #9 build-path robustness skipped (scripts always run from site/) | owner: W-CR | links: c125046, docs/screens/cr/ | note: manager-checked 2026-11-15
+- [M5] Hosting live at https://lukepetzer.pages.dev: Terraform (Cloudflare Pages, HCP state) + GitHub Actions deploy on every push to main; security headers; pages built as files so links don't redirect | owner: frontend manager + Luke (accounts) | links: 6ff3b7e, D-003, infra/, .github/workflows/site.yml | note: live 2026-11-15
+- [CHK-8] Lighthouse on the live HTTPS site: perf 95-100, a11y 100, best practices 100, SEO 100 (BP 81 is gone: it was only the add-ons) | owner: frontend manager | links: docs/screens/m5/lighthouse/live-summary.txt | note: 2026-11-15, before the redirect fix

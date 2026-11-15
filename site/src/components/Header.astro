@@ -3,7 +3,8 @@
 // src/scripts/shell.ts after each navigation, because a persisted element is not re-rendered.
 import { nav, person } from '../data/site';
 import { build, weight, lighthouse } from '../data/build';
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+import { cleanPath } from '../data/path';
+const path = cleanPath(Astro.url.pathname);
 const isActive = (href: string) => path === href || path.startsWith(href + '/');
 ---
 <header class="site-header" transition:persist="header" data-header>

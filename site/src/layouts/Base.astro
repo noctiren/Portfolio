@@ -12,6 +12,7 @@ import { existsSync } from 'node:fs';
 import archivoUrl from '@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url';
 import interUrl from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import { person } from '../data/site';
+import { cleanPath } from '../data/path';
 
 interface Props {
   title: string;
@@ -21,10 +22,11 @@ interface Props {
   noindex?: boolean;
 }
 const { title, description, heroName = false, noindex = false } = Astro.props;
-const fullTitle = Astro.url.pathname === '/' ? `${person.name} · ${person.role}` : `${title} · ${person.name}`;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const path = cleanPath(Astro.url.pathname);
+const fullTitle = path === '/' ? `${person.name} · ${person.role}` : `${title} · ${person.name}`;
+const canonical = new URL(path, Astro.site);
 // Link-preview card per page (made by tools/og/make-og.mjs); pages without one use the home card.
-const ogKey = Astro.url.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'home';
+const ogKey = path.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'home';
 const ogFile = existsSync(`public/og/${ogKey}.png`) ? ogKey : 'home';
 const ogImage = new URL(`/og/${ogFile}.png`, Astro.site);
 ---

@@ -1,0 +1,10 @@
+Lighthouse live, 2026-11-15 16:05, headless Edge, https://lukepetzer.pages.dev, local browser add-ons injections blocked
+page        preset    perf  a11y  best  seo   failing audits
+home        mobile     95   100   100   100  largest-contentful-paint (2.8 s); label-content-name-mismatch; document-latency-insight (Est savings of 22 KiB); network-dependency-tree-insight; render-blocking-insight (Est savings of 10 ms)
+home        desktop   100   100   100   100  label-content-name-mismatch; document-latency-insight (Est savings of 22 KiB); network-dependency-tree-insight; render-blocking-insight
+work        mobile     99   100   100   100  redirects (Est savings of 760 ms); document-latency-insight (Est savings of 15 KiB); network-dependency-tree-insight; render-blocking-insight
+work        desktop   100   100   100   100  redirects (Est savings of 230 ms); document-latency-insight (Est savings of 15 KiB); network-dependency-tree-insight; render-blocking-insight
+case        mobile     95   100   100   100  largest-contentful-paint (2.7 s); redirects (Est savings of 780 ms); document-latency-insight (Est savings of 15 KiB); network-dependency-tree-insight; render-blocking-insight
+case        desktop   100   100   100   100  redirects (Est savings of 230 ms); document-latency-insight (Est savings of 15 KiB); network-dependency-tree-insight; render-blocking-insight
+experience  mobile     95   100   100   100  largest-contentful-paint (2.7 s); redirects (Est savings of 790 ms); document-latency-insight (Est savings of 17 KiB); network-dependency-tree-insight; render-blocking-insight
+experience  desktop   100   100   100   100  redirects (Est savings of 230 ms); document-latency-insight (Est savings of 17 KiB); network-dependency-tree-insight; render-blocking-insight

@@ -40,3 +40,8 @@
 - Waiting on Luke: M5-SETUP (Cloudflare token, HCP org/workspace/token, GitHub secrets + variable). The first push
   will fail at the infra step until those exist; re-run the workflow after.
 - Next (manager): after the first green deploy, check the live site, then CHK-8 Lighthouse against HTTPS.
+- LIVE 2026-11-15: Luke set up the accounts; the workflow is green and https://lukepetzer.pages.dev serves every page,
+  the 404 and the security headers. Lighthouse on HTTPS (CHK-8): BP now 100. Fix found: internal links like /built got a
+  308 to /built/ on every click, so the pages are now built as files (`build.format: 'file'`, `src/data/path.ts` keeps
+  canonical/OG/nav paths clean).
+- Open: CHK-1 phone, CHK-2 Safari, CHK-3 screen reader (Luke); optional Q-17.
