@@ -4,9 +4,9 @@ Things not yet verified, plus work in progress. Synced by opcode. Line format:
 `- [ID] Title | owner: <who> | links: <...> | note: <...>`. Remove a line when it's closed and log it under Done in docs/BOARD.md.
 
 ## In progress
-- [M6] Alive touches + /recruiter page | owner: W-M6 | links: docs/briefs/W-M6-alive-recruiter.md, D-009 | note: started 2026-11-15
 
 ## Open checks
+- [T-2] Luke tests M6 in his browser (alive touches + /recruiter) | owner: Luke | links: ready_to_test card, docs/screens/m6/ | note: dev server running on :4321
 - [CHK-1] Real phone / touch device test (spotlight follows taps, menu, tilt off) | owner: Luke | links: - | note: only emulated so far
 - [CHK-2] Safari check | owner: frontend manager | links: docs/screens/m4/NOTES.md | note: Firefox done in M4 (matches Edge); Safari needs a Mac/iPhone
 - [CHK-3] Screen reader pass (Windows Narrator: Win+Ctrl+Enter) | owner: Luke | links: - | note: automated a11y checks all pass; needs a human
