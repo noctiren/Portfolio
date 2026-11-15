@@ -23,3 +23,4 @@
 - HR-PRIVACY: `site/public/Luke_Petzer_CV.pdf` is Luke's full CV and includes his phone number. Luke must supply a
   phone-free version (or explicitly OK the phone in the downloadable CV) before anything is hosted.
 - M4 committed (e0add82), manager-checked: OG cards + favicon, contrast min 5.95:1 (CHK-5 closed), Firefox = Edge, a11y pass clean, home JS+CSS 53.7 KB. Lighthouse (CHK-4) blocked by a Claude Code permission; Luke card c17947440848111908f35d.
+- M4 CLOSED (468ed96). Lighthouse: perf 97-100, a11y 100, SEO 100, BP 81 (only from security software injecting http scripts on this PC). Next: M3 needs Luke's answers (WAITING.md); M5 hosting needs B-1/B-2 + "ready to host". Nothing running.
