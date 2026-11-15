@@ -18,6 +18,7 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 
 ## Backlog
 - [M3 → in progress, see docs/open-checks.md] Case studies v2 + AI rewrite + opcode write-up + Open source section, from docs/content/answers.md
+- [M6] Alive touches + /recruiter page (status pill, interactive pipeline, light reacts, light sweep, Cape Town time, numbers decode, build footer, "Search" label) | owner: frontend manager | links: D-009, DESIGN-BRIEF section 7, docs/briefs/W-M6-alive-recruiter.md | note: starts after M3; recruiter facts need Q-18
 - [M5] Hosting: Cloudflare Pages via Terraform + GitHub Actions (D-003) | owner: Luke decides | links: docs/DECISIONS.md | note: only after "ready to host"; B-1 and B-2 first
 
 ## Done

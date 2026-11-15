@@ -34,3 +34,7 @@ Format: ID: decision. Why. Status (PROPOSED = waiting for Luke, DECIDED = settle
   rings and reduced-motion support everywhere; (9) per-page SEO/Open Graph data and a sitemap. DECIDED (AA-DECIDE).
 - D-008: **Lighthouse approved as a dev-only package** (`lighthouse` as a devDependency in site/, run locally against
   the local site with the installed Edge). Never shipped. DECIDED (Luke, inbox card c17947423323043d06173e, 2026-11-15).
+- D-009: **M6 "alive" touches + /recruiter page** (Luke 2026-11-15, picked from the manager's options). Spec:
+  `docs/DESIGN-BRIEF.md` section 7. New route `/recruiter` added to D-005. The build hash, date and site stats are
+  read at build time (git + docs/screens/m4); no new packages. Everything switches off under reduced motion.
+  M6 starts once M3 is done, because both touch the same pages. DECIDED (Luke).

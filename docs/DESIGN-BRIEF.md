@@ -67,3 +67,26 @@ Alternatives: none at all (static), or bolder (smooth page transitions, parallax
 2. Motion level, and keep the hero infra diagram?
 3. Which extras?
 4. GitHub username? Photo yes/no? Is .NET Core worth listing?
+
+## 7. M6: "alive" touches + recruiter view (Luke picked these on 2026-11-15)
+Every item here switches off under `prefers-reduced-motion` and under `?reduced=1`.
+- **Live status pill** in the header: "All systems operational" with a breathing green dot. Clicking it opens a
+  small panel with REAL site stats only: build time, commit hash, page weight and Lighthouse scores
+  (from docs/screens/m4). No made-up uptime figures.
+- **Interactive pipeline** on the home page: hovering a diagram node lights up its path. Clicking a cloud node
+  (AWS/GCP/Vultr) opens /work/multi-cloud-terraform, and clicking ArgoCD opens /work/gitops-secrets.
+- **Light reacts to buttons:** the spotlight is pulled toward, and brightens over, whatever button or card is hovered.
+- **Light-sweep page change:** a thin beam of light sweeps across the screen during View Transitions.
+- **Cape Town time ambience:** the light colour shifts gently with the time in Cape Town (deep blue at night,
+  slightly brighter by day). The footer shows a small clock, "Cape Town 21:40".
+- **Numbers decode in:** the impact numbers scramble, then lock into place, when they scroll into view.
+  Screen readers always get the final value.
+- **Build info footer:** `build <short hash> · <date>`, taken from the real git commit at build time.
+- **Ctrl+K button label is just "Search"** (Luke). The shortcut itself still works.
+- **Not picked:** the hidden ops-mode easter egg.
+- **Recruiter view = a separate /recruiter page.** A "For recruiters" pill in the header and a button in the hero
+  link to it. It is one calm page you can scan quickly:
+  - a 2-line intro, the roles Luke is open to, key numbers and top skills;
+  - 3 highlight projects, a compact timeline and contact buttons;
+  - minimal motion, and it prints cleanly as a 1-page profile.
+  Facts about roles, location and availability come from Luke (WAITING Q-18).
