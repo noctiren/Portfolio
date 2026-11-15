@@ -18,7 +18,11 @@ Format: ID: decision. Why. Status (PROPOSED = waiting for Luke, DECIDED = settle
   live feature (e.g. a status page or blog API).
 - D-003: **Hosting (later): Cloudflare Pages, provisioned with Terraform, deployed by GitHub Actions.**
   Why: free, fast, and the setup itself shows Luke's DevOps skills (can be linked from the site as "how this site
-  is built"). PROPOSED (Luke decides at "ready to host", HR-LOCAL).
+  is built"). DECIDED (Luke, 2026-11-15, M5): address `lukepetzer.pages.dev` (free subdomain), Terraform with
+  state in HCP Terraform (free tier), everything run by GitHub Actions so nothing is installed on Luke's PC.
+  Files: `infra/main.tf` (one `cloudflare_pages_project`, Direct Upload), `.github/workflows/site.yml`
+  (check + build, terraform plan/apply, `wrangler pages deploy` via cloudflare/wrangler-action; PRs only plan).
+  `site/public/_headers` sets basic security headers and long caching for `/_astro/*`.
 - D-004: **Look: "Shadow & Light"** (mockup `mockups/round2/r2-a-shadowlight.html` is the visual reference).
   The other mockups were scrapped (recoverable in git commit e73b9b5). DECIDED (Luke, 2026-11-15).
 - D-005: **Multi-page site** (Luke 2026-11-15: "each page tab should be its own unique page"). Routes: `/` home,

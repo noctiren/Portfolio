@@ -17,8 +17,7 @@ See `docs/open-checks.md`.
 See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 
 ## Backlog
-- [CHK-8] Re-run Lighthouse after M6 (new JS: status pill, light, decode) | owner: frontend manager | links: site/tools, docs/screens/m4/lighthouse | note: optional, before M5
-- [M5] Hosting: Cloudflare Pages via Terraform + GitHub Actions (D-003) | owner: Luke decides | links: docs/DECISIONS.md | note: only after "ready to host"; B-1 and B-2 first
+- [CHK-8] Re-run Lighthouse after M6, against the live HTTPS site | owner: frontend manager | links: site/tools/lh.mjs, docs/screens/m4/lighthouse | note: after the first green deploy
 
 ## Done
 - [M0] Project docs, rules, decisions | owner: frontend manager | links: CLAUDE.md, MANAGER.md, docs/ | note: 2026-11-15

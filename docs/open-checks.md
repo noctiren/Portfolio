@@ -4,6 +4,7 @@ Things not yet verified, plus work in progress. Synced by opcode. Line format:
 `- [ID] Title | owner: <who> | links: <...> | note: <...>`. Remove a line when it's closed and log it under Done in docs/BOARD.md.
 
 ## In progress
+- [M5] Hosting: infra/ + .github/workflows/site.yml pushed; first deploy waits on M5-SETUP (WAITING.md) | owner: frontend manager | links: D-003, docs/screens/m5/ | note: 2026-11-15
 
 ## Open checks
 - [CHK-1] Real phone / touch device test (spotlight follows taps, menu, tilt off) | owner: Luke | links: - | note: only emulated so far

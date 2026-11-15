@@ -17,10 +17,12 @@ stay readable, fast and good on phones. It must not look like a generic dev-port
   recommendation.
 
 ## Hard rules
-- HR-LOCAL: Local only. **No deploying, publishing, pushing to a remote, or creating hosting/DNS/cloud
-  resources** until Luke says "ready to host".
+- HR-LOCAL: Luke said "ready to host" on 2026-11-15 (M5). The site is hosted at https://lukepetzer.pages.dev
+  (Cloudflare Pages, D-003). Hosting changes go **only** through `infra/` (Terraform) and
+  `.github/workflows/site.yml`: a push to main deploys. Never create cloud/DNS resources by hand, and new paid
+  resources, custom domains or extra cloud accounts still need Luke's OK first.
   Exception (Luke, 2026-11-15): the code may be pushed to the public repo `git@github.com:noctiren/Portfolio.git`
-  (SSH, signed commits). Deploying/hosting is still not allowed. Never commit `.private/` or the CV PDF; never write
+  (SSH, signed commits). Since a push to main deploys the live site, only push a build that passed locally. Never commit `.private/` or the CV PDF; never write
   the gaming handle listed in `.private/forbidden-words.txt` anywhere tracked (the repo is public).
   Local-only (git-ignored, never committed): `docs/content/cv.md`, `docs/content/answers.md`, `docs/content/ai.md`,
   `docs/QUESTIONS-FOR-LUKE.md`. They are still the HR-FACTS sources; read them locally, but never copy raw personal

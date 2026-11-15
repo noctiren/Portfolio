@@ -32,3 +32,11 @@
 - Waiting on Luke: T-2 test, CHK-1 phone, CHK-3 screen reader, optional Q-17, M5 "ready to host".
 - 2026-11-15: History scrubbed and signed for the public repo noctiren/Portfolio (D-010).
 - 2026-11-15: Luke tested M6 OK (T-2). M6 is closed. Open: CHK-1/2/3, CHK-8 Lighthouse re-run, M5 when Luke says "ready to host".
+
+## 2026-11-15 (evening): M5 hosting
+- Luke: "ready to host". Picks: lukepetzer.pages.dev, Terraform + HCP state, existing Cloudflare account (D-003 DECIDED).
+- Written: `infra/main.tf`, `.github/workflows/site.yml`, `site/public/_headers`; site URL set in astro.config + robots.txt;
+  /built now says "Live" (screens in docs/screens/m5/). Local build + astro check clean.
+- Waiting on Luke: M5-SETUP (Cloudflare token, HCP org/workspace/token, GitHub secrets + variable). The first push
+  will fail at the infra step until those exist; re-run the workflow after.
+- Next (manager): after the first green deploy, check the live site, then CHK-8 Lighthouse against HTTPS.

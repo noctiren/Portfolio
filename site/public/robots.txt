@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# M5: the <name>.pages.dev URL at "ready to host" (Q16)
-Sitemap: https://lukepetzer.example/sitemap-index.xml
+
+Sitemap: https://lukepetzer.pages.dev/sitemap-index.xml

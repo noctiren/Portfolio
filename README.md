@@ -7,7 +7,7 @@ The look is called **"Shadow & Light"**: a dark page where a blue spotlight foll
 infrastructure grid. It has huge condensed titles and long shadows, and the motion is noticeable but stops
 completely for visitors who ask for reduced motion.
 
-> Status: built and tested locally. Not hosted yet.
+> Live at **https://lukepetzer.pages.dev**: Cloudflare Pages, defined in Terraform and deployed by GitHub Actions.
 
 ## Stack
 
@@ -32,6 +32,20 @@ npm run build    # astro check + static build into site/dist
 ```
 
 Add `?reduced=1` to any URL to force reduced motion.
+
+## Hosting
+
+Every push to `main` runs [`.github/workflows/site.yml`](.github/workflows/site.yml):
+
+1. **build**: `npm ci`, then `astro check` and the static build.
+2. **infra**: Terraform (`infra/`) creates or updates the Cloudflare Pages project. Its state lives in HCP
+   Terraform, so nothing runs on a laptop.
+3. **deploy**: `wrangler pages deploy` uploads `site/dist`.
+
+Pull requests only build and run `terraform plan`. The workflow needs these repository secrets:
+`CLOUDFLARE_API_TOKEN` (Account → Cloudflare Pages: Edit), `CLOUDFLARE_ACCOUNT_ID` and `TF_API_TOKEN` (HCP
+Terraform). It also needs the repository variable `TF_CLOUD_ORGANIZATION`, and an HCP workspace named `portfolio`
+with execution mode *Local*.
 
 ## Quality bar
 

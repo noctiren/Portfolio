@@ -13,3 +13,9 @@ docs/content/cv.md
 docs/content/answers.md
 docs/content/ai.md
 docs/QUESTIONS-FOR-LUKE.md
+
+# Terraform
+infra/.terraform/
+infra/*.tfstate*
+infra/tfplan
+infra/.terraform.lock.hcl.bak
