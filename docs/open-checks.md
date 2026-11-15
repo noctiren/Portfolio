@@ -4,6 +4,7 @@ Things not yet verified, plus work in progress. Synced by opcode. Line format:
 `- [ID] Title | owner: <who> | links: <...> | note: <...>`. Remove a line when it's closed and log it under Done in docs/BOARD.md.
 
 ## In progress
+- [CR-1] Code review + fixes of the site (fresh worker, minimal context) | owner: W-CR | links: docs/screens/cr/ | note: started 2026-11-15
 
 ## Open checks
 - [CHK-1] Real phone / touch device test (spotlight follows taps, menu, tilt off) | owner: Luke | links: - | note: only emulated so far

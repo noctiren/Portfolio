@@ -45,3 +45,4 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 - [Q-20] Luke: link both GitHub accounts | owner: Luke | links: answers.md Q20 | note: 2026-11-15
 - [GH-1] Public repo noctiren/Portfolio: history scrubbed (author, CV PDF, handle), 38 SSH-signed commits pushed to main | owner: frontend manager | links: D-010, git@github.com:noctiren/Portfolio.git | note: 2026-11-15; Luke added the auth + signing keys
 - [GH-2] Personal docs (cv/answers/ai/questions) made local-only and removed from history; force-pushed once, 40 signed commits | owner: frontend manager | links: D-010 follow-up | note: 2026-11-15
+- [Q-21] Half-time line (ixo while at BMTX) stays on the site | owner: Luke | links: site/src/data/cv.ts | note: 2026-11-15
