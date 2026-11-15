@@ -17,8 +17,6 @@ See `docs/open-checks.md`.
 See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 
 ## Backlog
-- [M3 → in progress, see docs/open-checks.md] Case studies v2 + AI rewrite + opcode write-up + Open source section, from docs/content/answers.md
-- [M6] Alive touches + /recruiter page (status pill, interactive pipeline, light reacts, light sweep, Cape Town time, numbers decode, build footer, "Search" label) | owner: frontend manager | links: D-009, DESIGN-BRIEF section 7, docs/briefs/W-M6-alive-recruiter.md | note: starts after M3; recruiter facts answered (Q-18)
 - [M5] Hosting: Cloudflare Pages via Terraform + GitHub Actions (D-003) | owner: Luke decides | links: docs/DECISIONS.md | note: only after "ready to host"; B-1 and B-2 first
 
 ## Done
@@ -38,3 +36,4 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 - [B-1] Resolved: no CV download (Q-15) | owner: Luke | links: answers.md | note: -
 - [B-2] Resolved: free *.pages.dev subdomain (Q-16) | owner: Luke | links: answers.md | note: name picked at M5
 - [Q-18] Recruiter facts: roles (suggested list OK), prefers remote / no relocation, no availability shown | owner: Luke | links: docs/content/answers.md Q18 | note: 2026-11-15
+- [M3] Content v2: case studies from answers, /work/opcode (credits upstream winfunc/opcode, AGPL-3.0), /ai rewrite, GitHub + Open source block, CV download + photo removed | owner: W-M2 | links: e80b983, docs/screens/m3/ | note: manager-checked 2026-11-15; wording sign-off = WAITING Q-19

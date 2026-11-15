@@ -4,7 +4,7 @@ Things not yet verified, plus work in progress. Synced by opcode. Line format:
 `- [ID] Title | owner: <who> | links: <...> | note: <...>`. Remove a line when it's closed and log it under Done in docs/BOARD.md.
 
 ## In progress
-- [M3] Content v2 from Luke's answers: case studies, AI page rewrite, opcode write-up, Open source section, GitHub link, remove CV download + photo slot | owner: W-M2 content pages | links: docs/content/answers.md | note: started 2026-11-15
+- [M6] Alive touches + /recruiter page | owner: W-M6 | links: docs/briefs/W-M6-alive-recruiter.md, D-009 | note: started 2026-11-15
 
 ## Open checks
 - [CHK-1] Real phone / touch device test (spotlight follows taps, menu, tilt off) | owner: Luke | links: - | note: only emulated so far
