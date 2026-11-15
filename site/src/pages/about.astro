@@ -1,14 +1,89 @@
 ---
+// Facts from docs/content/cv.md (summary + envel note). Gaming stays generic: no handle (HR-PRIVACY / brief).
 import Base from '../layouts/Base.astro';
 import PageTitle from '../components/PageTitle.astro';
-import Stub from '../components/Stub.astro';
+import { person } from '../data/site';
+
+const ways = [
+  {
+    t: 'Root cause over duct tape',
+    p: "I'd rather fix the root cause than duct-tape it.",
+  },
+  {
+    t: 'A developer building infrastructure',
+    p: "My background is backend engineering (Java/Kotlin, Spring, PostgreSQL/MongoDB, gRPC/REST), so I still think like a developer when I'm building infrastructure.",
+  },
+  {
+    t: 'New stacks, fast',
+    p: "I pick up new stacks fast and don't get precious about tools. At envel I taught myself Terraform and infra work from scratch and built out the company's entire cloud infrastructure.",
+  },
+];
 ---
 <Base title="About" description="About Luke Petzer: a DevOps / Platform Engineer in Cape Town who still thinks like a backend developer.">
-  <PageTitle title="About" kicker="Cape Town, South Africa" />
-  <Stub note="The full bio arrives in M2. Photo: TODO(Luke).">
-    <p class="quote">“I'd rather fix the root cause than duct-tape it.”</p>
-  </Stub>
+  <PageTitle title="About" outline="the engineer" kicker={person.location} />
+
+  <div class="wrap top">
+    <div class="photo rv" role="img" aria-label="Photo placeholder">
+      <span class="todo">TODO(Luke): photo?</span>
+    </div>
+    <div class="bio prose rv">
+      <p class="lead">I'm a DevOps / platform engineer at <strong>ixo</strong>: running Kubernetes clusters, wiring up Terraform, and keeping ArgoCD deployments and CI/CD pipelines honest.</p>
+      <p>I came to infrastructure from backend engineering. I started with a Spring learnership at Younglings, interned on an enterprise Java codebase at Absa, then spent over three years as a software engineer at envel, where I also taught myself Terraform as costs ramped up. After that I built an identity verification platform at BMTX, and I'm now ixo's platform engineer.</p>
+      <p>I live and work in <strong>Cape Town, South Africa</strong>.</p>
+    </div>
+  </div>
+
+  <section aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="sh"><span class="idx" aria-hidden="true">01</span><h2 id="how-h" class="display wipe cast shadow-text">How I work</h2></div>
+      <ul class="ways">
+        {ways.map((w, i) => (
+          <li class="way rv">
+            <span class="n display" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="display">{w.t}</h3>
+            <p>{w.p}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="last" aria-labelledby="off-h">
+    <div class="wrap">
+      <div class="sh"><span class="idx" aria-hidden="true">02</span><h2 id="off-h" class="display wipe cast shadow-text">Off the clock</h2></div>
+      <p class="quote rv">Outside of work I'm usually gaming, which trained the same patience needed for chasing down a flaky pipeline at 2am.</p>
+      <div class="btns rv">
+        <a class="btn primary mag" href="/experience">Full experience</a>
+        <a class="btn mag" href="/contact">Get in touch</a>
+      </div>
+    </div>
+  </section>
 </Base>
+
 <style>
-  .quote { font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; color: var(--text); }
+  .top { display: grid; grid-template-columns: 320px 1fr; gap: 64px; align-items: start; padding-top: var(--s-3); }
+  .photo {
+    aspect-ratio: 4 / 5; display: grid; place-items: center;
+    border: 1px dashed var(--line-strong);
+    background:
+      radial-gradient(circle at 70% 25%, rgba(76, 155, 255, 0.18), transparent 60%),
+      linear-gradient(160deg, rgba(14, 28, 54, 0.9), rgba(4, 6, 10, 0.9));
+  }
+  .lead { font-size: clamp(20px, 2vw, 25px); line-height: 1.45; margin-top: 0; }
+  .lead, .lead strong { color: var(--text); }
+
+  .ways { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .way { border-top: 1px solid var(--line-strong); padding-top: 22px; }
+  .way .n { font-size: 64px; line-height: 0.8; color: transparent; -webkit-text-stroke: 1.5px var(--blue); }
+  .way h3 { font-size: clamp(26px, 2.4vw, 34px); margin: 18px 0 12px; line-height: 0.95; }
+  .way p { color: var(--muted); margin: 0; }
+
+  .quote { font-size: clamp(22px, 2.6vw, 32px); line-height: 1.35; max-width: 28em; margin: 0 0 40px; color: var(--text); }
+  .last { padding-bottom: var(--s-6); }
+
+  @media (max-width: 900px) {
+    .top { grid-template-columns: 1fr; gap: 32px; }
+    .photo { max-width: 260px; }
+    .ways { grid-template-columns: 1fr; gap: 32px; }
+  }
 </style>

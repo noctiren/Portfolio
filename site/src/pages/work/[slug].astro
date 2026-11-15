@@ -1,23 +1,83 @@
 ---
+import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PageTitle from '../../components/PageTitle.astro';
-import Stub from '../../components/Stub.astro';
-import { caseStudies, type CaseStudy } from '../../data/site';
+import { getWork, type Study } from '../../data/work';
 
-export function getStaticPaths() {
-  return caseStudies.map((c) => ({ params: { slug: c.slug }, props: { study: c } }));
+export async function getStaticPaths() {
+  const work = await getWork();
+  return work.map((study, i) => ({
+    params: { slug: study.id },
+    props: {
+      study,
+      prev: work[(i - 1 + work.length) % work.length],
+      next: work[(i + 1) % work.length],
+    },
+  }));
 }
-interface Props { study: CaseStudy }
-const { study } = Astro.props;
+interface Props { study: Study; prev: Study; next: Study }
+const { study, prev, next } = Astro.props;
+const { Content } = await render(study);
+const d = study.data;
 ---
-<Base title={study.title} description={study.summary}>
-  <PageTitle title={study.title} kicker={study.company} long />
-  <Stub note="Problem, approach, result and stack arrive in M3.">
-    <p class="sum">{study.summary}</p>
-    <ul class="tags">{study.tags.map((t) => <li>{t}</li>)}</ul>
-    <p><a href="/work">← All work</a></p>
-  </Stub>
+<Base title={d.title} description={d.summary}>
+  <PageTitle title={d.title} kicker={`Case study · ${d.company}`} long>
+    <p class="sum">{d.summary}</p>
+  </PageTitle>
+
+  <div class="wrap layout">
+    <aside class="meta rv" aria-label="At a glance">
+      <dl>
+        <div><dt class="label">Role</dt><dd>{d.role}</dd></div>
+        <div><dt class="label">Company</dt><dd>{d.company.split(' · ')[0]}</dd></div>
+        <div><dt class="label">When</dt><dd>{d.period}</dd></div>
+        <div><dt class="label">Stack</dt><dd><ul class="tags">{d.tags.map((t) => <li>{t}</li>)}</ul></dd></div>
+      </dl>
+    </aside>
+    <article class="prose rv">
+      <Content />
+    </article>
+  </div>
+
+  <nav class="wrap pn" aria-label="More case studies">
+    <a class="cast shadow-box" href={`/work/${prev.id}`} rel="prev">
+      <span class="label">← Previous</span>
+      <span class="t display">{prev.data.title}</span>
+    </a>
+    <a class="cast shadow-box nx" href={`/work/${next.id}`} rel="next">
+      <span class="label">Next →</span>
+      <span class="t display">{next.data.title}</span>
+    </a>
+  </nav>
+  <p class="wrap all"><a href="/work">All work</a></p>
 </Base>
+
 <style>
-  .sum { color: var(--text); font-size: 19px; }
+  .sum { color: var(--muted); font-size: 19px; max-width: 40em; margin: 28px 0 0; }
+  .layout { display: grid; grid-template-columns: 280px 1fr; gap: 64px; align-items: start; padding-top: var(--s-4); padding-bottom: var(--s-5); }
+  .meta { position: sticky; top: calc(var(--header-h) + 32px); border-top: 1px solid var(--line-strong); padding-top: 20px; }
+  dl { margin: 0; display: grid; gap: 22px; }
+  dt { margin: 0 0 6px; font-size: 12px; }
+  dd { margin: 0; color: var(--text); }
+
+  .pn { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-bottom: var(--s-3); }
+  .pn a {
+    display: flex; flex-direction: column; gap: 10px; padding: 26px 28px; text-decoration: none; color: var(--text);
+    background: linear-gradient(140deg, rgba(14, 28, 54, 0.85), rgba(6, 10, 18, 0.7));
+  }
+  .pn .nx { text-align: right; align-items: flex-end; }
+  .pn .t { font-size: clamp(26px, 2.6vw, 36px); line-height: 0.95; }
+  .pn a:hover { color: var(--ice); box-shadow: var(--shadow-box), inset 0 0 0 1px var(--blue); }
+  :global(.motion) .pn a { transition: transform var(--dur) var(--ease-out); }
+  :global(.motion) .pn a:hover { transform: translateY(-4px); }
+  .all { padding-bottom: var(--s-6); margin: var(--s-3) auto 0; font: 700 var(--fs-label) var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; gap: 40px; }
+    .meta { position: static; }
+    dl { grid-template-columns: 1fr 1fr; }
+    dl > div:last-child { grid-column: 1 / -1; }
+    .pn { grid-template-columns: 1fr; gap: 16px; }
+    .sum { font-size: 17px; }
+  }
 </style>

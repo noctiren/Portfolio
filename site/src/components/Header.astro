@@ -21,7 +21,8 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
     </nav>
     <div class="tools">
       <button type="button" class="kbd" data-palette-open aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">
-        <span class="visually-hidden">Open quick navigation</span><span aria-hidden="true" data-kbd-label>Ctrl K</span>
+        <span class="visually-hidden">Open quick navigation</span><span class="kbd-label" aria-hidden="true" data-kbd-label>Ctrl K</span>
+        <svg class="kbd-icon" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5 21 21" /></svg>
       </button>
       <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" data-menu-btn>
         <span class="visually-hidden">Menu</span>
@@ -101,5 +102,11 @@ const isActive = (href: string) => path === href || path.startsWith(href + '/');
     .bar { gap: 12px; }
     .tools { margin-left: auto; }
   }
-  @media (max-width: 380px) { .kbd { display: none; } }
+  /* touch or narrow screens have no Ctrl K: show a search icon there (same button, same palette) */
+  .kbd-icon { display: none; }
+  @media (max-width: 860px), (hover: none) {
+    .kbd { width: 44px; height: 44px; padding: 0; display: inline-grid; place-items: center; }
+    .kbd-label { display: none; }
+    .kbd-icon { display: block; }
+  }
 </style>

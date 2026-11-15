@@ -113,6 +113,28 @@ function magnets() {
   });
 }
 
+/* ---- case-study cards: tilt toward the pointer and move the inner light (fine pointers, motion on) ---- */
+function tilt() {
+  if (reduced() || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  document.querySelectorAll<HTMLElement>('[data-tilt]').forEach((c) => {
+    c.addEventListener('pointermove', (e) => {
+      const r = c.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      c.classList.add('tilting');
+      c.style.setProperty('--ry', `${((px - 0.5) * 7).toFixed(2)}deg`);
+      c.style.setProperty('--rx', `${((0.5 - py) * 6).toFixed(2)}deg`);
+      c.style.setProperty('--mx', `${(px * 100).toFixed(1)}%`);
+      c.style.setProperty('--my', `${(py * 100).toFixed(1)}%`);
+    });
+    c.addEventListener('pointerleave', () => {
+      c.classList.remove('tilting');
+      c.style.setProperty('--rx', '0deg');
+      c.style.setProperty('--ry', '0deg');
+    });
+  });
+}
+
 /* ---- SMIL packets in the pipeline diagram: frozen under reduced motion ---- */
 function svgMotion() {
   document.querySelectorAll<SVGSVGElement>('svg.flow').forEach((s) => {
@@ -130,5 +152,6 @@ document.addEventListener('astro:page-load', () => {
   watchHeroName();
   reveals();
   magnets();
+  tilt();
   svgMotion();
 });

@@ -1,21 +1,67 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageTitle from '../components/PageTitle.astro';
-import Stub from '../components/Stub.astro';
 import { person } from '../data/site';
 ---
 <Base title="Contact" description="Contact Luke Petzer by email or LinkedIn.">
-  <PageTitle title="Get in" outline="touch" kicker="Contact" />
-  <Stub note="The final contact layout arrives in M2.">
-    <ul class="links">
-      <li><span class="k">Email</span><a href={`mailto:${person.email}`}>{person.email}</a></li>
-      <li><span class="k">LinkedIn</span><a href={person.linkedin} rel="noopener">{person.linkedinLabel}</a></li>
-      <li><span class="k">GitHub</span><span class="todo">TODO(Luke): username</span></li>
+  <PageTitle title="Get in" outline="touch" kicker="Contact">
+    <p class="intro">Hiring for DevOps, platform or backend work, including roles that involve AI? Email is the quickest way to reach me. I'm based in {person.location}.</p>
+  </PageTitle>
+
+  <div class="wrap">
+    <ul class="rows">
+      <li class="row rv">
+        <span class="k">Email</span>
+        <a class="v" href={`mailto:${person.email}`}>{person.email}</a>
+        <span class="go" aria-hidden="true">→</span>
+      </li>
+      <li class="row rv">
+        <span class="k">LinkedIn</span>
+        <a class="v" href={person.linkedin} rel="me noopener">{person.linkedinLabel}</a>
+        <span class="go" aria-hidden="true">→</span>
+      </li>
+      <li class="row rv">
+        <span class="k">GitHub</span>
+        {person.github
+          ? <a class="v" href={person.github} rel="me noopener">{person.github.replace('https://', '')}</a>
+          : <span class="v none"><span class="todo">TODO(Luke): GitHub username?</span></span>}
+        <span class="go" aria-hidden="true">{person.github ? '→' : ''}</span>
+      </li>
+      <li class="row rv">
+        <span class="k">CV</span>
+        {/* TODO(Luke): replace with phone-free CV before hosting (HR-PRIVACY) */}
+        <a class="v" href={person.cv} download>Download the PDF</a>
+        <span class="go" aria-hidden="true">↓</span>
+      </li>
     </ul>
-  </Stub>
+  </div>
 </Base>
+
 <style>
-  .links { list-style: none; padding: 0; display: grid; gap: 20px; }
-  .links a { font-size: 20px; word-break: break-word; }
-  .k { display: block; font: 12px var(--font-mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted); }
+  .intro { color: var(--muted); max-width: 34em; font-size: 19px; margin: 28px 0 0; }
+  .rows { list-style: none; margin: var(--s-3) 0 var(--s-6); padding: 0; border-top: 1px solid var(--line-strong); }
+  .row {
+    position: relative; display: grid; grid-template-columns: 160px 1fr auto; align-items: center; gap: 24px;
+    padding: 30px 8px; border-bottom: 1px solid var(--line-strong);
+  }
+  .k { font: 700 var(--fs-label) var(--font-mono); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--blue); }
+  .v { font-size: clamp(22px, 3vw, 40px); line-height: 1.15; color: var(--text); text-decoration: none; overflow-wrap: anywhere; }
+  .v.none { font-size: 16px; }
+  /* the whole row is the click target; the link stays the focusable element */
+  a.v::after { content: ''; position: absolute; inset: 0; }
+  a.v:focus-visible { outline: none; box-shadow: none; }
+  .row:has(a:focus-visible) { outline: 2px solid var(--ice); outline-offset: 2px; box-shadow: var(--focus-ring); }
+  .go { font-size: 32px; color: var(--muted); }
+  .row:hover { background: linear-gradient(90deg, rgba(76, 155, 255, 0.12), transparent 70%); }
+  .row:hover .v, .row:has(a:focus-visible) .v { color: var(--ice); }
+  .row:hover .go { color: var(--blue); }
+  :global(.motion) .go { transition: transform var(--dur) var(--ease-out), color 0.3s; }
+  :global(.motion) .row:hover .go { transform: translateX(8px); }
+
+  @media (max-width: 700px) {
+    .row { grid-template-columns: 1fr auto; gap: 6px 16px; padding: 22px 4px; }
+    .k { grid-column: 1 / -1; }
+    .go { font-size: 24px; }
+    .intro { font-size: 17px; }
+  }
 </style>

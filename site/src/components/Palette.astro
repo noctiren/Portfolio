@@ -1,7 +1,13 @@
 ---
 // Ctrl/Cmd+K command palette (D-007 #4). Hand-written: a native <dialog> (focus stays inside, Esc closes)
 // with an ARIA combobox + listbox. Behaviour lives in src/scripts/palette.ts.
-import { paletteItems } from '../data/site';
+import { palettePages } from '../data/site';
+import { getWork } from '../data/work';
+const work = await getWork();
+const paletteItems = [
+  ...palettePages,
+  ...work.map((w) => ({ href: `/work/${w.id}`, label: w.data.title, hint: 'Case study' })),
+];
 ---
 <dialog class="palette" aria-label="Quick navigation" data-palette>
   <div class="box">

@@ -1,7 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import Pipeline from '../components/Pipeline.astro';
-import { person, caseStudies } from '../data/site';
+import { person } from '../data/site';
+import { getWork } from '../data/work';
+const caseStudies = await getWork();
 
 const stats = [
   { n: '60–80%', p: 'Backup storage cost cut with GCS lifecycle policies.' },
@@ -167,10 +169,6 @@ const tiles = [
   .tile:hover .num { -webkit-text-stroke-color: var(--blue); color: rgba(76, 155, 255, 0.12); }
   .tile:hover .more { text-decoration: underline; text-underline-offset: 4px; }
   :global(.motion) .tile:hover { transform: translateY(-6px); }
-  .draft {
-    font: 11px var(--font-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--warn);
-    border: 1px solid var(--warn); padding: 2px 8px; font-stretch: normal;
-  }
 
   /* ---- contact CTA ---- */
   .cta { padding-bottom: var(--s-6); }
