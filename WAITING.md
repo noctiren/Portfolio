@@ -1,19 +1,13 @@
 # Waiting on Luke: Portfolio
 
 Synced by opcode. Line format: `- [ID] Title | owner: Luke | links: <...> | note: <...>`.
-Full question text: docs/QUESTIONS-FOR-LUKE.md (Q numbers match).
+All of Q-1 to Q-16 were answered 2026-11-15 (docs/content/answers.md).
 
 ## Questions
-- [Q-1..Q-10] Case-study details (before-state, scale numbers, how it was done) | owner: Luke | links: docs/QUESTIONS-FOR-LUKE.md | note: shown as TODO(Luke) boxes on /work pages
-- [Q-11] Confirm/trim the AI list, the "few other things", AI at ixo | owner: Luke | links: docs/content/ai.md | note: /ai shows a draft badge until then
-- [Q-12] OK to show opcode? How much; repo/screens/demo? | owner: Luke | links: docs/content/ai.md | note: -
-- [Q-13] Photo on /about: yes/no | owner: Luke | links: site/src/pages/about.astro | note: -
-- [Q-14] GitHub username | owner: Luke | links: footer, /contact | note: needed for the GitHub repos extra
+- [Q-17] Where is your local opcode repo (folder path)? Optional: lets us diff your rewrite vs upstream for the write-up and take clean screenshots | owner: Luke | links: docs/content/answers.md Q12 | note: write-up goes ahead without it
 
 ## Cards
-- [STYLE] Look at the M4 additions: link-preview card (site/public/og/home.png), LP favicon | owner: Luke | links: docs/screens/m4/NOTES.md | note: no action if happy
-- [OPT] Trim the Archivo font (saves ~65 KB, needs the fonttools tool) | owner: Luke | links: docs/screens/m4/weight.txt | note: optional, low value
+- (none)
 
-## Blockers (hosting)
-- [B-1] CV PDF contains the phone number (HR-PRIVACY) | owner: Luke | links: site/public/Luke_Petzer_CV.pdf, Q-15 | note: need a phone-free CV or explicit OK
-- [B-2] No domain yet | owner: Luke | links: site/astro.config.mjs, Q-16 | note: placeholder lukepetzer.example
+## Before hosting (M5)
+- [M5-GO] Say "ready to host" | owner: Luke | links: docs/DECISIONS.md D-003 | note: free *.pages.dev subdomain (Q-16)

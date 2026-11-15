@@ -17,8 +17,7 @@ See `docs/open-checks.md`.
 See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 
 ## Backlog
-- [M3] Case studies v2: fill in Luke's answers (Q-1..Q-10), add diagrams per case study | owner: frontend manager | links: - | note: after Luke answers
-- [M3b] GitHub repos section (chosen extra) | owner: frontend manager | links: DESIGN-BRIEF §6 | note: needs Q-14
+- [M3 → in progress, see docs/open-checks.md] Case studies v2 + AI rewrite + opcode write-up + Open source section, from docs/content/answers.md
 - [M5] Hosting: Cloudflare Pages via Terraform + GitHub Actions (D-003) | owner: Luke decides | links: docs/DECISIONS.md | note: only after "ready to host"; B-1 and B-2 first
 
 ## Done
@@ -34,3 +33,6 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 - [M4] Polish + audits: OG cards, favicon, a11y/contrast/weight/print/Firefox, CHK-4 Lighthouse still blocked | owner: W-M4 | links: docs/screens/m4/NOTES.md | note: 2026-11-15
 - [CHK-4] Lighthouse: mobile perf 97-99, desktop 100, a11y 100, SEO 100, best practices 81 (only is-on-https: the 3 flagged URLs are local browser add-ons http injections, not 127.0.0.1; passes on HTTPS hosting); no code change kept | owner: W-M4 | links: docs/screens/m4/lighthouse/README.md | note: 2026-11-15
 - [M4] Polish + audits: OG cards, favicon, a11y/print/touch fixes, contrast min 5.95:1, Firefox = Edge, Lighthouse perf 97-100 / a11y 100 / SEO 100 / BP 81 (only local browser add-ons injected http scripts on this PC) | owner: W-M4 | links: e0add82, 920ca12, 468ed96, docs/screens/m4/ | note: manager-checked 2026-11-15
+- [Q-1..Q-16] Luke answered all open questions | owner: Luke | links: docs/content/answers.md | note: 2026-11-15
+- [B-1] Resolved: no CV download (Q-15) | owner: Luke | links: answers.md | note: -
+- [B-2] Resolved: free *.pages.dev subdomain (Q-16) | owner: Luke | links: answers.md | note: name picked at M5
