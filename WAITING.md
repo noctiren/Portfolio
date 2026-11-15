@@ -11,7 +11,6 @@ Full question text: docs/QUESTIONS-FOR-LUKE.md (Q numbers match).
 - [Q-14] GitHub username | owner: Luke | links: footer, /contact | note: needed for the GitHub repos extra
 
 ## Cards
-- [CARD] One-time OK to run `npm install --save-dev lighthouse` (blocked by Claude Code permissions) | owner: Luke | links: inbox card c17947440848111908f35d | note: unblocks CHK-4
 - [STYLE] Look at the M4 additions: link-preview card (site/public/og/home.png), LP favicon | owner: Luke | links: docs/screens/m4/NOTES.md | note: no action if happy
 - [OPT] Trim the Archivo font (saves ~65 KB, needs the fonttools tool) | owner: Luke | links: docs/screens/m4/weight.txt | note: optional, low value
 
