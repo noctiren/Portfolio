@@ -4,6 +4,8 @@ import Pipeline from '../components/Pipeline.astro';
 import { person } from '../data/site';
 import { getWork } from '../data/work';
 const caseStudies = await getWork();
+import { fitEm } from '../utils/fit';
+const nameFit = fitEm('Luke', 'Petzer').toFixed(2);
 
 const stats = [
   { n: '60–80%', p: 'Backup storage cost cut with GCS lifecycle policies.' },
@@ -45,7 +47,7 @@ const tiles = [
   <div class="wrap hero">
     <div>
       <p class="label kicker">{person.location}</p>
-      <h1 class="name display cast shadow-text" data-hero-target><span>Luke</span><span class="outline">Petzer</span></h1>
+      <h1 class="name display cast shadow-text fit" style={`--fit: ${nameFit}`} data-hero-target><span>Luke</span><span class="outline">Petzer</span></h1>
     </div>
     <div class="hero-foot">
       <div class="rv">
@@ -122,7 +124,7 @@ const tiles = [
   /* ---- hero ---- */
   .hero { min-height: min(calc(100svh - var(--header-h)), 900px); display: grid; grid-template-rows: 1fr auto; padding-top: 4vh; padding-bottom: 48px; }
   .kicker { margin: 0 0 16px; letter-spacing: 0.24em; }
-  .name { font-size: var(--fs-mega); line-height: 0.8; margin: 0; }
+  .name { --fit-max: var(--fs-mega); line-height: 0.8; margin: 0; }
   .name span { display: block; }
   :global(.motion) .name span { animation: rise 1.2s var(--ease-out) both; }
   :global(.motion) .name span + span { animation-delay: 0.15s; }

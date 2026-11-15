@@ -26,6 +26,12 @@ import { jobs, skills, education, certification } from '../data/cv';
               {j.points.length > 0 && (
                 <ul class="pts">{j.points.map((p) => <li>{p}</li>)}</ul>
               )}
+              {j.more && j.more.length > 0 && (
+                <details class="more">
+                  <summary>Full details <span class="cnt">+{j.more.length}</span></summary>
+                  <ul class="pts">{j.more.map((p) => <li>{p}</li>)}</ul>
+                </details>
+              )}
             </div>
           </li>
         ))}
@@ -99,6 +105,21 @@ import { jobs, skills, education, certification } from '../data/cv';
   .pts li { position: relative; padding-left: 24px; margin: 10px 0; color: var(--muted); }
   .pts li::before { content: ''; position: absolute; left: 0; top: 0.8em; width: 12px; height: 2px; background: var(--blue); }
 
+  .more { margin-top: 14px; max-width: 46em; }
+  .more summary {
+    display: inline-flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; padding: 6px 0;
+    font: 700 var(--fs-label) var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ice);
+  }
+  .more summary::-webkit-details-marker { display: none; }
+  .more summary::before {
+    content: ''; width: 8px; height: 8px; border-right: 2px solid var(--blue); border-bottom: 2px solid var(--blue);
+    transform: rotate(-45deg); margin-right: 2px;
+  }
+  .more[open] summary::before { transform: rotate(45deg) translate(-2px, -2px); }
+  :global(.motion) .more summary::before { transition: transform 0.25s var(--ease-out); }
+  .more summary:hover { color: #fff; }
+  .more .cnt { font-weight: 400; color: var(--muted); letter-spacing: 0.06em; }
+  .more .pts { margin-top: 4px; }
   .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 36px 48px; }
   .grp { border-top: 1px solid var(--line); padding-top: 18px; }
   .grp h3, .ed h3 { margin: 0 0 14px; display: block; }

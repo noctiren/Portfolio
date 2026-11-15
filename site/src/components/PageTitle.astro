@@ -9,10 +9,12 @@ interface Props {
   long?: boolean;
 }
 const { title, kicker, outline, long = false } = Astro.props;
+import { fitEm } from '../utils/fit';
+const fit = fitEm(title, outline);
 ---
 <header class="page-title wrap">
   {kicker && <p class="label kicker">{kicker}</p>}
-  <h1 class:list={['display cast shadow-text', { long }]}>
+  <h1 class:list={['display cast shadow-text fit', { long }]} style={`--fit: ${fit.toFixed(2)}`}>
     <span>{title}</span>
     {outline && <span class="outline">{outline}</span>}
   </h1>
@@ -22,8 +24,8 @@ const { title, kicker, outline, long = false } = Astro.props;
 <style>
   .page-title { padding-top: clamp(40px, 9vh, 110px); padding-bottom: var(--s-4); }
   .kicker { margin: 0 0 16px; }
-  h1 { font-size: var(--fs-title); margin: 0; overflow-wrap: anywhere; }
-  h1.long { font-size: clamp(52px, 9vw, 140px); line-height: 0.9; }
+  h1 { --fit-max: var(--fs-title); margin: 0; }
+  h1.long { --fit-max: clamp(52px, 9vw, 140px); line-height: 0.9; }
   h1 span { display: block; }
   :global(.motion) h1 span { animation: rise 1.1s var(--ease-out) both; }
   :global(.motion) h1 span + span { animation-delay: 0.12s; }

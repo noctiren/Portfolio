@@ -10,8 +10,8 @@ tags: [Terraform, Kubernetes, EKS / GKE / VKE, AWS, GCP, Vultr, ArgoCD]
 
 ## Context
 
-ixo runs its platform on Kubernetes across three clouds: AWS (EKS), GCP (GKE) and Vultr (VKE). Luke joined
-as the sole platform hire, half-time from February 2024 alongside his job at BMTX and full-time since March 2025.
+ixo runs its platform on Kubernetes across three clouds: AWS (EKS), GCP (GKE) and Vultr (VKE). I joined
+as the sole platform hire, half-time from February 2024 alongside my job at BMTX and full-time since March 2025.
 
 > **TODO(Luke):** What did the infrastructure look like before the platform? (For example: hand-written Terraform per environment, click-ops in the consoles, one cloud only?)
 
@@ -23,7 +23,7 @@ as the sole platform hire, half-time from February 2024 alongside his job at BMT
 - Wrote the **onboarding docs** for teams plugging in.
 - Ran **cost comparisons** of multi-cloud against an AWS-only setup.
 
-> **TODO(Luke):** What does a team actually write to add an environment (a YAML file, a tfvars file, a module call)? A short, made-up-free example would make this page much stronger.
+> **TODO(Luke):** What does a team actually write to add an environment (a YAML file, a tfvars file, a module call)? A short real example would make this page much stronger.
 
 ## Result
 

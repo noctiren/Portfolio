@@ -10,8 +10,8 @@ tags: [Spring Batch, gRPC, Socure, Azure AKS, Service Bus, Key Vault, Azure Func
 
 ## Context
 
-BM Technologies (BMTX, formerly BankMobile) is based in Pennsylvania, US. Luke worked there remotely and
-full-time, overlapping his first year at ixo. The goal: productise KYC / identity verification (IDV) for the
+BM Technologies (BMTX, formerly BankMobile) is based in Pennsylvania, US. I worked there remotely and
+full-time, overlapping my first year at ixo. The goal: productise KYC / identity verification (IDV) for the
 company's university partners.
 
 > **TODO(Luke):** Roughly how many university partners or students did the platform serve? And how big was the team around you?
@@ -19,7 +19,7 @@ company's university partners.
 ## Approach
 
 - **Designed and built it from scratch** as a gRPC service pair: a **public gateway** for partners and a
-  **domain engine** behind it. Luke was the dominant contributor on both from day one.
+  **domain engine** behind it. I was the dominant contributor on both from day one.
 - **Bulk verification pipeline** with **Spring Batch**: processes PGP-encrypted student cohort files from
   Azure Blob Storage, with per-school routing, result generation and failure quarantine.
 - **Decision layer over Socure:** reason-code retrieval and translation, and score-based filtering that

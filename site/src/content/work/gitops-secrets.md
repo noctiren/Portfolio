@@ -10,7 +10,7 @@ tags: [ArgoCD, Image updater, External Secrets Operator, HashiCorp Vault, Dex / 
 
 ## Context
 
-At ixo, Luke runs the Kubernetes clusters, the ArgoCD deployments and the CI/CD pipelines, and owns uptime,
+At ixo, I run the Kubernetes clusters, the ArgoCD deployments and the CI/CD pipelines, and own uptime,
 monitoring and incident response for the platform. The workloads include Web3 infrastructure: cross-chain
 validator nodes (Hyperlane) and RPC/IPFS endpoints.
 
@@ -24,8 +24,8 @@ validator nodes (Hyperlane) and RPC/IPFS endpoints.
   handling OIDC auth.
 - **Access without exposure:** built and locked down **Cloudflare tunnels** for secure access to databases
   and services, so nothing needed to be publicly exposed.
-- **Keeping it up:** uptime and monitoring with **Uptime Kuma** and **Grafana alerting**, and Luke leads
-  incident response for the platform.
+- **Keeping it up:** uptime and monitoring with **Uptime Kuma** and **Grafana alerting**, and I lead
+incident response for the platform.
 
 ## Result
 

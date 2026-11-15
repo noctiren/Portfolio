@@ -8,7 +8,10 @@ export interface Job {
   where: string;
   current?: boolean;
   note: string;
+  /** the strongest bullets (numbers or scope), always shown; at most 3 */
   points: string[];
+  /** the rest, behind a "Full details" expander */
+  more?: string[];
 }
 
 export const jobs: Job[] = [
@@ -18,28 +21,31 @@ export const jobs: Job[] = [
     period: 'Feb 2024 – present',
     where: 'Cape Town',
     current: true,
-    note: 'Half-time for over a year while full-time at BM Technologies; full-time at ixo since March 2025.',
+    note: 'I worked here half-time for over a year while full-time at BM Technologies, and full-time since March 2025.',
     points: [
       'Built a config-driven, multi-cloud Terraform platform (Vultr / AWS / GCP) that any team can plug their own environments into, and wrote the onboarding docs.',
-      'Set up GitOps with ArgoCD, including an image-updater for automated image tracking and rollout.',
       'Cut backup storage costs 60–80% with GCS lifecycle policies; ran cost comparisons showing 28–36% savings going multi-cloud vs. AWS-only.',
+      'Own uptime and monitoring (Uptime Kuma, Grafana alerting) and lead incident response for the platform.',
+    ],
+    more: [
+      'Set up GitOps with ArgoCD, including an image-updater for automated image tracking and rollout.',
       'Moved secrets management to External Secrets Operator + Vault, with Dex handling OIDC auth.',
       'Built and locked down Cloudflare tunnels for secure DB/service access, with no public exposure needed.',
-      'Runs infra for Web3 workloads: cross-chain validator nodes (Hyperlane), RPC/IPFS endpoints.',
-      'Owns uptime and monitoring (Uptime Kuma, Grafana alerting) and leads incident response for the platform.',
-    ],
-  },
+      'Run infra for Web3 workloads: cross-chain validator nodes (Hyperlane), RPC/IPFS endpoints.',
+    ],  },
   {
     org: 'BM Technologies (BMTX)',
     role: 'Software Engineer',
     period: 'Jun 2023 – Mar 2025',
     where: 'Pennsylvania, US · Remote',
-    note: 'Formerly BankMobile. Full-time, running alongside the first year at ixo.',
+    note: 'Formerly BankMobile. A full-time role, running alongside my first year at ixo.',
     points: [
       'Designed and built a partner-facing identity verification platform from scratch: a gRPC service pair (public gateway + domain engine) productising KYC/IDV for university partners. Dominant contributor on both from day one.',
       'Built a bulk verification pipeline processing PGP-encrypted student cohort files from Azure Blob Storage with Spring Batch: per-school routing, result generation, failure quarantine.',
-      'Implemented the decision layer over Socure: reason-code retrieval and translation, score-based filtering producing accept/review/reject outcomes.',
       'Integrated end-to-end into Azure (App Configuration, Key Vault, Service Bus, Functions, AKS) and hardened it for production: Redis caching, rate limiting, health checks.',
+    ],
+    more: [
+      'Implemented the decision layer over Socure: reason-code retrieval and translation, score-based filtering producing accept/review/reject outcomes.',
     ],
   },
   {
@@ -47,12 +53,14 @@ export const jobs: Job[] = [
     role: 'Software Engineer',
     period: 'Feb 2020 – Jun 2023',
     where: 'Cape Town',
-    note: "As costs ramped up, taught himself Terraform and infra work from scratch and built out the company's entire cloud infrastructure. That self-taught DevOps skill set led to becoming ixo's sole platform hire.",
+    note: "As costs ramped up, I taught myself Terraform and infra work from scratch and built out the company's entire cloud infrastructure. That self-taught DevOps skill set is what made me ixo's sole platform hire.",
     points: [
       'Primary engineer on the core banking API: a Kotlin/Spring GraphQL monolith covering accounts, envelopes, transactions, cards, transfers and onboarding.',
       'Led the backend migration between core banking providers (Q2 → Helix/CorePro): new client library, shared processor framework, and the event-driven workers that moved deposits, withdrawals and statements onto the new core.',
-      'Built the identity, fraud and AML stack (Jumio, Socure, Castle, Unit21) and delivered the fractional-share investing integration (DriveWealth) end to end.',
       "Wrote a zero-downtime migration restructuring every live user's envelope data for a new budgeting model: no lost funds, per-user failure isolation, safe re-runs.",
+    ],
+    more: [
+      'Built the identity, fraud and AML stack (Jumio, Socure, Castle, Unit21) and delivered the fractional-share investing integration (DriveWealth) end to end.',
     ],
   },
   {
@@ -60,7 +68,7 @@ export const jobs: Job[] = [
     role: 'Java Developer (internship)',
     period: 'Feb 2019 – Feb 2020',
     where: 'Cape Town',
-    note: 'Shadow-style internship on an enterprise Java codebase: unit tests, small bug fixes, and a first look at how a large bank ships code. Offered a permanent seat; chose envel for the steeper learning curve.',
+    note: 'A shadow-style internship on an enterprise Java codebase: unit tests, small bug fixes, and my first look at how a large bank ships code. I was offered a permanent seat, and chose envel for the steeper learning curve.',
     points: [],
   },
   {
@@ -68,7 +76,7 @@ export const jobs: Job[] = [
     role: 'Learnership',
     period: 'Aug 2018 – Feb 2020',
     where: 'Cape Town',
-    note: 'Stipend-funded, self-study learnership in Spring Framework, RESTful services, SQL/NoSQL and reactive programming. Led to the Absa internship, and from there the offer at envel.',
+    note: 'A stipend-funded, self-study learnership in Spring Framework, RESTful services, SQL/NoSQL and reactive programming. It led me to the Absa internship, and from there to the offer at envel.',
     points: [],
   },
 ];

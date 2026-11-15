@@ -1,0 +1,41 @@
+320 /: h1 80px, overflow-x 0, problems none
+320 /work: h1 72px, overflow-x 0, problems none
+320 /work/multi-cloud-terraform: h1 46px, overflow-x 0, problems none
+320 /work/gitops-secrets: h1 52px, overflow-x 0, problems none
+320 /work/identity-verification: h1 46px, overflow-x 0, problems none
+320 /work/zero-downtime-migration: h1 38px, overflow-x 0, problems none
+320 /experience: h1 51px, overflow-x 0, problems none
+320 /ai: h1 72px, overflow-x 0, problems none
+320 /about: h1 64px, overflow-x 0, problems none
+320 /built: h1 72px, overflow-x 0, problems none
+320 /contact: h1 72px, overflow-x 0, problems none
+320 /nope: h1 72px, overflow-x 0, problems none
+390 /: h1 84px, overflow-x 0, problems none
+390 /work: h1 72px, overflow-x 0, problems none
+390 /work/multi-cloud-terraform: h1 52px, overflow-x 0, problems none
+390 /work/gitops-secrets: h1 52px, overflow-x 0, problems none
+390 /work/identity-verification: h1 52px, overflow-x 0, problems none
+390 /work/zero-downtime-migration: h1 47px, overflow-x 0, problems none
+390 /experience: h1 64px, overflow-x 0, problems none
+390 /ai: h1 72px, overflow-x 0, problems none
+390 /about: h1 72px, overflow-x 0, problems none
+390 /built: h1 72px, overflow-x 0, problems none
+390 /contact: h1 72px, overflow-x 0, problems none
+390 /nope: h1 72px, overflow-x 0, problems none
+1280 /: h1 243px, overflow-x 0, problems none
+1280 /work: h1 205px, overflow-x 0, problems none
+1280 /work/multi-cloud-terraform: h1 115px, overflow-x 0, problems none
+1280 /work/gitops-secrets: h1 115px, overflow-x 0, problems none
+1280 /work/identity-verification: h1 115px, overflow-x 0, problems none
+1280 /work/zero-downtime-migration: h1 115px, overflow-x 0, problems none
+1280 /experience: h1 205px, overflow-x 0, problems none
+1280 /ai: h1 205px, overflow-x 0, problems none
+1280 /about: h1 205px, overflow-x 0, problems none
+1280 /built: h1 205px, overflow-x 0, problems none
+1280 /contact: h1 205px, overflow-x 0, problems none
+1280 /nope: h1 205px, overflow-x 0, problems none
+summary reachable by Tab: true outline: solid
+details open after Enter: true
+details closed after Space: true
+counts per job (shown / in details): ["ixo: 3 / 4","BM Technologies (BMTX): 3 / 1","envel: 3 / 1","Absa Group: 0 / 0","Younglings: 0 / 0"]
+console errors: []

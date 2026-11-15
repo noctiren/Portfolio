@@ -10,7 +10,7 @@ tags: [Kotlin, Spring, GraphQL, Event-driven workers, Core banking]
 
 ## Context
 
-At envel, Luke was the primary engineer on the core banking API: a Kotlin/Spring GraphQL monolith covering accounts, envelopes, transactions, cards, transfers and
+At envel, I was the primary engineer on the core banking API: a Kotlin/Spring GraphQL monolith covering accounts, envelopes, transactions, cards, transfers and
 onboarding.
 
 ## Problem
@@ -26,7 +26,7 @@ Two big moves, both touching live users' money:
 
 - **Envelope migration:** written to run with **zero downtime**, with **per-user failure isolation** (one
   user's failure doesn't stop the rest) and **safe re-runs**.
-- **Core banking move:** Luke led the backend migration, with a new client library, a shared processor framework,
+- **Core banking move:** I led the backend migration, with a new client library, a shared processor framework,
   and the **event-driven workers** that moved deposits, withdrawals and statements onto the new core.
 
 > **TODO(Luke):** How did you keep the app live during the envelope migration (for example: dual writes, a feature flag, migrating users in batches)? One or two sentences in your own words would do.
