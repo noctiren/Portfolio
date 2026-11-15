@@ -7,8 +7,11 @@ export const person = {
   email: 'lukepetzerint2@gmail.com',
   linkedin: 'https://www.linkedin.com/in/lukepetzer-3a81a316b',
   linkedinLabel: 'in/lukepetzer-3a81a316b',
-  github: 'https://github.com/LukePetzer-ixo',
-  githubLabel: 'LukePetzer-ixo',
+  /** Q-20: noctiren is the main (personal) GitHub; LukePetzer-ixo is the work account at ixo. */
+  github: 'https://github.com/noctiren',
+  githubLabel: 'noctiren',
+  githubWork: 'https://github.com/LukePetzer-ixo',
+  githubWorkLabel: 'LukePetzer-ixo',
   /** Q-18 (docs/content/answers.md): roles Luke is open to, and his work setup. No availability on the site. */
   openTo: [
     'DevOps / Platform Engineer',
@@ -42,7 +45,7 @@ export const palettePages: PaletteItem[] = [
   ...nav.map((n) => ({ href: n.href, label: n.label, hint: 'Page' })),
   { href: '/recruiter', label: 'For recruiters', hint: 'Page' },
   { href: '/built', label: 'How this site is built', hint: 'Page' },
-  { href: 'https://github.com/LukePetzer-ixo', label: 'GitHub', hint: 'Link' },
+  { href: 'https://github.com/noctiren', label: 'GitHub', hint: 'Link' },
 ];
 
 /** Case studies live in src/content/work (see src/data/work.ts). */
