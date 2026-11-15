@@ -36,4 +36,5 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 - [B-1] Resolved: no CV download (Q-15) | owner: Luke | links: answers.md | note: -
 - [B-2] Resolved: free *.pages.dev subdomain (Q-16) | owner: Luke | links: answers.md | note: name picked at M5
 - [Q-18] Recruiter facts: roles (suggested list OK), prefers remote / no relocation, no availability shown | owner: Luke | links: docs/content/answers.md Q18 | note: 2026-11-15
-- [M3] Content v2: case studies from answers, /work/opcode (credits upstream winfunc/opcode, AGPL-3.0), /ai rewrite, GitHub + Open source block, CV download + photo removed | owner: W-M2 | links: e80b983, docs/screens/m3/ | note: manager-checked 2026-11-15; wording sign-off = WAITING Q-19
+- [M3] Content v2: case studies from answers, /work/opcode (credits upstream winfunc/opcode, AGPL-3.0), /ai rewrite, GitHub + Open source block, CV download + photo removed | owner: W-M2 | links: e80b983, docs/screens/m3/ | note: manager-checked 2026-11-15; Luke approved the opcode wording as written (Q-19)
+- [Q-19] opcode write-up wording approved as written | owner: Luke | links: inbox card c1794752596009659a9057 | note: 2026-11-15
