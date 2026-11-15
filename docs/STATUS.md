@@ -10,7 +10,8 @@
 - PAUSED 2026-11-15 ~11:30: plan budget line reached (5h 91%). No workers until usage resets.
   Worker W-style mockups (session 0342fc7d) is idle; its Python server on :8765 runs up to 2h, then stops.
   To view mockups after that: `cd mockups && python -m http.server 8765 --bind 127.0.0.1`.
-- Open inbox card c17947339231370b6a1982: round-2 look pick (recommended: Shadow & Light + Signal's system map).
+- DONE: Luke picked Shadow & Light (D-004); other mockups scrapped (git e73b9b5 has them). Multi-page + sticky name + manager improvements decided (D-005 to D-007).
+- HELD: worker W-M1 (brief in `docs/briefs/W-M1-astro-scaffold.md`) can't start: a worker account was unavailable (opcode 'Log in again' card). Start it once the login works.
 - Next (frontend manager): once the style is picked, record the pick in DESIGN-BRIEF + DECISIONS D-004, then start worker 1 "Scaffold Astro site + design tokens + base
   layout" in `site/` (port the chosen mockup's tokens/effects; self-hosted condensed font to replace Bahnschrift). Then the hero and sections, then case-study pages, then a polish/a11y/Lighthouse pass.
 - Milestones: M1 scaffold + tokens · M2 single page with all sections · M3 case-study pages · M4 polish

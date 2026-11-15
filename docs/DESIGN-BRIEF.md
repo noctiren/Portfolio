@@ -4,6 +4,7 @@ Status: recommendations proposed 2026-11-15, waiting for Luke's picks (OW-STYLE)
 the choice under each item and mark it **CHOSEN**.
 
 ## 1. Overall look
+**CHOSEN (Luke 2026-11-15): Shadow & Light** (round 2, A). See DECISIONS D-004 to D-007 for pages and improvements.
 **Round 1 REJECTED (Luke 2026-11-15):** A/B/C all "too generic, same as any portfolio".
 **Round 2 direction (Luke 2026-11-15):** bolder, "more my style", matching the vibe of his gaming handle
 [gaming handle: see .private/forbidden-words.txt]. The handle itself must NOT appear anywhere on the site. Read it as: darkness and shadow, deep and

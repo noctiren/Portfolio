@@ -15,4 +15,16 @@ Format: ID: decision. Why. Status (PROPOSED = waiting for Luke, DECIDED = settle
 - D-003: **Hosting (later): Cloudflare Pages, provisioned with Terraform, deployed by GitHub Actions.**
   Why: free, fast, and the setup itself shows Luke's DevOps skills (can be linked from the site as "how this site
   is built"). PROPOSED (Luke decides at "ready to host", HR-LOCAL).
-- D-004: Visual direction: see `docs/DESIGN-BRIEF.md`. PROPOSED (waiting for Luke, OW-STYLE).
+- D-004: **Look: "Shadow & Light"** (mockup `mockups/round2/r2-a-shadowlight.html` is the visual reference).
+  The other mockups were scrapped (recoverable in git commit e73b9b5). DECIDED (Luke, 2026-11-15).
+- D-005: **Multi-page site** (Luke 2026-11-15: "each page tab should be its own unique page"). Routes: `/` home,
+  `/work` + `/work/<slug>` case studies, `/experience` (timeline + skills + education/cert), `/ai`, `/about`,
+  `/built` (how this site is built), `/contact`, custom `404`. DECIDED (Luke + frontend manager).
+- D-006: **Sticky header keeps Luke's name visible** while scrolling (Luke 2026-11-15). DECIDED.
+- D-007: **Improvements added by the frontend manager** (Luke asked for "any other overall improvements"; he can
+  veto any of them): (1) Astro View Transitions, so the spotlight and header carry over between pages and the
+  site feels like one continuous dark space; (2) each page opens with its own giant lit title (WORK, EXPERIENCE,
+  AI…); (3) a scroll-progress line in the header; (4) a Ctrl/Cmd+K command palette for jumping between pages
+  (hand-written, no package); (5) on touch screens, the light follows taps and scrolling; (6) a "lost in the
+  dark" 404 page; (7) self-hosted fonts instead of Windows-only Bahnschrift; (8) a skip link, glowing focus
+  rings and reduced-motion support everywhere; (9) per-page SEO/Open Graph data and a sitemap. DECIDED (AA-DECIDE).
