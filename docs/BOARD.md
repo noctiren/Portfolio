@@ -41,3 +41,5 @@ See `WAITING.md`. Unconfirmed assumptions: `GUESSES.md`.
 - [Q-19] opcode write-up wording approved as written | owner: Luke | links: inbox card c1794752596009659a9057 | note: 2026-11-15
 - [M6] Alive touches + /recruiter: status pill (real build/M4 stats), clickable pipeline, light reacts, page-change beam, Cape Town tint + clock, numbers decode, build footer, Search label, /recruiter (prints 1 A4 page) | owner: W-M6 | links: f72427d, docs/screens/m6/ | note: manager-checked + Luke tested OK 2026-11-15
 - [T-2] Luke tested M6 (alive touches + /recruiter): Tested OK; the worker's 6 choices are accepted as built | owner: Luke | links: inbox card c1794753758723014d8ff4 | note: 2026-11-15
+- [F-5] GitHub: noctiren is the main link (footer, contact, recruiter, palette); LukePetzer-ixo is labelled as the work account | owner: W-M6 | links: 8831f54, docs/screens/f5/ | note: manager-checked 2026-11-15
+- [Q-20] Luke: link both GitHub accounts | owner: Luke | links: answers.md Q20 | note: 2026-11-15
