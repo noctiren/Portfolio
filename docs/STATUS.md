@@ -30,5 +30,5 @@
 - M6 alive touches + /recruiter accepted (f72427d); Q-18 facts are used. Luke's test card T-2 is open, and the dev server on :4321 was started by W-M6 and is left running for the test.
 - Next: Luke's T-2 result -> fixes via W-M6 if needed, then stop the :4321 server. Re-run Lighthouse after M6.
 - Waiting on Luke: T-2 test, CHK-1 phone, CHK-3 screen reader, optional Q-17, M5 "ready to host".
-- Note for M5: local git author name is [gaming handle: see .private/forbidden-words.txt]. Ask Luke before any public push (the handle must not appear).
+- 2026-11-15: History scrubbed and signed for the public repo noctiren/Portfolio (D-010).
 - 2026-11-15: Luke tested M6 OK (T-2). M6 is closed. Open: CHK-1/2/3, CHK-8 Lighthouse re-run, M5 when Luke says "ready to host".

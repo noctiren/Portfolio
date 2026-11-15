@@ -38,3 +38,9 @@ Format: ID: decision. Why. Status (PROPOSED = waiting for Luke, DECIDED = settle
   `docs/DESIGN-BRIEF.md` section 7. New route `/recruiter` added to D-005. The build hash, date and site stats are
   read at build time (git + docs/screens/m4); no new packages. Everything switches off under reduced motion.
   M6 starts once M3 is done, because both touch the same pages. DECIDED (Luke).
+- D-010: **Public GitHub repo `noctiren/Portfolio`, pushed over SSH with SSH-signed commits** (Luke 2026-11-15).
+  Before the first push, history was rewritten: the author is "Luke Petzer <lukepetzerint2@gmail.com>", the CV PDF
+  (which has his phone number) is removed from every commit, and the gaming handle is replaced in the docs. Backup:
+  `../Portfolio-backup-20261115-1712.git`. The settings are repo-local (the global git identity is unchanged): key
+  `~/.ssh/id_ed25519_noctiren` (no passphrase, this PC only, Luke's choice), `gpg.format=ssh`, `commit.gpgsign=true`,
+  `core.sshCommand` pinned to that key. Hosting (D-003) is still Luke's call. DECIDED (Luke).
