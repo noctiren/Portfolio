@@ -6,7 +6,10 @@ what style I want or giving recommendations ... all local, will host when I say 
 `CLAUDE.md` hard rules override this file.
 
 ## 1. Start
-- ST-READ: Read `CLAUDE.md`, then `docs/STATUS.md`, `docs/DECISIONS.md` and `docs/DESIGN-BRIEF.md`.
+- ST-READ: Read `CLAUDE.md`, then `docs/BOARD.md`, `docs/STATUS.md`, `docs/DECISIONS.md` and `docs/DESIGN-BRIEF.md`.
+- ST-BOARD: `docs/BOARD.md` is the issue board (opcode syncs it). On every change of state (worker started,
+  reported, fix sent, check done, Luke answered), move or add the item there in its fixed line format.
+  Workers report state changes to the manager; the manager edits the board.
 - ST-STATUS: Before ending a work session, update `docs/STATUS.md` with what is done, what is next and what is
   waiting on Luke.
 
