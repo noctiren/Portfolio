@@ -12,7 +12,8 @@
   To view mockups after that: `cd mockups && python -m http.server 8765 --bind 127.0.0.1`.
 - DONE: Luke picked Shadow & Light (D-004); other mockups scrapped (git e73b9b5 has them). Multi-page + sticky name + manager improvements decided (D-005 to D-007).
 - DONE: M1 (commit 65a2fa4), reviewed by the manager (screenshots in docs/screens/m1). M1 dev server stopped (Luke approved).
-- M2 committed (22fb6c2), manager review found: /experience title breaks mid-word on phones, mixed voice, long experience page. Fixes done (commit 214cb0d), preview running on 127.0.0.1:4321 (W-M2 task, PID 55192) for Luke to test. Open questions collected in docs/QUESTIONS-FOR-LUKE.md.
+- M2 committed (22fb6c2), manager review found: /experience title breaks mid-word on phones, mixed voice, long experience page. Fixes done (commit 214cb0d), preview running on 127.0.0.1:4321 (W-M2 task, PID 55192) for Luke to test.
+- M1 + M2 CLOSED: Luke tested the whole site, Tested OK (2026-11-15). Next: M4 polish (no Luke input needed); M3 waits on Luke's answers (WAITING.md). Open questions collected in docs/QUESTIONS-FOR-LUKE.md.
 - Next (frontend manager): once the style is picked, record the pick in DESIGN-BRIEF + DECISIONS D-004, then start worker 1 "Scaffold Astro site + design tokens + base
   layout" in `site/` (port the chosen mockup's tokens/effects; self-hosted condensed font to replace Bahnschrift). Then the hero and sections, then case-study pages, then a polish/a11y/Lighthouse pass.
 - Milestones: M1 scaffold + tokens · M2 single page with all sections · M3 case-study pages · M4 polish

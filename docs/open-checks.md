@@ -12,7 +12,6 @@ Things not yet verified, plus work in progress. Synced by opcode. Line format:
 - [CHK-3] Screen reader pass | owner: frontend manager | links: - | note: M4
 - [CHK-4] Lighthouse (perf/a11y/SEO/best practices) | owner: frontend manager | links: - | note: M4
 - [CHK-5] Colour contrast measured with a tool | owner: frontend manager | links: site/src/styles/tokens.css | note: AA by token choice, not measured
-- [CHK-6] Live mouse effects (spotlight follow, magnetic buttons, card tilt) seen by a human | owner: Luke | links: http://127.0.0.1:4321/ | note: the side browser can't move a mouse
 - [CHK-7] Console "Permissions-Policy" warnings in headless runs | owner: frontend manager | links: docs/screens/m2/verify-log.txt | note: believed to come from the headless browser
 
 ## Notes
