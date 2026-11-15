@@ -11,7 +11,6 @@ Full question text: docs/QUESTIONS-FOR-LUKE.md (Q numbers match).
 - [Q-14] GitHub username | owner: Luke | links: footer, /contact | note: needed for the GitHub repos extra
 
 ## Cards
-- [CARD] OK to install Lighthouse as a dev-only tool (CHK-4) | owner: Luke | links: inbox card c17947423323043d06173e | note: recommended
 
 ## Blockers (hosting)
 - [B-1] CV PDF contains the phone number (HR-PRIVACY) | owner: Luke | links: site/public/Luke_Petzer_CV.pdf, Q-15 | note: need a phone-free CV or explicit OK

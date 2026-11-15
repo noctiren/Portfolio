@@ -32,3 +32,5 @@ Format: ID: decision. Why. Status (PROPOSED = waiting for Luke, DECIDED = settle
   (hand-written, no package); (5) on touch screens, the light follows taps and scrolling; (6) a "lost in the
   dark" 404 page; (7) self-hosted fonts instead of Windows-only Bahnschrift; (8) a skip link, glowing focus
   rings and reduced-motion support everywhere; (9) per-page SEO/Open Graph data and a sitemap. DECIDED (AA-DECIDE).
+- D-008: **Lighthouse approved as a dev-only package** (`lighthouse` as a devDependency in site/, run locally against
+  the local site with the installed Edge). Never shipped. DECIDED (Luke, inbox card c17947423323043d06173e, 2026-11-15).
