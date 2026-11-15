@@ -9,7 +9,6 @@ Things not yet verified, plus work in progress. Synced by opcode. Line format:
 - [CHK-1] Real phone / touch device test (spotlight follows taps, menu, tilt off) | owner: frontend manager | links: - | note: only emulated so far
 - [CHK-2] Safari check | owner: frontend manager | links: docs/screens/m4/NOTES.md | note: Firefox done in M4 (matches Edge); Safari needs a Mac/iPhone
 - [CHK-3] Screen reader pass | owner: frontend manager | links: - | note: M4
-- [CHK-4] Lighthouse (perf/a11y/SEO/best practices) | owner: W-M4 polish + audits | links: D-008, docs/screens/m4/lighthouse/ | note: installed (cf69c2f), audits running
 
 ## Notes
 - Preview servers started by workers stop after at most 2 hours (opcode's background limit). If http://127.0.0.1:4321/

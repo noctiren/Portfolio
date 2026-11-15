@@ -41,5 +41,4 @@ Possible further win (needs Luke's OK, new tool): cut Archivo (90 KB, all widths
 width and weight used, about 25 KB, with `fonttools`, which isn't installed.
 
 ## Not checked here
-Real phone (CHK-1), screen reader (CHK-3), Safari (part of CHK-2), Lighthouse (CHK-4, the install was blocked by
-the Claude Code permission check, see the report).
+Real phone (CHK-1), screen reader (CHK-3), Safari (part of CHK-2). Lighthouse (CHK-4) was run later: see `lighthouse/README.md`.

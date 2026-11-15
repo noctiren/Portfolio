@@ -1,0 +1,10 @@
+Lighthouse site (final), 2026-11-15 12:38, headless Edge, http://127.0.0.1:4322, local browser add-ons injections blocked
+page        preset    perf  a11y  best  seo   failing audits
+home        mobile     97   100    81   100  is-on-https (3 insecure requests found); largest-contentful-paint (2.6 s); document-latency-insight (Est savings of 17 KiB); forced-reflow-insight; network-dependency-tree-insight; render-blocking-insight (Est savings of 150 ms)
+home        desktop   100   100    81   100  is-on-https (3 insecure requests found); document-latency-insight (Est savings of 17 KiB); forced-reflow-insight; network-dependency-tree-insight; render-blocking-insight (Est savings of 40 ms)
+work        mobile     99   100    81   100  is-on-https (3 insecure requests found); document-latency-insight (Est savings of 13 KiB); forced-reflow-insight; network-dependency-tree-insight; render-blocking-insight (Est savings of 150 ms)
+work        desktop   100   100    81   100  is-on-https (3 insecure requests found); document-latency-insight (Est savings of 13 KiB); forced-reflow-insight; network-dependency-tree-insight; render-blocking-insight (Est savings of 40 ms)
+case        mobile     99   100    81   100  is-on-https (3 insecure requests found); document-latency-insight (Est savings of 12 KiB); forced-reflow-insight; network-dependency-tree-insight; render-blocking-insight (Est savings of 150 ms)
+case        desktop   100   100    81   100  is-on-https (3 insecure requests found); document-latency-insight (Est savings of 12 KiB); forced-reflow-insight; network-dependency-tree-insight; render-blocking-insight (Est savings of 40 ms)
+experience  mobile     97   100    81   100  is-on-https (3 insecure requests found); largest-contentful-paint (2.6 s); document-latency-insight (Est savings of 15 KiB); forced-reflow-insight; network-dependency-tree-insight; render-blocking-insight (Est savings of 150 ms)
+experience  desktop   100   100    81   100  is-on-https (3 insecure requests found); document-latency-insight (Est savings of 15 KiB); forced-reflow-insight; network-dependency-tree-insight; render-blocking-insight (Est savings of 40 ms)
