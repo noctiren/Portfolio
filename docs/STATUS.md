@@ -52,3 +52,9 @@
 - 2026-11-18: Tested with Node back (now under AppData\Local\Programs): none of the Edge flag sets we use (cdp old/new,
   Lighthouse) makes a visible window (a normal Edge does, as a control), and 0 Edge processes remain after close().
   No Portfolio test had run between 15 and 18 Nov, so the windows Luke saw on the 18th were not from these scripts.
+- 2026-11-19: Real cause of Luke's Alt-Tab clutter found (his screenshot: 27 blank entries, Home/Work/Experience/GitOps in
+  pairs = Lighthouse's page order). They are dead entries: Windows keeps one for every headless browser window that was
+  force-killed (Lighthouse's own launcher, and my taskkill tests). Fix: lh.mjs now uses one Edge from cdp.mjs via
+  `--port` and closes it normally (exits by itself in ~0.25 s, code 0); xbrowser.mjs quits Firefox with browser.close.
+  Existing entries clear when Windows Explorer restarts or Luke signs out. Firefox path not re-run (it overwrites
+  docs/screens/m4/xbrowser).

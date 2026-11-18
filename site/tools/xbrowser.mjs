@@ -64,9 +64,10 @@ for (const [name, path] of Object.entries(pages)) {
     report.push(`firefox  ${path.padEnd(22)} ${w}x${h}  page ${size}  console: ${logs.join(' | ') || 'clean'}`);
   }
 }
-await send('session.end').catch(() => {});
+// Quit Firefox normally (a force-kill leaves dead Alt-Tab entries on Windows); force it only if it is still running.
+await Promise.race([send('browser.close'), sleep(3000)]).catch(() => {});
 ws.close();
-await sleep(1000);
+for (let i = 0; i < 60 && ff.exitCode === null; i++) await sleep(100);
 killTree(ff);
 try { rmSync(profile, { recursive: true, force: true }); } catch { /* Firefox may still hold files */ }
 console.log(report.join('\n'));

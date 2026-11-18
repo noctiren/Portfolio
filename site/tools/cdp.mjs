@@ -94,9 +94,9 @@ export async function launch(port = 9333) {
     const within = (p, ms) => Promise.race([p, sleep(ms)]).catch(() => {});
     await within(send('Browser.close'), 2000);
     ws.close();
-    for (let i = 0; i < 20 && proc.exitCode === null; i++) await sleep(100);
+    for (let i = 0; i < 60 && proc.exitCode === null; i++) await sleep(100); // up to 6 s for a normal exit before forcing it
     killTree(proc);
     try { rmSync(profile, { recursive: true, force: true }); } catch { /* Edge may still hold files */ }
   }
-  return { send, goto, evaluate, close, problems };
+  return { send, goto, evaluate, close, problems, proc };
 }
