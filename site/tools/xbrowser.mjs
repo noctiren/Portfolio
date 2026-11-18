@@ -5,7 +5,7 @@ import { spawn } from 'node:child_process';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
-import { launch, BASE } from './cdp.mjs';
+import { launch, BASE, killTree, killOnExit } from './cdp.mjs';
 
 const FIREFOX = process.env.FIREFOX ?? 'C:/Program Files/Mozilla Firefox/firefox.exe';
 const out = process.argv[2] ?? resolve(import.meta.dirname, '../../docs/screens/m4/xbrowser');
@@ -32,6 +32,7 @@ await b.close();
 // ---- Firefox (WebDriver BiDi) ----
 const profile = mkdtempSync(join(tmpdir(), 'lp-ff-'));
 const ff = spawn(FIREFOX, ['-headless', '-no-remote', '-profile', profile, '--remote-debugging-port', '9336'], { stdio: 'ignore' });
+killOnExit(ff);
 let ws;
 for (let i = 0; i < 60 && !ws; i++) {
   await sleep(500);
@@ -65,7 +66,7 @@ for (const [name, path] of Object.entries(pages)) {
 }
 await send('session.end').catch(() => {});
 ws.close();
-ff.kill();
 await sleep(1000);
+killTree(ff);
 try { rmSync(profile, { recursive: true, force: true }); } catch { /* Firefox may still hold files */ }
 console.log(report.join('\n'));

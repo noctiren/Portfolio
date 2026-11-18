@@ -45,3 +45,8 @@
   308 to /built/ on every click, so the pages are now built as files (`build.format: 'file'`, `src/data/path.ts` keeps
   canonical/OG/nav paths clean).
 - Open: CHK-1 phone, CHK-2 Safari, CHK-3 screen reader (Luke); optional Q-17.
+- 2026-11-16: Luke: Edge test scripts left dozens of windows in Alt-Tab. `site/tools/cdp.mjs` now runs Edge as
+  `--headless=new` off-screen, closes every page then the browser, kills the whole process tree (taskkill /T), and
+  also kills it on crash/Ctrl+C; xbrowser.mjs does the same for Firefox. `routes()` fixed for the file-format build
+  (it only found / and /404). NOT run yet: Node.js is missing from this PC (C:\Program Files\nodejs is gone), so the
+  changes are uncommitted until Node is back and a test run shows no leftover windows.
