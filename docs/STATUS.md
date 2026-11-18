@@ -48,5 +48,7 @@
 - 2026-11-16: Luke: Edge test scripts left dozens of windows in Alt-Tab. `site/tools/cdp.mjs` now runs Edge as
   `--headless=new` off-screen, closes every page then the browser, kills the whole process tree (taskkill /T), and
   also kills it on crash/Ctrl+C; xbrowser.mjs does the same for Firefox. `routes()` fixed for the file-format build
-  (it only found / and /404). NOT run yet: Node.js is missing from this PC (C:\Program Files\nodejs is gone), so the
-  changes are uncommitted until Node is back and a test run shows no leftover windows.
+  (it only found / and /404). close() now uses a 2 s time limit (closing the page first made it hang).
+- 2026-11-18: Tested with Node back (now under AppData\Local\Programs): none of the Edge flag sets we use (cdp old/new,
+  Lighthouse) makes a visible window (a normal Edge does, as a control), and 0 Edge processes remain after close().
+  No Portfolio test had run between 15 and 18 Nov, so the windows Luke saw on the 18th were not from these scripts.
